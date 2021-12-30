@@ -6,7 +6,9 @@ export const numSelectedImages = 10
 export class LocalRoutes {
     static home = "/"
     //static about = `${LocalRoutes.home}/about`
-    static about = `${LocalRoutes.home}/about`
+    static about = "/about"
+    static images = "/images"
+    static imageObjects = "/image-objects"
 }
 
 export class RemoteAPI {
@@ -45,6 +47,8 @@ export class UIText {
 
     static linkHome = "home"
     static linkAbout = "about"
+    static linkImages = "images"
+    static linkImageObjects = "images objects"
 
     static buttonSubmit = "submit"
     static buttonClear = "clear"

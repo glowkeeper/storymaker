@@ -1,24 +1,27 @@
 import React, { useEffect, useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { StoreContext, StoreActions } from '../store/store'
 
 import { getImages } from '../store/api/getImages'
 
-import { numSelectedImages } from '../config'
+import { numSelectedImages, LocalRoutes } from '../config'
 
 export const Images = () => {
     const store = useContext(StoreContext)
     const [needsImages, setNeedsImages] = useState(true)
     const [clickedImages, setClickedImages] = useState([])
 
-    useEffect(() => {
+    const navigate = useNavigate()
+
+    useEffect(() => {        
 
         if ( needsImages ) {
             getImages(store.dispatch, 'all');
             setNeedsImages(false)
         }
 
-    }, [needsImages, store.dispatch])
+    }, [needsImages, store])
 
     const doesExist = (imageURLs) => {
         const exists = clickedImages.some(element => {
@@ -57,10 +60,13 @@ export const Images = () => {
                 type: StoreActions.imageObjectsCreate,
                 payload: images
             })
+            navigate(LocalRoutes.imageObjects)            
         }
         setClickedImages(images)
         //console.log('my clicked', clickedImages)
     }
+
+    // console.log('my state', store.state)
 
     return (
         <>

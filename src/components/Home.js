@@ -1,26 +1,11 @@
-import React, { useMemo } from 'react'
+import { Link } from "react-router-dom"
 
-import { Images } from './Images'
-
-import { 
-    StoreContext,
-    rootReducer,
-    initialState, 
-    useReducerWithThunk 
-} from '../store/store'
+import { UIText, LocalRoutes } from '../config'
 
 export const Home = () => {
-    const [state, dispatch] = useReducerWithThunk(rootReducer, initialState)
-
-    const store = useMemo(() => {
-        return { state: state, dispatch: dispatch }
-    }, [state, dispatch])
-
     return (
-        <>
-            <StoreContext.Provider value={store}>
-                <Images />
-            </StoreContext.Provider>
+        <>            
+            <Link to={LocalRoutes.images}>{UIText.linkImages}</Link>
         </>
     )
 }

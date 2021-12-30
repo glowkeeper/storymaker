@@ -1,13 +1,27 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
 
 import { Home } from './Home'
 import { About } from './About'
+import { Images } from './Images'
+import { ImageObjects } from './ImageObjects'
+
+import { 
+    StoreContext,
+    rootReducer,
+    initialState, 
+    useReducerWithThunk 
+} from '../store/store'
 
 import { UIText, LocalRoutes } from '../config'
 
 export const App = () => {
+    const [state, dispatch] = useReducerWithThunk(rootReducer, initialState)
+
+    const store = useMemo(() => {
+        return { state: state, dispatch: dispatch }
+    }, [state, dispatch])
 
     useEffect(() => {
         const prevTitle = document.title;
@@ -27,16 +41,26 @@ export const App = () => {
                 </nav>
             </header>
             <main>
-                <Routes>
-                    <Route
-                        path={LocalRoutes.home}
-                        element={<Home />}
-                    />
-                    <Route
-                        path={LocalRoutes.about}
-                        element={<About />}
-                    />
-                </Routes>
+                <StoreContext.Provider value={store}>
+                    <Routes>
+                        <Route
+                            path={LocalRoutes.home}
+                            element={<Home />}
+                        />
+                        <Route
+                            path={LocalRoutes.about}
+                            element={<About />}
+                        />
+                        <Route
+                            path={LocalRoutes.images}
+                            element={<Images />}
+                        />
+                        <Route
+                            path={LocalRoutes.imageObjects}
+                            element={<ImageObjects />}
+                        />
+                    </Routes>
+                </StoreContext.Provider>
             </main>
         </>
     )

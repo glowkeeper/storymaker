@@ -3,6 +3,7 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
+  static navUpdate = 'Nav/Update'
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
   static imagesCreate = 'Images/Create'
@@ -22,7 +23,7 @@ export const imagesReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.imagesInit: 
     case StoreActions.imagesReset:
-      return [...state, ...initialState.images]
+      return [...initialState.images]
     case StoreActions.imagesCreate:
       return [...action.payload]
     case StoreActions.imagesUpdate:
@@ -36,9 +37,9 @@ export const imageObjectsReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.imageObjectsInit: 
     case StoreActions.imageObjectsReset:
-      return [...state, ...initialState.imageObjects]
+      return [...initialState.imageObjects]
     case StoreActions.imageObjectsCreate:
-      console.log('made it here', action.payload)
+      //console.log('made it here', action.payload)
       return [...action.payload]
     case StoreActions.imageObjectsUpdate:
       return [...state, ...action.payload]
