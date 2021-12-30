@@ -3,32 +3,26 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
-  static init = 'Initialise'
-  static reset = 'Reset'
-  static update = 'Update'
-}
-
-export const rootReducer = (state, action) => {
-  switch (action.type) {
-    case StoreActions.init: 
-      const newState = {...initialState}
-      return {...newState, hasInitialised: true, hasSolution: false}
-    case StoreActions.reset: 
-      return {...action.payload}
-    case StoreActions.update:
-      return {...state, ...action.payload}
-    default:
-      return state
-  }
+  static imagesInit = 'Images/Initialise'
+  static imagesReset = 'Images/Reset'
+  static imagesUpdate = 'Images/Update'
 }
 
 export const initialState = {
-  hasInitialised: false,
-  hasSolution: false,
-  asciiArt: "   +--+\n  ++  |\n+-++--+\n|  |  |\n+--+--+",
-  corner: "+",
-  colour: "#ff0000",
-  rectangles: [],
+  images: [],
+}
+
+export const imagesReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.imagesInit: 
+    case StoreActions.imagesReset:
+      return [...initialState.images]
+    case StoreActions.imagesUpdate:
+      console.log('got here')
+      return [...state, ...action.payload]
+    default:
+      return state
+  }
 }
 
 export const useReducerWithThunk = (reducer, initialState) => {
@@ -44,3 +38,17 @@ export const useReducerWithThunk = (reducer, initialState) => {
   
   return [state, customDispatch];
 }
+
+const combineReducers = reducers => {
+  return (state = {}, action) => {
+    const newState = {}
+    for (let key in reducers) {
+      newState[key] = reducers[key](state[key], action)
+    }
+    return newState
+  }
+}
+
+export const rootReducer = combineReducers({
+  images: imagesReducer
+})
