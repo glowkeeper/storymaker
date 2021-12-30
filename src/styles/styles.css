@@ -49,6 +49,20 @@ a:hover {
   border-top: solid 1px rgba(197, 197, 197, 1);
 }
 
+.image-button {
+  border: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.image-button-active {
+  border: solid 1px rgb(209, 16, 16);;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
 #image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

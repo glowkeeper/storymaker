@@ -1,6 +1,8 @@
 export const flickrAPIKey = process.env.REACT_APP_FLICKRAPIKEY
 export const nlpCloudAPIToken = process.env.REACT_APP_NLPCLOUDAPITOKEN
 
+export const numSelectedImages = 10
+
 export class LocalRoutes {
     static home = "/"
     //static about = `${LocalRoutes.home}/about`

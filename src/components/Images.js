@@ -1,39 +1,65 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 
-import { StoreContext } from '../store/store'
+import { StoreContext, StoreActions } from '../store/store'
 
 import { getImages } from '../store/api/getImages'
 
+import { numSelectedImages } from '../config'
+
 export const Images = () => {
     const store = useContext(StoreContext)
+    const [needsImages, setNeedsImages] = useState(true)
+    const [clickedImages, setClickedImages] = useState([])
 
     useEffect(() => {
 
-        getImages(store.dispatch, 'all');
+        if ( needsImages ) {
+            getImages(store.dispatch, 'all');
+            setNeedsImages(false)
+        }
 
-    }, [])
-    
+    }, [needsImages, store.dispatch])
 
-    const handleSubmit = (event) => {
+    const doesExist = (imageURLs) => {
+        const exists = clickedImages.some(element => {
+            return element.id === imageURLs.cropped;
+        });
+        return exists
+    }
+
+    const setImages = (imageURLs) => {
+
+        const exists = doesExist(imageURLs)
+        let images;
+        if (exists) {
+            //console.log('found')
+            images = clickedImages.filter(element => element.id !== imageURLs.cropped)
+            //console.log('found images', images)
+        } else {
+            //console.log('not found')
+            images = clickedImages.slice()
+            const imageData = {
+                id: imageURLs.cropped,
+                urls: imageURLs
+            }
+            images.push(imageData)
+            //console.log('not found images', images)
+        }
+        return images;
+    }
+
+    const handleClick = (event, imageURLs) => {
         event.preventDefault();
-        /*store.dispatch({
-            type: StoreActions.init,
-            payload: {}
-        })*/
-    }
-
-    const handleChangeInput = (event) => {
-        const name = event.target.name
-        const value = event.target.value
-    }
-
-    const handleClickClear = (event) => {
-        event.preventDefault();
-
-    }
-
-    const handleClickInit = (event) => {        
-        event.preventDefault();  
+        //console.log('url', imageURLs.cropped)
+        const images = setImages(imageURLs);
+        if (images.length === numSelectedImages) {
+            store.dispatch({
+                type: StoreActions.imageObjectsCreate,
+                payload: images
+            })
+        }
+        setClickedImages(images)
+        //console.log('my clicked', clickedImages)
     }
 
     return (
@@ -43,7 +69,15 @@ export const Images = () => {
                 <>
                     <div id="image-grid">
                         {store.state.images.map((url, index) => {
-                            return <img key={index} src={url} alt='flickr' />
+                            return (
+                                <button
+                                    key={index}
+                                    className={doesExist(url) ? "image-button-active" : "image-button"}
+                                    onClick={event => handleClick(event, url)}
+                                >
+                                    <img src={url.cropped} alt='flickr' />
+                                </button>
+                            )
                         })}           
                     </div>
                 </>

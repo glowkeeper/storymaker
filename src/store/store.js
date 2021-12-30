@@ -5,20 +5,42 @@ export const StoreContext = React.createContext()
 export class StoreActions { 
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
+  static imagesCreate = 'Images/Create'
   static imagesUpdate = 'Images/Update'
+  static imageObjectsInit = 'ImageObjects/Initialise'
+  static imageObjectsReset = 'ImageObjects/Reset'
+  static imageObjectsCreate = 'ImageObjects/Create'
+  static imageObjectsUpdate = 'ImageObjects/Update'
 }
 
 export const initialState = {
   images: [],
+  imageObjects: []
 }
 
 export const imagesReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.imagesInit: 
     case StoreActions.imagesReset:
-      return [...initialState.images]
+      return [...state, ...initialState.images]
+    case StoreActions.imagesCreate:
+      return [...action.payload]
     case StoreActions.imagesUpdate:
-      console.log('got here')
+      return [...state, ...action.payload]
+    default:
+      return state
+  }
+}
+
+export const imageObjectsReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.imageObjectsInit: 
+    case StoreActions.imageObjectsReset:
+      return [...state, ...initialState.imageObjects]
+    case StoreActions.imageObjectsCreate:
+      console.log('made it here', action.payload)
+      return [...action.payload]
+    case StoreActions.imageObjectsUpdate:
       return [...state, ...action.payload]
     default:
       return state
@@ -50,5 +72,6 @@ const combineReducers = reducers => {
 }
 
 export const rootReducer = combineReducers({
-  images: imagesReducer
+  images: imagesReducer,
+  imageObjects: imageObjectsReducer
 })

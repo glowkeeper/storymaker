@@ -45,5 +45,5 @@ export const IO = {
 };
 
 export const flickrQuery = t => `${RemoteAPI.flickrQueryAPI}&api_key=${flickrAPIKey}&tags=${t}&format=json&nojsoncallback=1`
-export const flickrPhotos = (serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`
-  
+export const flickrCroppedSquarePhotos = (serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`
+export const flickrLargePhotos = (serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_b.jpg`
