@@ -16,7 +16,7 @@ export class StoreActions {
 
 export const initialState = {
   images: [],
-  imageObjects: []
+  imageObjects: {}
 }
 
 export const imagesReducer = (state, action) => {
@@ -37,12 +37,20 @@ export const imageObjectsReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.imageObjectsInit: 
     case StoreActions.imageObjectsReset:
-      return [...initialState.imageObjects]
+      return {...initialState.imageObjects}
     case StoreActions.imageObjectsCreate:
       //console.log('made it here', action.payload)
-      return [...action.payload]
+      return {...action.payload}
     case StoreActions.imageObjectsUpdate:
-      return [...state, ...action.payload]
+      //console.log('payload', action.payload)
+      const myKey = Object.keys(action.payload)[0];
+      const newState = {...state, [`${myKey}`]: {
+        cropped: action.payload[`${myKey}`].cropped,
+        large: action.payload[`${myKey}`].large,
+        predictions: action.payload[`${myKey}`].predictions
+      }}
+      // console.log('new state', newState)
+      return newState
     default:
       return state
   }

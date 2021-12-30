@@ -10,7 +10,7 @@ import { numSelectedImages, LocalRoutes } from '../config'
 export const Images = () => {
     const store = useContext(StoreContext)
     const [needsImages, setNeedsImages] = useState(true)
-    const [clickedImages, setClickedImages] = useState([])
+    const [clickedImages, setClickedImages] = useState({})
 
     const navigate = useNavigate()
 
@@ -24,29 +24,18 @@ export const Images = () => {
     }, [needsImages, store])
 
     const doesExist = (imageURLs) => {
-        const exists = clickedImages.some(element => {
-            return element.id === imageURLs.cropped;
-        });
-        return exists
+        return clickedImages.hasOwnProperty(imageURLs.cropped);
     }
 
     const setImages = (imageURLs) => {
 
         const exists = doesExist(imageURLs)
-        let images;
+        let images = { ...clickedImages};
         if (exists) {
             //console.log('found')
-            images = clickedImages.filter(element => element.id !== imageURLs.cropped)
-            //console.log('found images', images)
+            delete images[imageURLs.cropped]; 
         } else {
-            //console.log('not found')
-            images = clickedImages.slice()
-            const imageData = {
-                id: imageURLs.cropped,
-                urls: imageURLs
-            }
-            images.push(imageData)
-            //console.log('not found images', images)
+            images[imageURLs.cropped] = imageURLs
         }
         return images;
     }
@@ -54,8 +43,9 @@ export const Images = () => {
     const handleClick = (event, imageURLs) => {
         event.preventDefault();
         //console.log('url', imageURLs.cropped)
-        const images = setImages(imageURLs);
-        if (images.length === numSelectedImages) {
+        const images = setImages(imageURLs)
+        const length = Object.keys(clickedImages).length;
+        if (length === numSelectedImages) {
             store.dispatch({
                 type: StoreActions.imageObjectsCreate,
                 payload: images
