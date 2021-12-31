@@ -10,8 +10,8 @@ export const Story = () => {
 
     useEffect(() => {
 
-        if ( store.state.predictions.length && needsStory) {
-            console.log('boom', store.state.predictions)
+        if ( store.state.keyWords.length && needsStory) {
+            console.log('boom', store.state.keyWords)
             // getStory(store.dispatch, store.state.predictions)
             setNeedsStory(false)
         }

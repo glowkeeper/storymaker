@@ -44,11 +44,11 @@ export const ImageObjects = () => {
                     })
                     .flat()
 
-                const uniquePredictions = [...new Set(allPredictions)]
+                const keyWords = [...new Set(allPredictions)]
                 
                 store.dispatch({
-                    type: StoreActions.predictionsCreate,
-                    payload: uniquePredictions
+                    type: StoreActions.keyWordsCreate,
+                    payload: keyWords
                 })
                 navigate(LocalRoutes.story)                  
             }

@@ -12,16 +12,16 @@ export class StoreActions {
   static imageObjectsReset = 'ImageObjects/Reset'
   static imageObjectsCreate = 'ImageObjects/Create'
   static imageObjectsUpdate = 'ImageObjects/Update'
-  static predictionsInit = 'Predictions/Initialise'
-  static predictionsReset = 'Predictions/Reset'
-  static predictionsCreate = 'Predictions/Create'
-  static predictionsUpdate = 'Predictions/Update'
+  static keyWordsInit = 'KeyWords/Initialise'
+  static keyWordsReset = 'KeyWords/Reset'
+  static keyWordsCreate = 'KeyWords/Create'
+  static keyWordsUpdate = 'KeyWords/Update'
 }
 
 export const initialState = {
   images: [],
   imageObjects: {}, 
-  predictions: []
+  keyWords: []
 }
 
 export const imagesReducer = (state, action) => {
@@ -60,15 +60,14 @@ export const imageObjectsReducer = (state, action) => {
   }
 }
 
-export const predictionsReducer = (state, action) => {
+export const keyWordsReducer = (state, action) => {
   switch (action.type) {
-    case StoreActions.predictionsInit: 
-    case StoreActions.predictionsReset:
-      return [...initialState.predictions]
-    case StoreActions.predictionsCreate:
-      console.log('got here', action.payload)
+    case StoreActions.keyWordsInit: 
+    case StoreActions.keyWordsReset:
+      return [...initialState.keyWords]
+    case StoreActions.keyWordsCreate:
       return [...action.payload]
-    case StoreActions.predictionsUpdate:
+    case StoreActions.keyWordsUpdate:
       return [...state, ...action.payload]
     default:
       return state
@@ -102,5 +101,5 @@ const combineReducers = reducers => {
 export const rootReducer = combineReducers({
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
-  predictions: predictionsReducer
+  keyWords: keyWordsReducer
 })
