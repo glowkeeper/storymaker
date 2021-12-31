@@ -4,10 +4,12 @@ import { RemoteAPI } from '../../config'
 
 export const getText = async (dispatch, predictions) => {
 
-    const myText = predictions.join(' ')
+    const myText = "A " + predictions.join(' and a ')
+    console.log(myText)
+
     const content = {
         "prompt": myText,
-        "max_tokens": 256
+        "max_tokens": 1024
     }
 
     const fetchOptions = {
@@ -24,7 +26,7 @@ export const getText = async (dispatch, predictions) => {
         // console.log(response.choices[0].text)
         dispatch({ 
             type: StoreActions.textCreate,
-            payload: response.choices[0].text
+            payload: myText + " " + response.choices[0].text
         });
     }, fetchOptions, RemoteAPI.openAPIGeneration)
 }
