@@ -5,7 +5,7 @@ import { RemoteAPI } from '../../config'
 export const getText = async (dispatch, predictions) => {
 
     const myText = "A " + predictions.join(' and a ')
-    console.log(myText)
+    //console.log(myText)
 
     const content = {
         "prompt": myText,

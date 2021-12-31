@@ -23,7 +23,7 @@ export const Text = () => {
 
     return (
         <>  
-            { store.state.text ? (
+            { store.state.text.length > 0 ? (
 
                 <>
                     {<p>{store.state.text}</p>}
