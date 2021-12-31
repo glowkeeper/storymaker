@@ -2,17 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 
 import { StoreContext } from '../store/store'
 
-import { getStory } from '../store/api/getStory'
+import { getText } from '../store/api/getText'
 
-export const Story = () => {
+export const Text = () => {
     const store = useContext(StoreContext)
     const [needsStory, setNeedsStory] = useState(true)
 
     useEffect(() => {
 
         if ( store.state.keyWords.length && needsStory) {
-            //console.log('boom', store.state.keyWords)
-            getStory(store.dispatch, store.state.keyWords)
+            getText(store.dispatch, store.state.keyWords)
             setNeedsStory(false)
         }
 
@@ -23,8 +22,20 @@ export const Story = () => {
     }, [store])
 
     return (
-        <>            
-            {<p>Story goes here :)</p>}
+        <>  
+            { store.state.text ? (
+
+                <>
+                    {<p>{store.state.text}</p>}
+                </>
+
+            ) : (
+
+                <div id="spinner">
+                    <div className="spinner-2">&nbsp;</div>
+                </div>
+
+            )}  
         </>
     )
 }

@@ -4,7 +4,7 @@ import { RemoteAPI } from '../config'
 
 const fetchData = async (props) => {
     const { url, cb, options } = props
-    console.log('my props', url, cb, options )
+    //console.log('my props', url, cb, options )
     try {
   
         const response = options ? await fetch(url, options) : await fetch(url)

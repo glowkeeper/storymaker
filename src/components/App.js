@@ -6,7 +6,7 @@ import { Home } from './Home'
 import { About } from './About'
 import { Images } from './Images'
 import { ImageObjects } from './ImageObjects'
-import { Story } from './Story'
+import { Text } from './Text'
 
 import { 
     StoreContext,
@@ -61,8 +61,8 @@ export const App = () => {
                             element={<ImageObjects />}
                         />
                         <Route
-                            path={LocalRoutes.story}
-                            element={<Story />}
+                            path={LocalRoutes.text}
+                            element={<Text />}
                         />
                     </Routes>
                 </StoreContext.Provider>

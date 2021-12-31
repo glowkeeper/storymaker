@@ -8,7 +8,7 @@ export class LocalRoutes {
     static about = "/about"
     static images = "/images"
     static imageObjects = "/image-objects"
-    static story = "/story"
+    static text = "/text"
 }
 
 export class RemoteAPI {
@@ -17,10 +17,12 @@ export class RemoteAPI {
     static flickrQueryAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
     static flickrQuery = `${RemoteAPI.flickrQueryAPI}&api_key=${RemoteAPI.flickrAPIKey}&format=json&nojsoncallback=1`
     static flickrPhotoServer = 'https://live.staticflickr.com/'
-
     
     static nlpCloudAPIToken = process.env.REACT_APP_NLPCLOUDAPITOKEN
     static nlpGeneration = 'https://api.nlpcloud.io/v1/gpt-j/generation'
+
+    static openAPIKey = process.env.REACT_APP_OPENAPIKEY
+    static openAPIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
     /* Input
     curl "https://api.nlpcloud.io/v1/<model_name>/generation" \
     -H "Authorization: Token <token>" \
@@ -54,7 +56,7 @@ export class UIText {
     static linkAbout = "about"
     static linkImages = "images"
     static linkImageObjects = "images objects"
-    static linkStory = "story"
+    static linkText = "text"
 
     static buttonSubmit = "submit"
     static buttonClear = "clear"

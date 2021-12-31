@@ -3,7 +3,6 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
-  static navUpdate = 'Nav/Update'
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
   static imagesCreate = 'Images/Create'
@@ -16,12 +15,17 @@ export class StoreActions {
   static keyWordsReset = 'KeyWords/Reset'
   static keyWordsCreate = 'KeyWords/Create'
   static keyWordsUpdate = 'KeyWords/Update'
+  static textInit = 'Text/Initialise'
+  static textReset = 'Text/Reset'
+  static textCreate = 'Text/Create'
+  static textUpdate = 'Text/Update'
 }
 
 export const initialState = {
   images: [],
   imageObjects: {}, 
-  keyWords: []
+  keyWords: [],
+  text: ""
 }
 
 export const imagesReducer = (state, action) => {
@@ -74,6 +78,20 @@ export const keyWordsReducer = (state, action) => {
   }
 }
 
+export const textReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.textInit: 
+    case StoreActions.textReset:
+      return [...initialState.text]
+    case StoreActions.textCreate:
+      return [...action.payload]
+    case StoreActions.textUpdate:
+      return [...state, ...action.payload]
+    default:
+      return state
+  }
+}
+
 export const useReducerWithThunk = (reducer, initialState) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -101,5 +119,6 @@ const combineReducers = reducers => {
 export const rootReducer = combineReducers({
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
-  keyWords: keyWordsReducer
+  keyWords: keyWordsReducer,
+  text: textReducer
 })

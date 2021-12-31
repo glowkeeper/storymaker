@@ -49,7 +49,7 @@ export const ImageObjects = () => {
                     type: StoreActions.keyWordsCreate,
                     payload: keyWords
                 })
-                navigate(LocalRoutes.story)                  
+                navigate(LocalRoutes.text)                  
             }
 
         }
