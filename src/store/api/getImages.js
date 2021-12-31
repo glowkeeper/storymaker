@@ -2,12 +2,14 @@ import { compose, prop } from 'ramda'
 
 import { StoreActions } from '../store'
 
-import { IO, flickrQuery, flickrCroppedSquarePhotos, flickrLargePhotos } from '../../utils/iO'
+import { IO, flickrCroppedSquarePhotos, flickrLargePhotos } from '../../utils/iO'
 import { map } from '../../utils/utils'
+
+import { RemoteAPI } from '../../config'
 
 export const getImages = (dispatch, tag) => {
 
-    const images = compose(IO.getData(tagData => {
+    IO.getData(flickrData => {
 
         const uRLs = []            
         const imageURLs = compose(map(imageData => {
@@ -22,15 +24,12 @@ export const getImages = (dispatch, tag) => {
             uRLs.push(imageURLs)
         }), prop('photo'), prop('photos'));
         
-        imageURLs(tagData)
+        imageURLs(flickrData)
         //console.log('made it here', uRLs)
         dispatch({ 
             type: StoreActions.imagesCreate,
             payload: uRLs
         });
     
-    }, null), flickrQuery);
-
-    images(tag)
-
+    }, null, RemoteAPI.flickrQuery);
 }

@@ -1,5 +1,4 @@
-export const flickrAPIKey = process.env.REACT_APP_FLICKRAPIKEY
-export const nlpCloudAPIToken = process.env.REACT_APP_NLPCLOUDAPITOKEN
+
 
 export const numSelectedImages = 10
 
@@ -13,9 +12,14 @@ export class LocalRoutes {
 }
 
 export class RemoteAPI {
-    static flickrQueryAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
+    static flickrAPIKey = process.env.REACT_APP_FLICKRAPIKEY
+    
+    static flickrQueryAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
+    static flickrQuery = `${RemoteAPI.flickrQueryAPI}&api_key=${RemoteAPI.flickrAPIKey}&format=json&nojsoncallback=1`
     static flickrPhotoServer = 'https://live.staticflickr.com/'
 
+    
+    static nlpCloudAPIToken = process.env.REACT_APP_NLPCLOUDAPITOKEN
     static nlpGeneration = 'https://api.nlpcloud.io/v1/gpt-j/generation'
     /* Input
     curl "https://api.nlpcloud.io/v1/<model_name>/generation" \

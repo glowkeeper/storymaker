@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 
-import { StoreContext, StoreActions } from '../store/store'
+import { StoreContext } from '../store/store'
 
 import { getStory } from '../store/api/getStory'
 
@@ -11,8 +11,8 @@ export const Story = () => {
     useEffect(() => {
 
         if ( store.state.keyWords.length && needsStory) {
-            console.log('boom', store.state.keyWords)
-            // getStory(store.dispatch, store.state.predictions)
+            //console.log('boom', store.state.keyWords)
+            getStory(store.dispatch, store.state.keyWords)
             setNeedsStory(false)
         }
 

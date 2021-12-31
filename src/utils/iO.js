@@ -1,10 +1,10 @@
 import { curry } from 'ramda'
 
-import { RemoteAPI, flickrAPIKey } from '../config'
+import { RemoteAPI } from '../config'
 
 const fetchData = async (props) => {
     const { url, cb, options } = props
-    // console.log('my props', url, cb, options )
+    console.log('my props', url, cb, options )
     try {
   
         const response = options ? await fetch(url, options) : await fetch(url)
@@ -44,6 +44,5 @@ export const IO = {
     trace: curry((tag, x) => { console.log(tag, x); return x; }),
 };
 
-export const flickrQuery = t => `${RemoteAPI.flickrQueryAPI}&api_key=${flickrAPIKey}&tags=${t}&format=json&nojsoncallback=1`
 export const flickrCroppedSquarePhotos = (serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`
 export const flickrLargePhotos = (serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_b.jpg`

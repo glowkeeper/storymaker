@@ -6,7 +6,6 @@ import { StoreContext, StoreActions } from '../store/store'
 import { getPredictions } from '../store/api/getPredictions'
 
 import { numSelectedImages, LocalRoutes } from '../config'
-import { getStory } from '../store/api/getStory'
 
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
