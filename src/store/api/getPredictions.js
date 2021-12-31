@@ -43,11 +43,10 @@ export const getPredictions = async (dispatch, imageURLs) => {
                         })
                         // console.log('my preasdfsad', thisPredictions)
                         const myClassData = {
-                            [`${keyURL}`] : {
-                                cropped: keyURL,
-                                large: dataURL,
-                                predictions: [...Array.from(new Set(thisPredictions))]
-                            }
+                            id: keyURL,
+                            cropped: keyURL,
+                            large: dataURL,
+                            predictions: [...new Set(thisPredictions)]
                         }
                         dispatch({ 
                             type: StoreActions.imageObjectsUpdate,
@@ -60,10 +59,7 @@ export const getPredictions = async (dispatch, imageURLs) => {
         }
     }
 
-    console.log('asdfasdf', imageURLs)
-
     Object.values(imageURLs).forEach( url => {
-        console.log('asdfasdfasdfasdfasdf', url)
         getPrediction(url)
     })
 }

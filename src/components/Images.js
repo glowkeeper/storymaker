@@ -44,7 +44,7 @@ export const Images = () => {
         event.preventDefault();
         //console.log('url', imageURLs.cropped)
         const images = setImages(imageURLs)
-        const length = Object.keys(clickedImages).length;
+        const length = Object.keys(images).length;
         if (length === numSelectedImages) {
             store.dispatch({
                 type: StoreActions.imageObjectsCreate,

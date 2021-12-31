@@ -18,7 +18,7 @@ const fetchData = async (props) => {
   
   const fetchJSON = async (props) => {
     const { url, cb, options } = props
-    console.log('my json props', url, cb, options )
+    //console.log('my json props', url, cb, options )
     try {
   
         const response = options ? await fetch(url, options) : await fetch(url)

@@ -12,11 +12,16 @@ export class StoreActions {
   static imageObjectsReset = 'ImageObjects/Reset'
   static imageObjectsCreate = 'ImageObjects/Create'
   static imageObjectsUpdate = 'ImageObjects/Update'
+  static predictionsInit = 'Predictions/Initialise'
+  static predictionsReset = 'Predictions/Reset'
+  static predictionsCreate = 'Predictions/Create'
+  static predictionsUpdate = 'Predictions/Update'
 }
 
 export const initialState = {
   images: [],
-  imageObjects: {}
+  imageObjects: {}, 
+  predictions: []
 }
 
 export const imagesReducer = (state, action) => {
@@ -39,18 +44,32 @@ export const imageObjectsReducer = (state, action) => {
     case StoreActions.imageObjectsReset:
       return {...initialState.imageObjects}
     case StoreActions.imageObjectsCreate:
-      //console.log('made it here', action.payload)
       return {...action.payload}
     case StoreActions.imageObjectsUpdate:
-      //console.log('payload', action.payload)
-      const myKey = Object.keys(action.payload)[0];
-      const newState = {...state, [`${myKey}`]: {
-        cropped: action.payload[`${myKey}`].cropped,
-        large: action.payload[`${myKey}`].large,
-        predictions: action.payload[`${myKey}`].predictions
-      }}
-      // console.log('new state', newState)
+      const newState = {
+        ...state, 
+        [`${action.payload.id}`]: {
+          cropped: action.payload.cropped,
+          large: action.payload.large,
+          predictions: action.payload.predictions
+        }
+      }
       return newState
+    default:
+      return state
+  }
+}
+
+export const predictionsReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.predictionsInit: 
+    case StoreActions.predictionsReset:
+      return [...initialState.predictions]
+    case StoreActions.predictionsCreate:
+      console.log('got here', action.payload)
+      return [...action.payload]
+    case StoreActions.predictionsUpdate:
+      return [...state, ...action.payload]
     default:
       return state
   }
@@ -82,5 +101,6 @@ const combineReducers = reducers => {
 
 export const rootReducer = combineReducers({
   images: imagesReducer,
-  imageObjects: imageObjectsReducer
+  imageObjects: imageObjectsReducer,
+  predictions: predictionsReducer
 })

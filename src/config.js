@@ -9,6 +9,7 @@ export class LocalRoutes {
     static about = "/about"
     static images = "/images"
     static imageObjects = "/image-objects"
+    static story = "/story"
 }
 
 export class RemoteAPI {
@@ -49,6 +50,7 @@ export class UIText {
     static linkAbout = "about"
     static linkImages = "images"
     static linkImageObjects = "images objects"
+    static linkStory = "story"
 
     static buttonSubmit = "submit"
     static buttonClear = "clear"
