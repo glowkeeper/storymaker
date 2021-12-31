@@ -18,7 +18,7 @@ export const getStory = async (dispatch, predictions) => {
             "Content-Type": 'application/json',
             "Authorization": `Token ${RemoteAPI.nlpCloudAPIToken}`
         },
-        body: content
+        body: JSON.stringify(content)
     }
 
     IO.getData( async (response) => {
