@@ -1,14 +1,19 @@
 import { StoreActions } from '../store'
 import { IO } from '../../utils/iO'
-import { RemoteAPI } from '../../config'
+import { RemoteAPI, OpenAPI } from '../../config'
 
 export const getText = async (dispatch, predictions) => {
+
+    dispatch({ 
+        type: StoreActions.textInit
+    });
 
     const searchText = "A " + predictions[Math.floor(Math.random() * predictions.length)];
 
     const content = {
         "prompt": searchText,
-        "max_tokens": 1024
+        "max_tokens": OpenAPI.maxTokens,
+        "temperature": OpenAPI.temperature
     }
 
     const fetchOptions = {

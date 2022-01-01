@@ -14,8 +14,8 @@ export class LocalRoutes {
 export class RemoteAPI {
     static flickrAPIKey = process.env.REACT_APP_FLICKRAPIKEY
     
-    static flickrQueryAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
-    static flickrQuery = `${RemoteAPI.flickrQueryAPI}&api_key=${RemoteAPI.flickrAPIKey}&format=json&nojsoncallback=1`
+    // static flickrGetRecentAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
+    static flickrSearchAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     static flickrPhotoServer = 'https://live.staticflickr.com/'
     
     static nlpCloudAPIToken = process.env.REACT_APP_NLPCLOUDAPITOKEN
@@ -42,6 +42,16 @@ export class RemoteAPI {
     }
     */
 
+}
+
+export class FlickrAPI {
+    static numPages = 100
+    static tags = "flowers,trees,river,dog,food,landscape,garden,people,street,park,city,bird,nature,sea,family,house,car,cat,beach,lake"
+}
+
+export class OpenAPI {
+    static temperature = 0.9
+    static maxTokens = 1024
 }
 
 export class UIText {

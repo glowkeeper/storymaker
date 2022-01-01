@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getImages } from '../store/api/getImages'
 
-import { numSelectedImages, LocalRoutes } from '../config'
+import { numSelectedImages, LocalRoutes, FlickrAPI } from '../config'
 
 export const Images = () => {
     const store = useContext(StoreContext)
@@ -17,7 +17,7 @@ export const Images = () => {
     useEffect(() => {        
 
         if ( needsImages ) {
-            getImages(store.dispatch, 'all');
+            getImages(store.dispatch, FlickrAPI.tags);
             setNeedsImages(false)
         }
 

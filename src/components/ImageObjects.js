@@ -44,11 +44,7 @@ export const ImageObjects = () => {
                     .flat()
 
                 const keyWords = [...new Set(allPredictions)]
-
-                store.dispatch({ 
-                    type: StoreActions.textInit
-                });
-                
+                            
                 store.dispatch({
                     type: StoreActions.keyWordsCreate,
                     payload: keyWords
