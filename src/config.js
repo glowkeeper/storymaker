@@ -68,12 +68,12 @@ export class UIText {
     static appTextAbout = 'this is an ai-based app that uses ai image classification to find image obejcts, then uses ai text generation to generate text from one of those objects' 
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - generating image objects'
-    static appTextText = 'please wait - generating text'
+    static appTextText = 'please wait - generating text for '
 
 
     static linkHome = "home"
     static linkAbout = "about"
-    static linkImages = "images"
+    static linkImages = "get images"
     static linkImageObjects = "images objects"
     static linkText = "text"
 

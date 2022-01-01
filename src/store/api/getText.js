@@ -2,16 +2,14 @@ import { StoreActions } from '../store'
 import { IO } from '../../utils/iO'
 import { RemoteAPI, OpenAPI } from '../../config'
 
-export const getText = async (dispatch, predictions) => {
+export const getText = async (dispatch, text) => {
 
     dispatch({ 
         type: StoreActions.textInit
     });
 
-    const searchText = "A " + predictions[Math.floor(Math.random() * predictions.length)];
-
     const content = {
-        "prompt": searchText,
+        "prompt": text,
         "max_tokens": OpenAPI.maxTokens,
         "temperature": OpenAPI.temperature
     }
@@ -36,7 +34,7 @@ export const getText = async (dispatch, predictions) => {
         // console.log(response.choices[0].text)
         dispatch({ 
             type: StoreActions.textCreate,
-            payload: searchText + " " + foundText
+            payload: text + " " + foundText
         });
     }, fetchOptions, RemoteAPI.openAPIGeneration)
 }
