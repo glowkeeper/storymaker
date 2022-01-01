@@ -31,17 +31,17 @@ const fetchData = async (props) => {
   }
 
 export const IO = {
-    getJSON: curry((callback, options, url) => fetchJSON({
+    getJSON: curry(async (callback, options, url) => fetchJSON({
         url: url, 
         cb: callback,
         options
     })),
-    getData: curry((callback, options, url) => fetchData({
+    getData: curry(async (callback, options, url) => fetchData({
         url: url, 
         cb: callback,
         options
     })),
-    trace: curry((tag, x) => { console.log(tag, x); return x; }),
+    trace: curry(async (tag, x) => { console.log(tag, x); return x; }),
 };
 
 export const flickrCroppedSquarePhotos = (serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`

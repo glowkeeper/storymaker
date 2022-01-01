@@ -4,11 +4,10 @@ import { RemoteAPI } from '../../config'
 
 export const getText = async (dispatch, predictions) => {
 
-    const myText = "A " + predictions.join(' and a ')
-    //console.log(myText)
+    const searchText = "A " + predictions[Math.floor(Math.random() * predictions.length)];
 
     const content = {
-        "prompt": myText,
+        "prompt": searchText,
         "max_tokens": 1024
     }
 
@@ -23,10 +22,16 @@ export const getText = async (dispatch, predictions) => {
 
     IO.getData( async (response) => {
 
+        let foundText = response.choices[0].text
+        const stopIndex = foundText.lastIndexOf('.');
+        if (stopIndex !== -1 ) {
+            foundText = foundText.slice(0, stopIndex + 1)
+        }
+
         // console.log(response.choices[0].text)
         dispatch({ 
             type: StoreActions.textCreate,
-            payload: myText + " " + response.choices[0].text
+            payload: searchText + " " + foundText
         });
     }, fetchOptions, RemoteAPI.openAPIGeneration)
 }
