@@ -23,20 +23,11 @@ export const ImageObjects = () => {
 
     }, [store, needsPredictions])
 
-
     useEffect(() => {
 
         const myKeys = Object.keys(store.state.imageObjects)
         if ( myKeys.length ){
         
-            const numPredictions = myKeys.reduce((previous, current, index, array) => {
-                if ( store.state.imageObjects[`${array[index]}`].hasOwnProperty('predictions')) {
-                    return previous + 1
-                } else {
-                    return previous
-                }
-            }, 0)
-
             const allPredictions = myKeys
                     .map((imageClass, index) => {
                         return store.state.imageObjects[`${imageClass}`].predictions?.map(prediction => prediction)
@@ -46,13 +37,22 @@ export const ImageObjects = () => {
 
             const predictions = [...new Set(allPredictions)]
 
+            const numPredictions = myKeys.reduce((previous, current, index, array) => {
+                if ( store.state.imageObjects[`${array[index]}`].hasOwnProperty('predictions')) {
+                    return previous + 1
+                } else {
+                    return previous
+                }
+            }, 0)
+
             if ( numPredictions === numSelectedImages ) {
                                            
                 store.dispatch({
                     type: StoreActions.keyWordsCreate,
                     payload: predictions
                 })
-                navigate(LocalRoutes.text)                  
+
+                navigate(LocalRoutes.text)
             }
 
             setPredictions(predictions)
@@ -67,6 +67,7 @@ export const ImageObjects = () => {
 
                 <>
                     <div>
+                        <p>{UIText.appTextFoundObjects}</p>
                         {predictions.map((prediction, index) => {
                             return (
                                 <p key={index}>{prediction}</p>

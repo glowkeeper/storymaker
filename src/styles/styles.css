@@ -4,7 +4,7 @@ body {
   margin: 2rem;
   
   height: 100vh;
-  background-color: #fff3e0
+  background-image: linear-gradient(to left, #ffd149, #ffa000);
 }
 
 header {
@@ -24,6 +24,7 @@ header > nav {
 main { 
   margin-top: 0.5rem;
   border-top: solid 1px rgba(197, 197, 197, 1);
+
 }
 
 h1 {
@@ -58,6 +59,8 @@ a:hover {
 
 .image-button {
   border: none;
+  outline: none;
+  background: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
