@@ -57,10 +57,19 @@ export class OpenAPI {
 export class UIText {
     static appTabTitle = "portrayal"
     static appTitle = 'Portrayal'
+    static appCatchphrase = 'ai-based text generation'
+    static appTitleHome = "home"
     static appTitleAbout = "about"
-    static appTitleHome = "images"
+    static appTitleImages = "images"
+    static appTitleImageObjects = "image objects"
+    static appTitleText = "text"
 
-    static appTextAbout = 'this is an app that offers solutions to <a href="https://exercism.org/">exercism\'s</a> <a href="https://exercism.org/tracks/javascript/exercises/rectangles/">rectangles problem</a><br/><br/>you can input the example offered there:<br/><br/><pre>   +--+<br/>  ++  |<br/>+-++--+<br/>|  |  |<br/>+--+--+</pre><br/>but much more besides; e.g:<br/><br/><pre>+---+--+----+<br/>|   +--+----+<br/>+---+--+    |<br/>|   +--+----+<br/>+---+--+--+-+<br/>+---+--+--+-+<br/>+------+  | |<br/>          +-+</pre><br/>or perhaps (if you want to be ambitious):<br/><br/><pre>+---+--+----++---+--+----++---+--+----+<br/>|   +--+----+|   +--+----+|   +--+----+<br/>+---+--+    |+---+--+    |+---+--+    |<br/>|   +--+----+|   +--+----+|   +--+----+<br/>+---+--+--+-++---+--+--+-++---+--+--+-+<br/>+---+--+--+-++---+--+--+-++---+--+--+-+<br/>+------+  | |+------+  | |+------+  | |<br/>          +-+          +-+          +-+<br/>+---+--+----++---+--+----++---+--+----+<br/>|   +--+----+|   +--+----+|   +--+----+<br/>+---+--+    |+---+--+    |+---+--+    |<br/>|   +--+----+|   +--+----+|   +--+----+<br/>+---+--+--+-++---+--+--+-++---+--+--+-+<br/>+---+--+--+-++---+--+--+-++---+--+--+-+<br/>+------+  | |+------+  | |+------+  | |<br/>          +-+          +-+          +-+</pre><br/>...you can even just copy and paste the app\'s title from the top of this page and set the corner to \'+\' or \'-\' &#128521;<br/><br/>&copy; 2021, <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a>, all rights reserved<br/><br/><a href="https://github.com/glowkeeper/rectangle-react"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Font_Awesome_5_brands_github.svg" width="16px" /></a>'
+    static appTextHome = ''
+    static appTextAbout = 'this is an ai-based app that uses ai image classification to find image obejcts, then uses ai text generation to generate text from one of those objects' 
+    static appTextImages = 'please wait - finding images'
+    static appTextImageObjects = 'please wait - generating image objects'
+    static appTextText = 'please wait - generating text'
+
 
     static linkHome = "home"
     static linkAbout = "about"

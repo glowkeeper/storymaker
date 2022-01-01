@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getImages } from '../store/api/getImages'
 
-import { numSelectedImages, LocalRoutes, FlickrAPI } from '../config'
+import { numSelectedImages, LocalRoutes, FlickrAPI, UIText } from '../config'
 
 export const Images = () => {
     const store = useContext(StoreContext)
@@ -60,6 +60,7 @@ export const Images = () => {
 
     return (
         <>
+            <h3>{UIText.appTitleImages}</h3> 
             { store.state.images.length > 0 ? (
 
                 <>
@@ -79,10 +80,12 @@ export const Images = () => {
                 </>
 
             ) : (
-
-                <div id="spinner">
-                    <div className="spinner-2">&nbsp;</div>
-                </div>
+                <>
+                    <p>{UIText.appTextImages}</p>
+                    <div id="spinner">
+                        <div className="spinner-2">&nbsp;</div>
+                    </div>
+                </>
                 
             )}
         </>

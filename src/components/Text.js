@@ -4,6 +4,8 @@ import { StoreContext } from '../store/store'
 
 import { getText } from '../store/api/getText'
 
+import { UIText } from '../config'
+
 export const Text = () => {
     const store = useContext(StoreContext)
     const [needsStory, setNeedsStory] = useState(true)
@@ -22,7 +24,8 @@ export const Text = () => {
     }, [store])
 
     return (
-        <>  
+        <> 
+            <h3>{UIText.appTitleText}</h3> 
             { store.state.text.length > 0 ? (
 
                 <>
@@ -30,10 +33,12 @@ export const Text = () => {
                 </>
 
             ) : (
-
-                <div id="spinner">
-                    <div className="spinner-2">&nbsp;</div>
-                </div>
+                <>
+                    <p>{UIText.appTextText}</p>
+                    <div id="spinner">
+                        <div className="spinner-2">&nbsp;</div>
+                    </div>
+                </>
 
             )}  
         </>

@@ -5,11 +5,12 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getPredictions } from '../store/api/getPredictions'
 
-import { numSelectedImages, LocalRoutes } from '../config'
+import { numSelectedImages, LocalRoutes, UIText } from '../config'
 
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
     const [needsPredictions, setNeedsPredictions] = useState(true)
+    const [predictions, setPredictions] = useState([])
 
     const navigate = useNavigate()
 
@@ -36,41 +37,53 @@ export const ImageObjects = () => {
                 }
             }, 0)
 
-            if ( numPredictions === numSelectedImages ) {
-                const allPredictions = myKeys
+            const allPredictions = myKeys
                     .map((imageClass, index) => {
-                        return store.state.imageObjects[`${imageClass}`].predictions.map(prediction => prediction)
+                        return store.state.imageObjects[`${imageClass}`].predictions?.map(prediction => prediction)
                     })
+                    .filter(prediction => prediction)
                     .flat()
 
-                const keyWords = [...new Set(allPredictions)]
-                            
+            const predictions = [...new Set(allPredictions)]
+
+            if ( numPredictions === numSelectedImages ) {
+                                           
                 store.dispatch({
                     type: StoreActions.keyWordsCreate,
-                    payload: keyWords
+                    payload: predictions
                 })
                 navigate(LocalRoutes.text)                  
             }
 
+            setPredictions(predictions)
         }
 
     }, [store, navigate])
 
     return (
-        <>            
-            {Object.keys(store.state.imageObjects).map((imageClass, index) => {
-                //console.log('my image class', store.state.imageObjects[`${imageClass}`])
-                return (
-                    <div key={index}>
-                        <p>{store.state.imageObjects[`${imageClass}`].large}</p>
-                        {store.state.imageObjects[`${imageClass}`].predictions?.map((prediction, thisIndex) => {
+        <> 
+            <h3>{UIText.appTitleImageObjects}</h3> 
+            { predictions.length > 0 ? (
+
+                <>
+                    <div>
+                        {predictions.map((prediction, index) => {
                             return (
-                                <p key={thisIndex}>{prediction}</p>
+                                <p key={index}>{prediction}</p>
                             )
-                        })}
+                        })}           
                     </div>
-                )
-            })}
+                </>
+
+            ) : (
+                <>
+                    <p>{UIText.appTextImageObjects}</p>
+                    <div id="spinner">
+                        <div className="spinner-2">&nbsp;</div>
+                    </div>
+                </>
+                
+            )}    
         </>
     )
 }

@@ -21,8 +21,8 @@ header > nav {
   place-items: end end;
 }
 
-main {  
-  margin-top: 1rem;
+main { 
+  margin-top: 0.5rem;
   border-top: solid 1px rgba(197, 197, 197, 1);
 }
 
@@ -33,6 +33,13 @@ h1 {
 
 h2 {
   font-size: 1rem;
+  margin-bottom: 0
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 a:link {

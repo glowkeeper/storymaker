@@ -35,7 +35,10 @@ export const App = () => {
     return (    
         <>
             <header>
-                <h1>{UIText.appTitle}</h1>
+                <div>
+                    <h1>{UIText.appTitle}</h1>
+                    <h2>{UIText.appCatchphrase}</h2>
+                </div>
                 <nav>
                     <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
                     <Link to={LocalRoutes.about}>{UIText.linkAbout}</Link>
