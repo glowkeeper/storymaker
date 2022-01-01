@@ -10,7 +10,7 @@ import { numSelectedImages, LocalRoutes, UIText } from '../config'
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
     const [needsPredictions, setNeedsPredictions] = useState(true)
-    const [predictions, setPredictions] = useState([])
+    const [keyWords, setKeyWords] = useState([])
 
     const navigate = useNavigate()
 
@@ -29,13 +29,13 @@ export const ImageObjects = () => {
         if ( myKeys.length ){
         
             const allPredictions = myKeys
-                    .map((imageClass, index) => {
-                        return store.state.imageObjects[`${imageClass}`].predictions?.map(prediction => prediction)
-                    })
-                    .filter(prediction => prediction)
-                    .flat()
+                .map((imageClass, index) => {
+                    return store.state.imageObjects[`${imageClass}`].predictions?.map(prediction => prediction)
+                })
+                .filter(prediction => prediction)
+                .flat()
 
-            const predictions = [...new Set(allPredictions)]
+            const thisKeyWords = [...new Set(allPredictions)]
 
             const numPredictions = myKeys.reduce((previous, current, index, array) => {
                 if ( store.state.imageObjects[`${array[index]}`].hasOwnProperty('predictions')) {
@@ -49,13 +49,13 @@ export const ImageObjects = () => {
                                            
                 store.dispatch({
                     type: StoreActions.keyWordsCreate,
-                    payload: predictions
+                    payload: thisKeyWords
                 })
 
                 navigate(LocalRoutes.text)
             }
 
-            setPredictions(predictions)
+            setKeyWords(thisKeyWords)
         }
 
     }, [store, navigate])
@@ -63,12 +63,12 @@ export const ImageObjects = () => {
     return (
         <> 
             <h3>{UIText.appTitleImageObjects}</h3> 
-            { predictions.length > 0 ? (
+            { keyWords.length > 0 ? (
 
                 <>
                     <div>
                         <p>{UIText.appTextFoundObjects}</p>
-                        {predictions.map((prediction, index) => {
+                        {keyWords.map((prediction, index) => {
                             return (
                                 <p key={index}>{prediction}</p>
                             )
