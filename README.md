@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# StoryMaker
 
-AI Fun
+ai-based text generation

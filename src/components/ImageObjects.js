@@ -10,6 +10,8 @@ import { numSelectedImages, LocalRoutes, UIText } from '../config'
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
     const [needsPredictions, setNeedsPredictions] = useState(true)
+    const [hasNotDispatched, setHasNotDispatched] = useState(true)
+    const [numPredictions, setNumPredictions] = useState(0)
     const [keyWords, setKeyWords] = useState([])
 
     const navigate = useNavigate()
@@ -33,32 +35,36 @@ export const ImageObjects = () => {
                     return store.state.imageObjects[`${imageClass}`].predictions?.map(prediction => prediction)
                 })
                 .filter(prediction => prediction)
-                .flat()
 
-            const thisKeyWords = [...new Set(allPredictions)]
+            // console.log(allPredictions)
 
-            const numPredictions = myKeys.reduce((previous, current, index, array) => {
-                if ( store.state.imageObjects[`${array[index]}`].hasOwnProperty('predictions')) {
-                    return previous + 1
-                } else {
-                    return previous
-                }
-            }, 0)
+            const thisKeyWords = [...new Set(allPredictions.flat())]
 
-            if ( numPredictions === numSelectedImages ) {
-                                           
-                store.dispatch({
-                    type: StoreActions.keyWordsCreate,
-                    payload: thisKeyWords
-                })
-
-                navigate(LocalRoutes.text)
-            }
-
+            setNumPredictions(allPredictions.length)
             setKeyWords(thisKeyWords)
         }
 
-    }, [store, navigate])
+    }, [store.state.imageObjects])
+
+    useEffect(() => {
+
+        let timeOut;
+        if ( numPredictions === numSelectedImages && hasNotDispatched) {
+            
+            setHasNotDispatched(false)
+            store.dispatch({
+                type: StoreActions.keyWordsCreate,
+                payload: keyWords
+            })
+
+            timeOut = setTimeout(navigate(LocalRoutes.text), 2000)
+        }
+
+        return () => {
+            clearTimeout(timeOut)
+        }
+
+    }, [store, keyWords, numPredictions, navigate, hasNotDispatched])
 
     return (
         <> 

@@ -76,7 +76,9 @@ a:hover {
 }
 
 .image-button-active {
-  border: solid 1px rgb(209, 16, 16);;
+  border: solid 1px rgb(209, 16, 16);
+  outline: none;
+  background: none;
   text-decoration: none;
   margin: 0;
   padding: 0;

@@ -55,8 +55,8 @@ export class OpenAPI {
 }
 
 export class UIText {
-    static appTabTitle = "portrayal"
-    static appTitle = 'Portrayal'
+    static appTabTitle = "storymaker"
+    static appTitle = 'StoryMaker>'
     static appCatchphrase = 'ai-based text generation'
     static appTitleHome = "home"
     static appTitleAbout = "about"
