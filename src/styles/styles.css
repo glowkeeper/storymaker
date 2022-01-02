@@ -43,6 +43,15 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
+.fadeIn {
+  animation: fadeIn linear 2s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
 a:link {
   text-decoration: none;
 }
@@ -99,7 +108,7 @@ a:hover {
   border:8px solid;
   border-color:#ffffff;
   border-right-color: #ccc0ae;
-  animation:s2 1s infinite linear;
+  animation: s2 1s infinite linear;
 }
 @keyframes s2 {to{transform: rotate(1turn)}}
 

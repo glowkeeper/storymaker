@@ -68,9 +68,11 @@ export const ImageObjects = () => {
                 <>
                     <div>
                         <p>{UIText.appTextFoundObjects}</p>
-                        {keyWords.map((prediction, index) => {
+                        {keyWords.map((keyWord, index) => {
                             return (
-                                <p key={index}>{prediction}</p>
+                                <div key={index} className="fadeIn">
+                                    <p>{keyWord}</p>
+                                </div>
                             )
                         })}           
                     </div>
