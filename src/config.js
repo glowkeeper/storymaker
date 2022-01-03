@@ -58,6 +58,7 @@ export class UIText {
     static appTabTitle = "storymaker"
     static appTitle = 'StoryMaker>'
     static appCatchphrase = 'ai-based text generation'
+    static poweredBy = 'powered by flickr, TensorFlow and OpenAI'
     static appTitleHome = "home"
     static appTitleAbout = "about"
     static appTitleImages = "images"
@@ -71,6 +72,7 @@ export class UIText {
     static appTextFoundObjects = 'found objects'
     static appTextText = 'please wait - generating text for '
 
+    static appLandingButtonText = 'Go...'
 
     static linkHome = "home"
     static linkAbout = "about"

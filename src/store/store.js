@@ -3,6 +3,7 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
+  static pageTitleSet = 'PageTitle/Set'
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
   static imagesCreate = 'Images/Create'
@@ -22,10 +23,20 @@ export class StoreActions {
 }
 
 export const initialState = {
+  pageTitle: "",
   images: [],
   imageObjects: {}, 
   keyWords: [],
   text: ""
+}
+
+export const pageTitleReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.pageTitleSet: 
+      return action.payload
+    default:
+      return state
+  }
 }
 
 export const imagesReducer = (state, action) => {
@@ -117,6 +128,7 @@ const combineReducers = reducers => {
 }
 
 export const rootReducer = combineReducers({
+  pageTitle: pageTitleReducer,
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
   keyWords: keyWordsReducer,

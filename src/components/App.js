@@ -1,28 +1,12 @@
-import { useEffect, useMemo } from 'react'
-import { Route, Routes } from "react-router"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from 'react'
 
-import { Home } from './Home'
-import { About } from './About'
-import { Images } from './Images'
-import { ImageObjects } from './ImageObjects'
-import { Text } from './Text'
+import { Landing } from './Landing'
+import { Main } from './Main'
 
-import { 
-    StoreContext,
-    rootReducer,
-    initialState, 
-    useReducerWithThunk 
-} from '../store/store'
-
-import { UIText, LocalRoutes } from '../config'
+import { UIText } from '../config'
 
 export const App = () => {
-    const [state, dispatch] = useReducerWithThunk(rootReducer, initialState)
-
-    const store = useMemo(() => {
-        return { state: state, dispatch: dispatch }
-    }, [state, dispatch])
+    const [hasLanded, setHasLanded] = useState(false)
 
     useEffect(() => {
         const prevTitle = document.title;
@@ -30,46 +14,15 @@ export const App = () => {
         return () => {
             document.title = prevTitle;
         };
-    });
+    }, []);
 
     return (    
         <>
-            <header>
-                <div>
-                    <h1>{UIText.appTitle}</h1>
-                    <h2>{UIText.appCatchphrase}</h2>
-                </div>
-                <nav>
-                    <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
-                    <Link to={LocalRoutes.about}>{UIText.linkAbout}</Link>
-                </nav>
-            </header>
-            <main>
-                <StoreContext.Provider value={store}>
-                    <Routes>
-                        <Route
-                            path={LocalRoutes.home}
-                            element={<Home />}
-                        />
-                        <Route
-                            path={LocalRoutes.about}
-                            element={<About />}
-                        />
-                        <Route
-                            path={LocalRoutes.images}
-                            element={<Images />}
-                        />
-                        <Route
-                            path={LocalRoutes.imageObjects}
-                            element={<ImageObjects />}
-                        />
-                        <Route
-                            path={LocalRoutes.text}
-                            element={<Text />}
-                        />
-                    </Routes>
-                </StoreContext.Provider>
-            </main>
+            { hasLanded ? (
+                <Main />
+            ) : (
+                <Landing setHasLanded={setHasLanded} />
+            )}
         </>
     )
 }
