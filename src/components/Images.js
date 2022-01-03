@@ -11,8 +11,22 @@ export const Images = () => {
     const store = useContext(StoreContext)
     const [needsImages, setNeedsImages] = useState(true)
     const [clickedImages, setClickedImages] = useState({})
+    const [hasNoTitle, setHasNoTitle] = useState(true)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+
+        if( hasNoTitle ) {
+
+            store.dispatch({
+                type: StoreActions.pageTitleSet,
+                payload: UIText.appTitleImages
+            })
+            setHasNoTitle(false)
+        }
+
+    }, [store, hasNoTitle])
 
     useEffect(() => {        
 
@@ -60,7 +74,6 @@ export const Images = () => {
 
     return (
         <>
-            <h3>{UIText.appTitleImages}</h3> 
             { store.state.images.length > 0 ? (
 
                 <>
@@ -72,7 +85,11 @@ export const Images = () => {
                                     className={doesExist(url) ? "image-button-active" : "image-button"}
                                     onClick={event => handleClick(event, url)}
                                 >
-                                    <img src={url.cropped} alt='flickr' />
+                                    <img 
+                                        className="image-button-image"
+                                        src={url.cropped} 
+                                        alt='flickr' 
+                                    />
                                 </button>
                             )
                         })}           
@@ -80,12 +97,14 @@ export const Images = () => {
                 </>
 
             ) : (
-                <>
-                    <p>{UIText.appTextImages}</p>
-                    <div id="spinner">
-                        <div className="spinner-2">&nbsp;</div>
+                <div id="centered">
+                    <div id="centered-items">
+                        <p>{UIText.appTextImages}</p>
+                        <div id="spinner">
+                            <div className="spinner-2">&nbsp;</div>
+                        </div>
                     </div>
-                </>
+                </div>
                 
             )}
         </>

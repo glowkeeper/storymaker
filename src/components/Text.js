@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 
-import { StoreContext } from '../store/store'
+import { StoreContext, StoreActions } from '../store/store'
 
 import { getText } from '../store/api/getText'
 
@@ -10,11 +10,28 @@ export const Text = () => {
     const store = useContext(StoreContext)
     const [needsStory, setNeedsStory] = useState(true)
     const [findForText, setFindForText] = useState("")
+    const [hasNoTitle, setHasNoTitle] = useState(true)
+
+    const needsAn = chr => (/[aeiouh]/i).test(chr);
+
+    useEffect(() => {
+
+        if( hasNoTitle ) {
+
+            store.dispatch({
+                type: StoreActions.pageTitleSet,
+                payload: UIText.appTitleText
+            })
+            setHasNoTitle(false)
+        }
+
+    }, [store, hasNoTitle])
 
     useEffect(() => {
 
         if ( store.state.keyWords.length && needsStory) {
-            const text = "A " + store.state.keyWords[Math.floor(Math.random() * store.state.keyWords.length)];
+            const keyWord = store.state.keyWords[Math.floor(Math.random() * store.state.keyWords.length)];
+            const text = needsAn(keyWord.charAt(0)) ? "An " + keyWord : "A " + keyWord
             getText(store.dispatch, text)
             setFindForText(text)
             setNeedsStory(false)
@@ -28,7 +45,6 @@ export const Text = () => {
 
     return (
         <> 
-            <h3>{UIText.appTitleText}</h3> 
             { store.state.text.length > 0 ? (
 
                 <>
@@ -36,13 +52,14 @@ export const Text = () => {
                 </>
 
             ) : (
-                <>
-                    <p>{UIText.appTextText}"{findForText}..."</p>
-                    <div id="spinner">
-                        <div className="spinner-2">&nbsp;</div>
+                <div id="centered">
+                    <div id="centered-items">
+                        <p>{UIText.appTextText}"{findForText}..."</p>
+                        <div id="spinner">
+                            <div className="spinner-2">&nbsp;</div>
+                        </div>
                     </div>
-                </>
-
+                </div>
             )}  
         </>
     )

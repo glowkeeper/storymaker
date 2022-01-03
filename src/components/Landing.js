@@ -4,8 +4,8 @@ export const Landing = (props) => {
     const {setHasLanded} = props
 
     return (    
-        <div id="landing">
-            <div id="landing-items">
+        <div id="centered">
+            <div id="centered-items">
                 <div id="heading-fadeIn">
                     <h1>{UIText.appTitle}</h1>
                 </div>
@@ -17,7 +17,7 @@ export const Landing = (props) => {
                 </div>
                 <div id="landing-button-fadeIn">
                     <button
-                        id="landing-button"
+                        id="app-button"
                         onClick={() => setHasLanded(true)}
                     >
                         {UIText.appLandingButtonText}

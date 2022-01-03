@@ -1,76 +1,89 @@
+:root {
+  --main-colour: #ffa000;
+  --main-colour-light: #ffd149;
+  --main-colour-dark: #c67100;
+  
+  --grid-gap: 5px;
+
+  --ruler-colour: rgba(53, 49, 49, 1); 
+}
+
 body {
   font-family: sans-serif;
 
-  margin: 2rem;
-  
+  margin: 1rem 2rem 1rem 2rem;  
   height: 100vh;
-  background-image: linear-gradient(to left, #ffd149, #ffa000);
+
+  background-image: linear-gradient(to left, var(--main-colour-light), var(--main-colour));
 }
 
-#nav {
-  display: grid;
-  place-items: start end;
-  border-bottom: solid 1px rgba(197, 197, 197, 1);
+h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0
 }
 
-#nav > nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+h2 {
+  font-size: 1rem;
+  margin: 0 0 1rem 0
+}
 
-  place-items: end end;
+h3 {
+  font-size: 1.5rem;
+  margin: 0
 }
 
 main { 
   margin-top: 0.5rem;
 }
 
-h1 {
-  font-size: 2rem;
-  margin: 0
+#navBar {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+
+  border-bottom: solid 1px var(--ruler-colour);
 }
 
-h2 {
-  font-size: 1rem;
-  margin-bottom: 0
+#navBar > #title {
+  display: grid;
+  place-items: end start;
 }
 
-h3 {
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+#navBar > nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--grid-gap);
+  place-items: end end;
 }
 
-#landing {
+#centered {
   margin: 0;
   height: 100vh;
   display: grid;
   place-items: center center;
 }
 
-#landing-items {
+#centered-items {
   margin: 0;
   display: grid;
   place-items: center center;
 }
 
-#landing-button {
+#app-button {
   border: none;
   border-radius: 10px;
   outline: none;
-  margin-top: 1rem;
   padding: 5px 40px 5px 40px;
   
-  background-color: rgb(194, 113, 7);
+  background-color: var(--main-colour-dark);
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-#landing-button:hover {
-  background-color: rgb(167, 99, 10);
+#app-button:hover {
+  background-color: var(--main-colour);
 }
 
-#landing-button:active {
+#app-button:active {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
@@ -81,37 +94,50 @@ a:link {
 
 a:hover {
   text-decoration: none;
-  color: rgba(218, 21, 21, 1);
+  color: var(--main-colour-dark);
 }
 
 #seperator {  
   margin-top: 1rem;
-  border-top: solid 1px rgba(197, 197, 197, 1);
-}
-
-.image-button {
-  border: none;
-  outline: none;
-  background: none;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-}
-
-.image-button-active {
-  border: solid 1px rgb(209, 16, 16);
-  outline: none;
-  background: none;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
+  border-top: solid 1px var(--ruler-colour);
 }
 
 #image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   grid-gap: 5px;
   margin-top: 5px;
+}
+
+.image-button,
+.image-button-image,
+.image-button-active {
+  border-radius: 10px;
+}
+
+.image-button,
+.image-button-active {
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: none;
+  text-decoration: none;
+  margin: 2px;
+  padding: 5px;
+}
+
+.image-button {
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.image-button:hover {
+  background-color: var(--main-colour);
+}
+
+.image-button-active {
+  box-shadow: inset -2px -2px 5px 5px rgba(206, 9, 9, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
 #form-buttons {

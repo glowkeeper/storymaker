@@ -1,6 +1,5 @@
 import { useEffect, useContext, useState } from 'react'
-
-import { Link } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 
 import { StoreContext, StoreActions } from '../store/store'
 
@@ -8,24 +7,33 @@ import { UIText, LocalRoutes } from '../config'
 
 export const Home = () => {
     const store = useContext(StoreContext)
-    const [hasNotDispatched, setHasNotDispatched] = useState(true)
+    const [hasNoTitle, setHasNoTitle] = useState(true)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
 
-        if( hasNotDispatched ) {
+        if( hasNoTitle ) {
 
             store.dispatch({
                 type: StoreActions.pageTitleSet,
                 payload: UIText.appTitleHome
             })
-            setHasNotDispatched(false)
+            setHasNoTitle(false)
         }
 
-    }, [store, hasNotDispatched])
+    }, [store, hasNoTitle])
 
     return (
-        <>        
-            <Link to={LocalRoutes.images}>{UIText.linkImages}</Link>
-        </>
+        <div id="centered">
+            <div id="centered-items">   
+                <button
+                    id="app-button"
+                    onClick={() => navigate(LocalRoutes.images)}
+                >
+                    {UIText.linkImages}...
+                </button>   
+            </div>  
+        </div>
     )
 }

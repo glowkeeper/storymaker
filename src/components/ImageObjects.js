@@ -13,8 +13,22 @@ export const ImageObjects = () => {
     const [hasNotDispatched, setHasNotDispatched] = useState(true)
     const [numPredictions, setNumPredictions] = useState(0)
     const [keyWords, setKeyWords] = useState([])
+    const [hasNoTitle, setHasNoTitle] = useState(true)
 
-    const navigate = useNavigate()
+   const navigate = useNavigate()
+
+   useEffect(() => {
+
+        if( hasNoTitle ) {
+
+            store.dispatch({
+                type: StoreActions.pageTitleSet,
+                payload: UIText.appTitleImageObjects
+            })
+            setHasNoTitle(false)
+        }
+
+    }, [store, hasNoTitle])
 
     useEffect(() => {
 
@@ -46,7 +60,7 @@ export const ImageObjects = () => {
 
                 timeOut = setTimeout(() => {
                     setNumPredictions(allPredictions.length)
-                }, 2000)
+                }, 4000)
             }
         }
 
@@ -71,13 +85,14 @@ export const ImageObjects = () => {
 
     }, [store, keyWords, numPredictions, navigate, hasNotDispatched])
 
+
+
     return (
         <> 
-            <h3>{UIText.appTitleImageObjects}</h3> 
             { keyWords.length > 0 ? (
 
-                <>
-                    <div>
+                <div id="centered">
+                    <div id="centered-items">
                         <p>{UIText.appTextFoundObjects}</p>
                         {keyWords.map((keyWord, index) => {
                             return (
@@ -86,17 +101,18 @@ export const ImageObjects = () => {
                                 </div>
                             )
                         })}           
-                    </div>
-                </>
+                    </div>         
+                </div>
 
             ) : (
-                <>
-                    <p>{UIText.appTextImageObjects}</p>
-                    <div id="spinner">
-                        <div className="spinner-2">&nbsp;</div>
+                <div id="centered">
+                    <div id="centered-items">
+                        <p>{UIText.appTextImageObjects}</p>
+                        <div id="spinner">
+                            <div className="spinner-2">&nbsp;</div>
+                        </div>
                     </div>
-                </>
-                
+                </div>                
             )}    
         </>
     )

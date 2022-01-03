@@ -56,7 +56,7 @@ export class OpenAPI {
 
 export class UIText {
     static appTabTitle = "storymaker"
-    static appTitle = 'StoryMaker>'
+    static appTitle = 'storyMaker>'
     static appCatchphrase = 'ai-based text generation'
     static poweredBy = 'powered by flickr, TensorFlow and OpenAI'
     static appTitleHome = "home"
@@ -72,7 +72,7 @@ export class UIText {
     static appTextFoundObjects = 'found objects'
     static appTextText = 'please wait - generating text for '
 
-    static appLandingButtonText = 'Go...'
+    static appLandingButtonText = 'go...'
 
     static linkHome = "home"
     static linkAbout = "about"

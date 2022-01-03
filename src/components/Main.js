@@ -31,14 +31,14 @@ export const Main = () => {
 
     return (    
         <>
-            <div id="nav">
-                <h3>{pageTitle}</h3>                
-                <nav>
-                    <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
-                    <Link to={LocalRoutes.about}>{UIText.linkAbout}</Link>
-                </nav>
-            </div>
             <main>
+                <div id="navBar">
+                    <h3 id="title">{pageTitle}</h3>                
+                    <nav id="links">
+                        <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+                        <Link to={LocalRoutes.about}>{UIText.linkAbout}</Link>
+                    </nav>
+                </div>
                 <StoreContext.Provider value={store}>
                     <Routes>
                         <Route
