@@ -21,11 +21,12 @@ ai-based text generation
 - [react](https://reactjs.org/)
 - [TensorFlow](https://www.tensorflow.org/)
 - [OpenAI](https://openai.com/)
+- ([NLP Cloud](https://nlpcloud.io/))
 - [flickr API](https://www.flickr.com/services/api/)
 
 ## Install
 
-This project uses [node](http://nodejs.org/) and [npm](https://npmjs.com/). If you've not done so, please install those first (you should have the [Active LTS](https://nodejs.org/en/about/releases/) version of [node](http://nodejs.org/)). Then clone this repository, switch to its root directory, and type `npm install`.
+This project uses [node](http://nodejs.org/) and [npm](https://npmjs.com/). If you've not done so, please install those first (you should have the [Active LTS](https://nodejs.org/en/about/releases/) version of node installed). Then clone this repository, switch to its root directory, and type `npm install`.
 
 ## Application Dependencies
 
@@ -57,4 +58,5 @@ Contributions welcome - please email the maintainer.
 ## License
 
 ![CC BY-NC-ND](https://licensebuttons.net/l/by-nc-nd/3.0/88x31.png)
+
 Creative Commons [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/)
