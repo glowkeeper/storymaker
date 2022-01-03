@@ -105,7 +105,7 @@ a:hover {
 #image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  grid-gap: 5px;
+  grid-gap: var(--grid-gap);
   margin-top: 5px;
 }
 
@@ -143,7 +143,7 @@ a:hover {
 #form-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
+  grid-gap: var(--grid-gap);
 }
 
 @media screen and (max-width: 600px) {
@@ -152,16 +152,24 @@ a:hover {
     margin: 1rem;
   }
 
-  .header {
+  #navBar {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--grid-gap);
+  
+    border-bottom: solid 1px var(--ruler-colour);
   }
   
-  header > nav {
+  #navBar > #title {
+    display: grid;
+    place-items: end start;
+  }
+  
+  #navBar > nav {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 5px;
+    grid-gap: var(--grid-gap);
+    place-items: end end;
   }
 
   Link {
@@ -187,8 +195,8 @@ a:hover {
   height:50px;
   border-radius:50%;
   border:8px solid;
-  border-color:#ffffff;
-  border-right-color: #ccc0ae;
+  border-color: var(--main-colour-dark);
+  border-right-color: var(--main-colour-light);
   animation: s2 1s infinite linear;
 }
 @keyframes s2 {to{transform: rotate(1turn)}}

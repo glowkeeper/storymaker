@@ -12,7 +12,7 @@ export const Text = () => {
     const [findForText, setFindForText] = useState("")
     const [hasNoTitle, setHasNoTitle] = useState(true)
 
-    const needsAn = chr => (/[aeiouh]/i).test(chr);
+    const needsAn = chr => (/[aeiou]/i).test(chr);
 
     useEffect(() => {
 
