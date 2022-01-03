@@ -23,7 +23,7 @@ export const About = () => {
 
     return (
         <>
-            <div dangerouslySetInnerHTML={{__html: UIText.appTextAbout}} />
+            <p>{UIText.appTextAbout}</p>
         </>
     )
 }

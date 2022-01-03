@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { Landing } from './Landing'
 import { Main } from './Main'
+import { Footer } from './Footer'
 
 import { UIText } from '../config'
 
@@ -19,7 +20,10 @@ export const App = () => {
     return (    
         <>
             { hasLanded ? (
-                <Main />
+                <>
+                    <Main />
+                    <Footer />
+                </>
             ) : (
                 <Landing setHasLanded={setHasLanded} />
             )}

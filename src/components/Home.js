@@ -31,7 +31,7 @@ export const Home = () => {
                     id="app-button"
                     onClick={() => navigate(LocalRoutes.images)}
                 >
-                    {UIText.linkImages}...
+                    {UIText.appImagesButtonText}
                 </button>   
             </div>  
         </div>
