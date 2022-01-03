@@ -27,6 +27,7 @@ export const ImageObjects = () => {
 
     useEffect(() => {
 
+        let timeOut;
         const myKeys = Object.keys(store.state.imageObjects)
         if ( myKeys.length ){
         
@@ -38,17 +39,25 @@ export const ImageObjects = () => {
 
             // console.log(allPredictions)
 
-            const thisKeyWords = [...new Set(allPredictions.flat())]
-
-            setNumPredictions(allPredictions.length)
+            const thisKeyWords = [...new Set(allPredictions.flat())]           
             setKeyWords(thisKeyWords)
+
+            if ( allPredictions.length === numSelectedImages) {
+
+                timeOut = setTimeout(() => {
+                    setNumPredictions(allPredictions.length)
+                }, 2000)
+            }
+        }
+
+        return () => {
+            clearTimeout(timeOut)
         }
 
     }, [store.state.imageObjects])
 
     useEffect(() => {
 
-        let timeOut;
         if ( numPredictions === numSelectedImages && hasNotDispatched) {
             
             setHasNotDispatched(false)
@@ -57,11 +66,7 @@ export const ImageObjects = () => {
                 payload: keyWords
             })
 
-            timeOut = setTimeout(navigate(LocalRoutes.text), 2000)
-        }
-
-        return () => {
-            clearTimeout(timeOut)
+            navigate(LocalRoutes.text)
         }
 
     }, [store, keyWords, numPredictions, navigate, hasNotDispatched])
