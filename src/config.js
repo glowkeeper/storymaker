@@ -56,10 +56,10 @@ export class OpenAPI {
 
 export class UIText {
     static appTabTitle = "storymaker"
-    static appTitle = 'storyMaker>'
+    static appTitle = 'storymaker'
     static appCopyright = "2021, Dr Steve Huckle"
     static appCatchphrase = 'ai-based text generation'
-    static poweredBy = 'powered by flickr, TensorFlow and OpenAI'
+    static poweredBy = 'powered by'
     static appTitleHome = "home"
     static appTitleAbout = "about"
     static appTitleImages = "images"

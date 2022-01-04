@@ -13,7 +13,7 @@ export const Landing = (props) => {
                     <h2>{UIText.appCatchphrase}</h2>
                 </div>
                 <div id="powered-fadeIn">
-                    <h2>{UIText.poweredBy}</h2>
+                    <b>{UIText.poweredBy} <a href="https://www.flickr.com/">flickr</a>, <a href="https://www.tensorflow.org/">TensorFlow</a> and <a href="https://openai.com/">OpenAI</a></b><br/><br/>
                 </div>
                 <div id="landing-button-fadeIn">
                     <button
