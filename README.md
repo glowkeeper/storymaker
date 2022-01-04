@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-ai-based text generation
+ai-based app' that uses ai image classification to find image obejcts, then uses ai text generation to generate text from one of those objects.
 
 ## Table of Contents
 
