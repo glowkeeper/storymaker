@@ -33,6 +33,7 @@ export const ImageObjects = () => {
     useEffect(() => {
 
         if ( Object.keys(store.state.imageObjects).length && needsPredictions) {
+
             getPredictions(store.dispatch, store.state.imageObjects)
             setNeedsPredictions(false)
         }
@@ -75,6 +76,11 @@ export const ImageObjects = () => {
         if ( numPredictions === numSelectedImages && hasNotDispatched) {
             
             setHasNotDispatched(false)
+
+            store.dispatch({
+                type: StoreActions.imagesInit
+            })
+            
             store.dispatch({
                 type: StoreActions.keyWordsCreate,
                 payload: keyWords

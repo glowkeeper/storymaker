@@ -46,7 +46,6 @@ export const Images = () => {
         const exists = doesExist(imageURLs)
         let images = { ...clickedImages};
         if (exists) {
-            //console.log('found')
             delete images[imageURLs.cropped]; 
         } else {
             images[imageURLs.cropped] = imageURLs
@@ -56,10 +55,14 @@ export const Images = () => {
 
     const handleClick = (event, imageURLs) => {
         event.preventDefault();
-        //console.log('url', imageURLs.cropped)
         const images = setImages(imageURLs)
         const length = Object.keys(images).length;
         if (length === numSelectedImages) {
+
+            store.dispatch({
+                type: StoreActions.textInit
+            })
+
             store.dispatch({
                 type: StoreActions.imageObjectsCreate,
                 payload: images
@@ -67,10 +70,7 @@ export const Images = () => {
             navigate(LocalRoutes.imageObjects)            
         }
         setClickedImages(images)
-        //console.log('my clicked', clickedImages)
     }
-
-    // console.log('my state', store.state)
 
     return (
         <>
