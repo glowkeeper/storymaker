@@ -78,6 +78,7 @@ export class UIText {
     static appMoreButtonText = "get more..."
     static appResetButtonText = "reset"
     static appRemoveLastButtonText = "remove last"
+    static appSaveButtonText = "save text"
 
     static linkHome = "home"
     static linkAbout = "about"

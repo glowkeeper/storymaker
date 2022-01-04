@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 
+import { fileSave } from 'browser-fs-access'
+
 import { StoreContext, StoreActions } from '../store/store'
 
 import { getText } from '../store/api/getText'
@@ -77,6 +79,13 @@ export const Text = () => {
         })
     }
 
+    const handleClickSave = async () => {
+        const textBlob = new Blob(store.state.text);
+        await fileSave(textBlob, {
+            fileName: 'untitled.txt',
+            extensions: ['.txt'],
+        });
+    }
 
     return (
         <> 
@@ -103,6 +112,13 @@ export const Text = () => {
                         onClick={handleClickReset}
                     >
                         {UIText.appResetButtonText}
+                    </button>
+                    &nbsp;
+                    <button
+                        id="app-button"
+                        onClick={handleClickSave}
+                    >
+                        {UIText.appSaveButtonText}
                     </button>
                 </>
 

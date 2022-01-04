@@ -20,7 +20,7 @@ body {
 
 h1 {
   font-size: 2rem;
-  margin: 0 0 1rem 0
+  margin: 0 0 2rem 0
 }
 
 h2 {
@@ -161,6 +161,10 @@ a:hover {
     margin: 1rem;
   }
 
+  footer {
+    left: 1rem;
+  }
+
   #navBar {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -183,11 +187,6 @@ a:hover {
 
   Link {
     grid-template-columns: 1fr;
-  }
-
-  h1 {
-    font-size: 0.4rem;
-    margin: 0
   }
 }
 
