@@ -94,7 +94,8 @@ export const textReducer = (state, action) => {
     case StoreActions.textInit: 
       return [...initialState.text]
     case StoreActions.textReset:
-      return [state.shift()]
+      const newState = state.length > 1 ? [state.shift()] : [...state]
+      return newState
     case StoreActions.textCreate:
       return [...action.payload]
     case StoreActions.textUpdate:
