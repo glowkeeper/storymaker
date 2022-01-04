@@ -67,7 +67,7 @@ export class UIText {
     static appTitleText = "text"
 
     static appTextHome = ''
-    static appTextAbout = 'this is an ai-based app that uses ai image classification to find image obejcts, then uses ai text generation to generate text from one of those objects' 
+    static appTextAbout = `${UIText.appTitle} is an ai-based app that uses ai image classification to find image obejcts, then uses ai text generation to generate text from one of those objects`
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
     static appTextFoundObjects = 'found objects'
