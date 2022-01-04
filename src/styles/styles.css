@@ -10,6 +10,11 @@
   --body-height: 90vh;
 }
 
+@font-face { 
+  font-family: 'Lucida Handwriting';
+  src: url('../fonts/lHandW.woff') format('woff');
+}
+
 body {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 
@@ -19,6 +24,7 @@ body {
 }
 
 h1 {
+  font-family: 'Lucida Handwriting', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
   font-size: 2rem;
   margin: 0 0 2rem 0
 }
