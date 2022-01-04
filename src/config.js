@@ -67,7 +67,7 @@ export class UIText {
     static appTitleText = "text"
 
     static appTextHome = ''
-    static appTextAbout = `${UIText.appTitle} is an ai-based app that uses ai image classification to find image objects, then uses ai text generation to generate text from one of those objects.`
+    static appTextAbout = 'is an ai-based app that uses ai image classification to find image objects, then uses ai text generation to generate text from one of those objects.'
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
     static appTextFoundObjects = 'found objects'
@@ -75,6 +75,7 @@ export class UIText {
 
     static appLandingButtonText = 'go...'
     static appImagesButtonText = "choose 10 images..."
+    static appNewButtonText = "get new..."
     static appMoreButtonText = "get more..."
     static appResetButtonText = "reset"
     static appRemoveLastButtonText = "remove last"

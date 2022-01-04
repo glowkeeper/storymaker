@@ -23,7 +23,7 @@ export const About = () => {
 
     return (
         <>
-            <p>{UIText.appTextAbout}</p>
+            <p><span id="title">{UIText.appTitle}</span> {UIText.appTextAbout}</p>
         </>
     )
 }

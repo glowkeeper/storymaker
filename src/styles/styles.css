@@ -39,6 +39,10 @@ h3 {
   margin: 0
 }
 
+p > span#title {
+  font-family: 'Lucida Handwriting', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
+
 main { 
   margin: 0rem;
 }
@@ -83,22 +87,32 @@ footer {
   place-items: center center;
 }
 
-#app-button {
+#app-button,
+#text-button {
   border: none;
   border-radius: 10px;
   outline: none;
-  padding: 5px 40px 5px 40px;
   
   background-color: var(--main-colour-dark);
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-#app-button:hover {
+#app-button {
+  padding: 5px 40px 5px 40px;
+}
+
+#text-button {
+  padding: 5px 10px 5px 10px;
+}
+
+#app-button:hover,
+#text-button:hover {
   background-color: var(--main-colour);
 }
 
-#app-button:active {
+#app-button:active,
+#text-button:active {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }

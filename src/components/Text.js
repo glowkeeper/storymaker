@@ -56,6 +56,13 @@ export const Text = () => {
 
     }, [store, needsMore])
 
+    const handleClickNew = async () => {
+        store.dispatch({
+            type: StoreActions.textInit
+        })
+        setNeedsStory(true)
+    }
+    
     const handleClickGetMore = () => {
         const textLength = store.state.text.length
         const text = store.state.text[textLength - 1];
@@ -94,28 +101,35 @@ export const Text = () => {
                 <>
                     {store.state.text.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
                     <button
-                        id="app-button"
+                        id="text-button"
+                        onClick={handleClickNew}
+                    >
+                        {UIText.appNewButtonText}
+                    </button>
+                    &nbsp;
+                    <button
+                        id="text-button"
                         onClick={handleClickGetMore}
                     >
                         {UIText.appMoreButtonText}
                     </button>
                     &nbsp;
                     <button
-                        id="app-button"
+                        id="text-button"
                         onClick={handleClickLast}
                     >
                         {UIText.appRemoveLastButtonText}
                     </button>
                     &nbsp;
                     <button
-                        id="app-button"
+                        id="text-button"
                         onClick={handleClickReset}
                     >
                         {UIText.appResetButtonText}
                     </button>
                     &nbsp;
                     <button
-                        id="app-button"
+                        id="text-button"
                         onClick={handleClickSave}
                     >
                         {UIText.appSaveButtonText}
