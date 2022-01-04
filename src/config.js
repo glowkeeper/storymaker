@@ -75,6 +75,9 @@ export class UIText {
 
     static appLandingButtonText = 'go...'
     static appImagesButtonText = "choose 10 images..."
+    static appMoreButtonText = "get more..."
+    static appResetButtonText = "reset"
+    static appRemoveLastButtonText = "remove last"
 
     static linkHome = "home"
     static linkAbout = "about"

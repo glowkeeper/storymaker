@@ -11,6 +11,10 @@ export const Text = () => {
     const [needsStory, setNeedsStory] = useState(true)
     const [findForText, setFindForText] = useState("")
     const [hasNoTitle, setHasNoTitle] = useState(true)
+    const [needsMore, setNeedsMore] = useState({
+        isFetching: false,
+        lengthText: 0 
+    })
 
     const needsAn = chr => (/[aeiou]/i).test(chr);
 
@@ -32,7 +36,7 @@ export const Text = () => {
         if ( store.state.keyWords.length && needsStory) {
             const keyWord = store.state.keyWords[Math.floor(Math.random() * store.state.keyWords.length)];
             const text = needsAn(keyWord.charAt(0)) ? "An " + keyWord : "A " + keyWord
-            getText(store.dispatch, text)
+            getText(store.dispatch, text, true)
             setFindForText(text)
             setNeedsStory(false)
         }
@@ -41,14 +45,65 @@ export const Text = () => {
 
     useEffect(() => {
 
-    }, [store])
+        if ( store.state.text.length !== needsMore.textLength && needsMore.isFetching) {
+            setNeedsMore({
+                isFetching: false,
+                textLength: store.state.keyWords.length
+            })
+        }
+
+    }, [store, needsMore])
+
+    const handleClickGetMore = () => {
+        const textLength = store.state.text.length
+        const text = store.state.text[textLength - 1];
+        getText(store.dispatch, text);
+        setNeedsMore({
+            isFetching: true,
+            textLength: textLength
+        })
+    }
+
+    const handleClickReset = () => {
+        store.dispatch({
+            type: StoreActions.textReset
+        })
+    }
+
+    const handleClickLast = () => {
+        store.dispatch({
+            type: StoreActions.textCreate,
+            payload: [...store.state.text.splice(0, store.state.text.length - 1)]
+        })
+    }
+
 
     return (
         <> 
-            { store.state.text.length > 0 ? (
+            { (store.state.text.length > 0 && !needsMore.isFetching) ? (
 
                 <>
-                    {<p>{store.state.text}</p>}
+                    {store.state.text.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                    <button
+                        id="app-button"
+                        onClick={handleClickGetMore}
+                    >
+                        {UIText.appMoreButtonText}
+                    </button>
+                    &nbsp;
+                    <button
+                        id="app-button"
+                        onClick={handleClickLast}
+                    >
+                        {UIText.appRemoveLastButtonText}
+                    </button>
+                    &nbsp;
+                    <button
+                        id="app-button"
+                        onClick={handleClickReset}
+                    >
+                        {UIText.appResetButtonText}
+                    </button>
                 </>
 
             ) : (

@@ -27,7 +27,7 @@ export const initialState = {
   images: [],
   imageObjects: {}, 
   keyWords: [],
-  text: ""
+  text: []
 }
 
 export const pageTitleReducer = (state, action) => {
@@ -92,8 +92,9 @@ export const keyWordsReducer = (state, action) => {
 export const textReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.textInit: 
-    case StoreActions.textReset:
       return [...initialState.text]
+    case StoreActions.textReset:
+      return [state.shift()]
     case StoreActions.textCreate:
       return [...action.payload]
     case StoreActions.textUpdate:
