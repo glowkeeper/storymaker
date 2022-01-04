@@ -15,7 +15,7 @@ export const getImages = (dispatch, tags) => {
 
     const get = compose(IO.getData(flickrData => {
 
-        const uRLs = []            
+        //const uRLs = []            
         const imageURLs = compose(map(imageData => {
 
             // console.log('imagedata', imageData)
@@ -27,15 +27,18 @@ export const getImages = (dispatch, tags) => {
                 cropped: imageCroppedURL,
                 large: imageLargeURL
             }
-            uRLs.push(imageURLs)
+            //uRLs.push(imageURLs)
+            dispatch({ 
+                type: StoreActions.imagesUpdate,
+                payload: [imageURLs]
+            });
         }), prop('photo'), prop('photos'));
         
         imageURLs(flickrData)
-        //console.log('made it here', uRLs)
-        dispatch({ 
+        /*dispatch({ 
             type: StoreActions.imagesCreate,
             payload: uRLs
-        });
+        });*/
     
     }, null), flickrQuery);
 

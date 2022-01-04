@@ -27,6 +27,7 @@ export const Home = () => {
     return (
         <div id="centered">
             <div id="centered-items">   
+                <p>More coming soon. Meanwhile:</p>
                 <button
                     id="app-button"
                     onClick={() => navigate(LocalRoutes.images)}

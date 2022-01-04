@@ -1,5 +1,5 @@
 /*
- * Portrayal
+ * storymaker
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
