@@ -26,8 +26,7 @@ export class StoreActions {
 
 export const initAPIKeys = {
   flickr: "",
-  openAI: "",
-  nLPCloud: ""
+  openAI: ""
 }
 
 export const initialState = {

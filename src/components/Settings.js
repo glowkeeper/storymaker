@@ -68,6 +68,8 @@ export const Settings = () => {
 
     return (
         <>
+            <p>To use <span id="title">{UIText.appTitle}</span>, you will need a <a href="https://www.flickr.com/services/api/misc.api_keys.html" target="_blank" rel="noreferrer">Flickr API Key</a> and an <a href="https://beta.openai.com/signup" target="_blank" rel="noreferrer">Open AI Key</a>. Once you have those, paste them into the form below.</p> 
+            <p>(Please note - <a href="https://openai.com/" target="_blank" rel="noreferrer" >Open AI</a> is not free, but you do get a certain amount of free credit to get you started)</p>
             <form onSubmit={handleSubmit}>
                 <div id="settings-grid">
                     <div id="settings-input">
@@ -92,17 +94,6 @@ export const Settings = () => {
                             required
                             onChange={handleChangeKey}
                             value={keys.openAI}
-                        />
-                    </div>
-                    <div id="settings-input">
-                        <label className="settings-label" htmlFor="nLPCloud">{UIText.inputNLPToken}:</label>
-                        <input
-                            className="settings-input"
-                            type="text"
-                            id="nLPCloud"
-                            name="nLPCloud"
-                            onChange={handleChangeKey}
-                            value={keys.nLPCloud}
                         />
                     </div>
                     <div>

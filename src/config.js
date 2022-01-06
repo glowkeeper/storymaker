@@ -1,10 +1,10 @@
 export class LocalRoutes {
-    static home = "/"
-    static about = "/about"
-    static settings = "/settings"
-    static images = "/images"
-    static imageObjects = "/image-objects"
-    static text = "/text"
+    static home = "/storymaker"
+    static about = `${LocalRoutes.home}/about`
+    static settings = `${LocalRoutes.home}/settings`
+    static images = `${LocalRoutes.home}/images`
+    static imageObjects = `${LocalRoutes.home}/image-objects`
+    static text = `${LocalRoutes.home}/text`
 }
 
 export class RemoteAPI {
