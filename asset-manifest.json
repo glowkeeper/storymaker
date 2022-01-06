@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/storymaker/static/css/main.b7eaf034.css",
-    "main.js": "/storymaker/static/js/main.bc123a1f.js",
+    "main.js": "/storymaker/static/js/main.c2069a46.js",
     "static/media/lHandW.woff": "/storymaker/static/media/lHandW.66d9c133258c996e9d11.woff",
     "index.html": "/storymaker/index.html"
   },
   "entrypoints": [
     "static/css/main.b7eaf034.css",
-    "static/js/main.bc123a1f.js"
+    "static/js/main.c2069a46.js"
   ]
 }
