@@ -1,47 +1,24 @@
-
-
-export const numSelectedImages = 10
-
 export class LocalRoutes {
     static home = "/"
-    //static about = `${LocalRoutes.home}/about`
     static about = "/about"
+    static settings = "/settings"
     static images = "/images"
     static imageObjects = "/image-objects"
     static text = "/text"
 }
 
 export class RemoteAPI {
-    static flickrAPIKey = process.env.REACT_APP_FLICKRAPIKEY
-    
     // static flickrGetRecentAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
     static flickrSearchAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     static flickrPhotoServer = 'https://live.staticflickr.com/'
     
-    static nlpCloudAPIToken = process.env.REACT_APP_NLPCLOUDAPITOKEN
     static nlpGeneration = 'https://api.nlpcloud.io/v1/gpt-j/generation'
 
-    static openAPIKey = process.env.REACT_APP_OPENAPIKEY
-    static openAPIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
-    /* Input
-    curl "https://api.nlpcloud.io/v1/<model_name>/generation" \
-    -H "Authorization: Token <token>" \
-    -H "Content-Type: application/json" \
-    -X POST -d '{
-        "text":"GPT-J is a powerful NLP model",
-        "min_length":10,
-        "max_length":50
-    }'
+    static openAIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
+}
 
-    Output
-    {
-        "generated_text":"GPT-J is a powerful NLP model for text generation. 
-        This is the open-source version of GPT-3 by OpenAI. It is the most 
-        advanced NLP model created as of today.",
-        "nb_generated_tokens": 33
-    }
-    */
-
+export class System {
+    static numSelectedImages = 10
 }
 
 export class FlickrAPI {
@@ -49,7 +26,7 @@ export class FlickrAPI {
     static tags = "flowers,trees,river,dog,food,landscape,garden,people,street,park,city,bird,nature,sea,family,house,car,cat,beach,lake"
 }
 
-export class OpenAPI {
+export class OpenAI {
     static temperature = 0.9
     static maxTokens = 1024
 }
@@ -62,6 +39,7 @@ export class UIText {
     static poweredBy = 'powered by'
     static appTitleHome = "home"
     static appTitleAbout = "about"
+    static appTitleSettings = "settings"
     static appTitleImages = "images"
     static appTitleImageObjects = "classification"
     static appTitleText = "text"
@@ -83,9 +61,14 @@ export class UIText {
 
     static linkHome = "home"
     static linkAbout = "about"
+    static linkSettings = "settings"
     static linkImages = "get images"
     static linkImageObjects = "images objects"
     static linkText = "text"
+
+    static inputFlickrKey = "Flickr API Key"
+    static inputOpenAIKey = "Open AI Key"
+    static inputNLPToken = "NLP Cloud Token"
 
     static buttonSubmit = "submit"
     static buttonClear = "clear"

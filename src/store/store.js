@@ -3,6 +3,8 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
+  static aPIKeysInit = 'APIKeys/Initialiase'
+  static aPIKeysUpdate = 'APIKeys/Update'
   static pageTitleSet = 'PageTitle/Set'
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
@@ -22,12 +24,32 @@ export class StoreActions {
   static textUpdate = 'Text/Update'
 }
 
+export const initAPIKeys = {
+  flickr: "",
+  openAI: "",
+  nLPCloud: ""
+}
+
 export const initialState = {
+  aPIKeys: initAPIKeys,
   pageTitle: "",
   images: [],
   imageObjects: {}, 
   keyWords: [],
   text: []
+}
+
+export const aPIKeysReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.aPIKeysInit:       
+      return {...initialState.aPIKeys}
+    case StoreActions.aPIKeysUpdate:
+      const key = action.payload.key
+      const value = action.payload.value
+      return {...state, [`${key}`]: value}
+    default:
+      return state
+  }
 }
 
 export const pageTitleReducer = (state, action) => {
@@ -130,6 +152,7 @@ const combineReducers = reducers => {
 }
 
 export const rootReducer = combineReducers({
+  aPIKeys: aPIKeysReducer,
   pageTitle: pageTitleReducer,
   images: imagesReducer,
   imageObjects: imageObjectsReducer,

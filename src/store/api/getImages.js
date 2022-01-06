@@ -7,9 +7,9 @@ import { map } from '../../utils/utils'
 
 import { FlickrAPI } from '../../config'
 
-export const getImages = (dispatch, tags) => {
+export const getImages = (store, tags) => {
 
-    dispatch({ 
+    store.dispatch({ 
         type: StoreActions.imagesInit
     });
 
@@ -28,7 +28,7 @@ export const getImages = (dispatch, tags) => {
                 large: imageLargeURL
             }
             //uRLs.push(imageURLs)
-            dispatch({ 
+            store.dispatch({ 
                 type: StoreActions.imagesUpdate,
                 payload: [imageURLs]
             });
@@ -42,6 +42,10 @@ export const getImages = (dispatch, tags) => {
     
     }, null), flickrQuery);
 
-    const page =[Math.floor(Math.random() * FlickrAPI.numPages)]
-    get(tags, page)
+
+    const flickrAPIKey = store.state.aPIKeys.flickr
+    if ( flickrAPIKey ) {
+        const page = [Math.floor(Math.random() * FlickrAPI.numPages)]
+        get(flickrAPIKey, tags, page)
+    }
 }

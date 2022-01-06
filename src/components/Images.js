@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getImages } from '../store/api/getImages'
 
-import { numSelectedImages, LocalRoutes, FlickrAPI, UIText } from '../config'
+import { System, LocalRoutes, FlickrAPI, UIText } from '../config'
 
 export const Images = () => {
     const store = useContext(StoreContext)
@@ -31,7 +31,7 @@ export const Images = () => {
     useEffect(() => {        
 
         if ( needsImages ) {
-            getImages(store.dispatch, FlickrAPI.tags);
+            getImages(store, FlickrAPI.tags);
             setNeedsImages(false)
         }
 
@@ -57,7 +57,7 @@ export const Images = () => {
         event.preventDefault();
         const images = setImages(imageURLs)
         const length = Object.keys(images).length;
-        if (length === numSelectedImages) {
+        if (length === System.numSelectedImages) {
 
             store.dispatch({
                 type: StoreActions.textInit

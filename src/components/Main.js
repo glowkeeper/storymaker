@@ -1,69 +1,99 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 import { Route, Routes } from "react-router"
-import { Link } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 
+import { NavBar } from './NavBar'
 import { Home } from './Home'
 import { About } from './About'
+import { Settings } from './Settings'
 import { Images } from './Images'
 import { ImageObjects } from './ImageObjects'
 import { Text } from './Text'
+import { Footer } from './Footer'
 
 import { 
     StoreContext,
+    StoreActions,
     rootReducer,
     initialState, 
+    initAPIKeys,
     useReducerWithThunk 
 } from '../store/store'
 
-import { UIText, LocalRoutes } from '../config'
+import { LocalRoutes } from '../config'
 
 export const Main = () => {
-    const [pageTitle, setPageTitle] = useState("")
     const [state, dispatch] = useReducerWithThunk(rootReducer, initialState)
+    const [needsAPIKeys, setNeedsAPIKeys] = useState(true)
 
     const store = useMemo(() => {
         return { state: state, dispatch: dispatch }
     }, [state, dispatch])
 
+    const navigate = useNavigate()
+
+
     useEffect(() => {
-        setPageTitle(store.state.pageTitle)
-    }, [store.state.pageTitle]);
+
+        if (needsAPIKeys) {
+
+            const settingsStore = window.localStorage;
+            const myAPIKeys = initAPIKeys
+            Object.keys(myAPIKeys).forEach(key => {
+                const myKeyValue = settingsStore.getItem(key);
+                if (!myKeyValue) {
+                    navigate(LocalRoutes.settings)
+                } else {
+                    store.dispatch({
+                        type: StoreActions.aPIKeysUpdate,
+                        payload: {
+                            key: key,
+                            value: myKeyValue
+                        }
+                    })
+                }
+                //console.log('my keys are: ', key, myKeyValue)
+            })
+            setNeedsAPIKeys(false)
+        }
+
+    }, [store, needsAPIKeys,navigate])
 
     return (    
         <>
-            <main>
-                <div id="navBar">
-                    <h3 id="title">{pageTitle}</h3>                
-                    <nav id="links">
-                        <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
-                        <Link to={LocalRoutes.about}>{UIText.linkAbout}</Link>
-                    </nav>
-                </div>
-                <StoreContext.Provider value={store}>
-                    <Routes>
-                        <Route
-                            path={LocalRoutes.home}
-                            element={<Home />}
-                        />
-                        <Route
-                            path={LocalRoutes.about}
-                            element={<About />}
-                        />
-                        <Route
-                            path={LocalRoutes.images}
-                            element={<Images />}
-                        />
-                        <Route
-                            path={LocalRoutes.imageObjects}
-                            element={<ImageObjects />}
-                        />
-                        <Route
-                            path={LocalRoutes.text}
-                            element={<Text />}
-                        />
-                    </Routes>
-                </StoreContext.Provider>
-            </main>
+            <StoreContext.Provider value={store}>
+                <NavBar />
+                <main>
+                        <Routes>
+                            <Route
+                                path={LocalRoutes.home}
+                                element={<Home />}
+                            />
+                            <Route
+                                path={LocalRoutes.about}
+                                element={<About />}
+                            />
+
+                            <Route
+                                path={LocalRoutes.settings}
+                                element={<Settings />}
+                            />
+                            <Route
+                                path={LocalRoutes.images}
+                                element={<Images />}
+                            />
+                            <Route
+                                path={LocalRoutes.imageObjects}
+                                element={<ImageObjects />}
+                            />
+                            <Route
+                                path={LocalRoutes.text}
+                                element={<Text />}
+                            />
+                        </Routes>
+                </main>
+            </StoreContext.Provider>
+            <Footer />
         </>
     )
 }

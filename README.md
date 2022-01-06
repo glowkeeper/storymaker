@@ -35,12 +35,12 @@ To successfully [run](#run) the application, you must create a `.env` file in th
 ```bash
 GENERATE_SOURCEMAP=false
 REACT_APP_FLICKRAPIKEY="<flickrapikey>"
-REACT_APP_OPENAPIKEY="<openapikey>"
+REACT_APP_OPENAIKEY="<openaikey>"
 REACT_APP_NLPCLOUDAPITOKEN=""
 ```
 
 - `REACT_APP_FLICKRAPIKEY` is your [flickr api key](https://www.flickr.com/services/api/misc.api_keys.html)
-- `REACT_APP_OPENAPIKEY` is your [open api key](https://beta.openai.com/signup)
+- `REACT_APP_OPENAIKEY` is your [open ai key](https://beta.openai.com/signup)
 - `REACT_APP_NLPCLOUDAPITOKEN` is currently unused, so it's okay to declare an empty string, for now
 
 ## Run

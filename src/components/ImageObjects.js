@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getPredictions } from '../store/api/getPredictions'
 
-import { numSelectedImages, LocalRoutes, UIText } from '../config'
+import { System, LocalRoutes, UIText } from '../config'
 
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
@@ -15,9 +15,9 @@ export const ImageObjects = () => {
     const [keyWords, setKeyWords] = useState([])
     const [hasNoTitle, setHasNoTitle] = useState(true)
 
-   const navigate = useNavigate()
+    const navigate = useNavigate()
 
-   useEffect(() => {
+    useEffect(() => {
 
         if( hasNoTitle ) {
 
@@ -57,7 +57,7 @@ export const ImageObjects = () => {
             const thisKeyWords = [...new Set(allPredictions.flat())]           
             setKeyWords(thisKeyWords)
 
-            if ( allPredictions.length === numSelectedImages) {
+            if ( allPredictions.length === System.numSelectedImages) {
 
                 timeOut = setTimeout(() => {
                     setNumPredictions(allPredictions.length)
@@ -73,7 +73,7 @@ export const ImageObjects = () => {
 
     useEffect(() => {
 
-        if ( numPredictions === numSelectedImages && hasNotDispatched) {
+        if ( numPredictions === System.numSelectedImages && hasNotDispatched) {
             
             setHasNotDispatched(false)
 
@@ -90,8 +90,6 @@ export const ImageObjects = () => {
         }
 
     }, [store, keyWords, numPredictions, navigate, hasNotDispatched])
-
-
 
     return (
         <> 
