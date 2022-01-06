@@ -38,7 +38,7 @@ export const Text = () => {
         if ( store.state.keyWords.length && needsStory) {
             const keyWord = store.state.keyWords[Math.floor(Math.random() * store.state.keyWords.length)];
             const text = needsAn(keyWord.charAt(0)) ? "An " + keyWord : "A " + keyWord
-            getText(store.dispatch, text, true)
+            getText(store, text, true)
             setFindForText(text)
             setNeedsStory(false)
         }
@@ -66,7 +66,7 @@ export const Text = () => {
     const handleClickGetMore = () => {
         const textLength = store.state.text.length
         const text = store.state.text[textLength - 1];
-        getText(store.dispatch, text);
+        getText(store, text);
         setNeedsMore({
             isFetching: true,
             textLength: textLength
