@@ -8,7 +8,6 @@ ai-based app' that uses ai image classification to find image obejcts, then uses
 
 - [Built Using](#built-using)
 - [Install](#install)
-- [Application Dependencies](#application-dependencies)
 - [Run](#run)
 - [Maintainer](#maintainer)
 - [Contributing](#contributing)
@@ -27,22 +26,6 @@ ai-based app' that uses ai image classification to find image obejcts, then uses
 ## Install
 
 This project uses [node](http://nodejs.org/) and [npm](https://npmjs.com/). If you've not done so, please install those first (you should have the [Active LTS](https://nodejs.org/en/about/releases/) version of node installed). Then clone this repository, switch to its root directory, and type `npm install`.
-
-## Application Dependencies
-
-To successfully [run](#run) the application, you must create a `.env` file in the repo's root directory. That should specify the following variables:
-
-```bash
-GENERATE_SOURCEMAP=false
-REACT_APP_FLICKRAPIKEY="<flickrapikey>"
-REACT_APP_OPENAIKEY="<openaikey>"
-REACT_APP_NLPCLOUDAPITOKEN=""
-```
-
-- `REACT_APP_FLICKRAPIKEY` is your [flickr api key](https://www.flickr.com/services/api/misc.api_keys.html)
-- `REACT_APP_OPENAIKEY` is your [open ai key](https://beta.openai.com/signup)
-- `REACT_APP_NLPCLOUDAPITOKEN` is currently unused, so it's okay to declare an empty string, for now
-
 ## Run
 
 From the repo's root directory, type `npm run start`.
