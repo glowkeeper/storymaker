@@ -2,15 +2,15 @@
   --main-colour: #ffa000;
   --main-colour-light: #ffd149;
   --main-colour-dark: #c67100;
-  
+
   --grid-gap: 5px;
 
-  --ruler-colour: rgba(53, 49, 49, 1); 
+  --ruler-colour: rgba(53, 49, 49, 1);
 
   --body-height: 90vh;
 }
 
-@font-face { 
+@font-face {
   font-family: 'Lucida Handwriting';
   src: url('../fonts/lHandW.woff') format('woff');
 }
@@ -18,7 +18,7 @@
 body {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 
-  margin: 1rem 2rem 1rem 2rem; 
+  margin: 1rem 2rem 1rem 2rem;
 
   background-image: linear-gradient(to left, var(--main-colour-light), var(--main-colour));
 }
@@ -43,8 +43,8 @@ p > span#title {
   font-family: 'Lucida Handwriting', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
-main { 
-  margin: 0rem;
+main {
+  margin: 0 0 4rem 0;
 }
 
 footer {
@@ -92,7 +92,7 @@ footer {
   border: none;
   border-radius: 10px;
   outline: none;
-  
+
   background-color: var(--main-colour-dark);
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
@@ -127,7 +127,7 @@ a:hover {
   color: var(--main-colour-dark);
 }
 
-#seperator {  
+#seperator {
   margin-top: 1rem;
   border-top: solid 1px var(--ruler-colour);
 }
@@ -184,7 +184,7 @@ a:hover {
 
 @media screen and (max-width: 600px) {
 
-  body {  
+  body {
     margin: 1rem;
   }
 
@@ -196,15 +196,15 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: var(--grid-gap);
-  
+
     border-bottom: solid 1px var(--ruler-colour);
   }
-  
+
   #navBar > #title {
     display: grid;
     place-items: end start;
   }
-  
+
   #navBar > nav {
     display: grid;
     grid-template-columns: 1fr;
@@ -284,7 +284,3 @@ a:hover {
   0% {opacity:0;}
   100% {opacity:1;}
 }
-
-
-
-
