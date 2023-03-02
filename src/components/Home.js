@@ -28,7 +28,7 @@ export const Home = () => {
 
     useEffect(() => {
 
-        console.log('in here')
+        // console.log('in here')
 
         let disabled = false;
         const aPIKeyValues = Object.values(store.state.aPIKeys)

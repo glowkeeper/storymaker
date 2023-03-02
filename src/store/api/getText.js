@@ -28,24 +28,40 @@ export const getText = async (store, text, isInit = false) => {
 
         IO.getData( async (response) => {
 
-            let foundText = response.choices[0].text
-            const stopIndex = foundText.lastIndexOf('.');
-            if (stopIndex !== -1 ) {
-                foundText = foundText.slice(0, stopIndex + 1)
-            }
-
-            let type = StoreActions.textUpdate
-            if (isInit) {
-                foundText = text + " " + foundText
-                type = StoreActions.textCreate            
-            } 
+            // console.log('I found', response)
 
             const payload = [];
-            payload.push(foundText);
-            store.dispatch({ 
-                type: type,
-                payload: payload
-            });
+            let type = StoreActions.textUpdate
+            let foundText = ""
+
+            if ( response.hasOwnProperty('error')) {
+                
+                foundText = response.error.message
+                payload.push(foundText);
+                store.dispatch({ 
+                    type: type,
+                    payload: payload
+                });
+
+            } else {
+
+                foundText = response.choices[0].text
+                const stopIndex = foundText.lastIndexOf('.');
+                if (stopIndex !== -1 ) {
+                    foundText = foundText.slice(0, stopIndex + 1)
+                }
+
+                if (isInit) {
+                    foundText = text + " " + foundText
+                    type = StoreActions.textCreate            
+                } 
+
+                payload.push(foundText);
+                store.dispatch({ 
+                    type: type,
+                    payload: payload
+                });
+            }
         }, fetchOptions, RemoteAPI.openAIGeneration)
     }
 }
