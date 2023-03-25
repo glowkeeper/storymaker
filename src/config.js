@@ -14,7 +14,8 @@ export class RemoteAPI {
     
     static nlpGeneration = 'https://api.nlpcloud.io/v1/gpt-j/generation'
 
-    static openAIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
+    //static openAIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
+    static openAIGeneration = 'https://api.openai.com/v1/completions'
 }
 
 export class System {
@@ -28,7 +29,8 @@ export class FlickrAPI {
 
 export class OpenAI {
     static temperature = 0.9
-    static maxTokens = 1024
+    static maxTokens = 4096
+    static model = "text-davinci-003"
 }
 
 export class UIText {

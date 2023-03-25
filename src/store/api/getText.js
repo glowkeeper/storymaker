@@ -12,6 +12,7 @@ export const getText = async (store, text, isInit = false) => {
     if ( openAIKey ) {
 
         const content = {
+            "model": OpenAI.model,
             "prompt": text,
             "max_tokens": OpenAI.maxTokens,
             "temperature": OpenAI.temperature
