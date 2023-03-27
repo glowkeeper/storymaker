@@ -8,6 +8,8 @@ import { About } from './About'
 import { Settings } from './Settings'
 import { Images } from './Images'
 import { ImageObjects } from './ImageObjects'
+import { News } from './News'
+import { NewsHeadlines } from './NewsHeadlines'
 import { Text } from './Text'
 import { Footer } from './Footer'
 
@@ -85,6 +87,14 @@ export const Main = () => {
                             <Route
                                 path={LocalRoutes.imageObjects}
                                 element={<ImageObjects />}
+                            />
+                            <Route
+                                path={LocalRoutes.news}
+                                element={<News />}
+                            />
+                            <Route
+                                path={LocalRoutes.newsHeadlines}
+                                element={<NewsHeadlines />}
                             />
                             <Route
                                 path={LocalRoutes.text}

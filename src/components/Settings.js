@@ -68,8 +68,8 @@ export const Settings = () => {
 
     return (
         <>
-            <p>To use <span id="title">{UIText.appTitle}</span>, you will need a <a href="https://www.flickr.com/services/api/misc.api_keys.html" target="_blank" rel="noreferrer">Flickr API Key</a> and an <a href="https://beta.openai.com/signup" target="_blank" rel="noreferrer">Open AI Key</a>. Once you have those, paste them into the form below.</p> 
-            <p>(Please note - <a href="https://openai.com/" target="_blank" rel="noreferrer" >Open AI</a> is not free, but you do get a certain amount of free credit to get you started)</p>
+            <p>To use <span id="title">{UIText.appTitle}</span>, you will need a <a href="https://www.flickr.com/services/api/misc.api_keys.html" target="_blank" rel="noreferrer">Flickr API Key</a>, a <a href="https://developer.nytimes.com/docs/top-stories-product/1/overview" target="_blank" rel="noreferrer">New York Times Top Stories API Key</a> and an <a href="https://beta.openai.com/signup" target="_blank" rel="noreferrer">OpenAI Developer Key</a>. Once you have those, paste them into the form below.</p> 
+            <p>(Please note - <a href="https://openai.com/" target="_blank" rel="noreferrer" >OpenAI</a> is not free)</p>
             <form onSubmit={handleSubmit}>
                 <div id="settings-grid">
                     <div id="settings-input">
@@ -83,6 +83,18 @@ export const Settings = () => {
                             onChange={handleChangeKey}
                             value={keys.flickr}
                         />                    
+                    </div>
+                    <div id="settings-input">
+                        <label className="settings-label" htmlFor="nYT">{UIText.inputNYTKey}:</label>
+                        <input
+                            className="settings-input"
+                            type="text"
+                            id="nYT"
+                            name="nYT"
+                            required
+                            onChange={handleChangeKey}
+                            value={keys.nYT}
+                        />
                     </div>
                     <div id="settings-input">
                         <label className="settings-label" htmlFor="openAI">{UIText.inputOpenAIKey}:</label>

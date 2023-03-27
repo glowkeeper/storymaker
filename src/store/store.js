@@ -18,6 +18,11 @@ export class StoreActions {
   static keyWordsReset = 'KeyWords/Reset'
   static keyWordsCreate = 'KeyWords/Create'
   static keyWordsUpdate = 'KeyWords/Update'
+  static newsTopicSet = 'newsTopic/Set'
+  static newsInit = 'news/Initialise'
+  static newsReset = 'news/Reset'
+  static newsCreate = 'news/Create'
+  static newsUpdate = 'news/Update'
   static textInit = 'Text/Initialise'
   static textReset = 'Text/Reset'
   static textCreate = 'Text/Create'
@@ -26,6 +31,7 @@ export class StoreActions {
 
 export const initAPIKeys = {
   flickr: "",
+  nYT: "",
   openAI: ""
 }
 
@@ -35,6 +41,7 @@ export const initialState = {
   images: [],
   imageObjects: {}, 
   keyWords: [],
+  news:[],
   text: []
 }
 
@@ -110,6 +117,20 @@ export const keyWordsReducer = (state, action) => {
   }
 }
 
+export const newsReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.newsInit: 
+    case StoreActions.newsReset:
+      return [...initialState.news]
+    case StoreActions.newsCreate:
+      return [...action.payload]
+    case StoreActions.newsUpdate:
+      return [...state, ...action.payload]
+    default:
+      return state
+  }
+}
+
 export const textReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.textInit: 
@@ -156,5 +177,6 @@ export const rootReducer = combineReducers({
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
   keyWords: keyWordsReducer,
+  news: newsReducer,
   text: textReducer
 })

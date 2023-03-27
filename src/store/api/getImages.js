@@ -2,7 +2,7 @@ import { compose, prop } from 'ramda'
 
 import { StoreActions } from '../store'
 
-import { IO, flickrCroppedSquarePhotos, flickrLargePhotos,flickrQuery } from '../../utils/iO'
+import { IO, flickrCroppedSquarePhotos, flickrLargePhotos, flickrQuery } from '../../utils/iO'
 import { map } from '../../utils/utils'
 
 import { FlickrAPI } from '../../config'
@@ -41,7 +41,6 @@ export const getImages = (store, tags) => {
         });*/
     
     }, null), flickrQuery);
-
 
     const flickrAPIKey = store.state.aPIKeys.flickr
     if ( flickrAPIKey ) {

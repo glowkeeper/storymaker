@@ -47,16 +47,23 @@ export const Home = () => {
 
     return (
         <div id="centered">
-            <div id="centered-items">   
-                <p>More coming soon. Meanwhile:</p>
+            <div id="centered-items"> 
                 <button
                     id={disabled ? "disabled-app-button" : "app-button"}
                     disabled={disabled}
                     onClick={() => navigate(LocalRoutes.images)}
                 >
                     {UIText.appImagesButtonText}
-                </button> 
-                {disabled && <p>(Before you can use <span id="title">{UIText.appTitle}</span>, you will need a <a href="https://www.flickr.com/services/api/misc.api_keys.html" target="_blank" rel="noreferrer">Flickr API Key</a> and an <a href="https://beta.openai.com/signup" target="_blank" rel="noreferrer">Open AI Key</a>, via the <Link to={LocalRoutes.settings}>{UIText.linkSettings}</Link> page)</p>}  
+                </button>                  
+                <p>Or:</p>
+                <button
+                    id={disabled ? "disabled-app-button" : "app-button"}
+                    disabled={disabled}
+                    onClick={() => navigate(LocalRoutes.news)}
+                >
+                    {UIText.appNewsButtonText}
+                </button>  
+                {disabled && <p>(Before you can use <span id="title">{UIText.appTitle}</span>, you will need a <a href="https://www.flickr.com/services/api/misc.api_keys.html" target="_blank" rel="noreferrer">Flickr API Key</a>, a <a href="https://developer.nytimes.com/docs/top-stories-product/1/overview" target="_blank" rel="noreferrer">New York Times Top Stories API Key</a> and an <a href="https://beta.openai.com/signup" target="_blank" rel="noreferrer">OpenAI Key</a>, which you input via the <Link to={LocalRoutes.settings}>{UIText.linkSettings}</Link> page)</p>}  
             </div>  
         </div>
     )

@@ -4,6 +4,8 @@ export class LocalRoutes {
     static settings = `${LocalRoutes.home}/settings`
     static images = `${LocalRoutes.home}/images`
     static imageObjects = `${LocalRoutes.home}/image-objects`
+    static news = `${LocalRoutes.home}/news`
+    static newsHeadlines = `${LocalRoutes.home}/news-headlines`
     static text = `${LocalRoutes.home}/text`
 }
 
@@ -11,11 +13,15 @@ export class RemoteAPI {
     // static flickrGetRecentAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
     static flickrSearchAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     static flickrPhotoServer = 'https://live.staticflickr.com/'
+
+    static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
     
     static nlpGeneration = 'https://api.nlpcloud.io/v1/gpt-j/generation'
 
     //static openAIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
     static openAIGeneration = 'https://api.openai.com/v1/completions'
+
+
 }
 
 export class System {
@@ -44,17 +50,22 @@ export class UIText {
     static appTitleSettings = "settings"
     static appTitleImages = "images"
     static appTitleImageObjects = "classification"
+    static appTitleNews = "news topics"
+    static appTitleNewsHeadlines = "news headlines"
     static appTitleText = "text"
 
     static appTextHome = ''
-    static appTextAbout = 'is an ai-based app that uses ai image classification to find image objects, then uses ai text generation to generate text from one of those objects.'
+    static appTextAbout = 'is an ai-based app that uses news stories and ai image classification to find image objects, then uses ai text generation to generate text from those stories or one of those image objects.'
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
+    static appTextHeadlines = 'please wait - getting headlines'
     static appTextFoundObjects = 'found objects'
+    static appTextFoundHeadlines = 'found headlines'
     static appTextText = 'please wait - generating text for '
 
     static appLandingButtonText = 'go...'
-    static appImagesButtonText = "choose 10 images..."
+    static appImagesButtonText = "choose 10 images"
+    static appNewsButtonText = "pick a news story"
     static appNewButtonText = "get new..."
     static appMoreButtonText = "get more..."
     static appResetButtonText = "reset"
@@ -68,8 +79,11 @@ export class UIText {
     static linkImageObjects = "images objects"
     static linkText = "text"
 
+    static newsTopics = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "magazine", "movies", "politics", "science", "sports", "technology", "theater", "travel", "world"]
+
     static inputFlickrKey = "Flickr API Key"
-    static inputOpenAIKey = "Open AI Key"
+    static inputOpenAIKey = "OpenAI API Key"
+    static inputNYTKey = "NYT API Key"
     static inputNLPToken = "NLP Cloud Token"
 
     static buttonSubmit = "submit"
