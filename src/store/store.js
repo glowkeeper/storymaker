@@ -20,7 +20,8 @@ export class StoreActions {
   static newsUpdate = 'news/Update'
   static textInputInit = 'textInput/Initialise'
   static textInputReset = 'textInput/Reset'
-  static textInputSet = 'textInput/Set'
+  static textInputCreate = 'textInput/Create'
+  static textInputUpdate = 'textInput/Update'
   static textInit = 'Text/Initialise'
   static textReset = 'Text/Reset'
   static textCreate = 'Text/Create'
@@ -39,7 +40,7 @@ export const initialState = {
   images: [],
   imageObjects: {},
   news: [],
-  textInput: "",
+  textInput: [],
   text: []
 }
 
@@ -119,14 +120,15 @@ export const textInputReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.textInputInit: 
     case StoreActions.textInputReset:
-      return ""
-    case StoreActions.textInputSet: 
-      return action.payload
+      return [...initialState.textInput]
+    case StoreActions.textInputCreate:
+      return [...action.payload]
+    case StoreActions.textInputUpdate:
+      return [...state, ...action.payload]
     default:
       return state
   }
 }
-
 
 export const textReducer = (state, action) => {
   switch (action.type) {

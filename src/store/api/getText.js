@@ -4,10 +4,6 @@ import { RemoteAPI, OpenAI } from '../../config'
 
 export const getText = async (store, text, isInit = false) => {
 
-    /* dispatch({ 
-        type: StoreActions.textInit
-    });*/
-
     const openAIKey = store.state.aPIKeys.openAI
     if ( openAIKey ) {
 

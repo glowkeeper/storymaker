@@ -29,7 +29,7 @@ export const NewsHeadlines = () => {
 
         store.dispatch({
             type: StoreActions.textInputSet,
-            payload: headline
+            payload: [headline]
         })
 
         navigate(LocalRoutes.text)

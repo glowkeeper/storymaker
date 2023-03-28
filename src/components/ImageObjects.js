@@ -77,18 +77,21 @@ export const ImageObjects = () => {
 
         if ( numPredictions === System.numSelectedImages && hasNotDispatched) {
             
-            console.log('got keywords', keyWords)
+            //console.log('got keywords', keyWords)
             setHasNotDispatched(false)
             
-            const keyWord = keyWords[Math.floor(Math.random() * keyWords.length)];
-            console.log('got keyword', keyWord)
+            // const keyWord = keyWords[Math.floor(Math.random() * keyWords.length)];
+            // console.log('got keyword', keyWord)
+
+            const keyWordsWithPrep = keyWords.map(word => {
+                return needsAn(word.charAt(0)) ? "An " + word : "A " + word
+            }) 
             
-            const text = needsAn(keyWord.charAt(0)) ? "An " + keyWord : "A " + keyWord
-            console.log('got text input', text)
+            //console.log('got text input', keyWordsWithPrep)
 
             store.dispatch({
-                type: StoreActions.textInputSet,
-                payload: text
+                type: StoreActions.textInputCreate,
+                payload: keyWordsWithPrep
             })
             
             navigate(LocalRoutes.text)

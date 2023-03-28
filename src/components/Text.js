@@ -33,11 +33,12 @@ export const Text = () => {
 
     useEffect(() => {
 
-        const text = store.state.textInput
-        if ( text && needsStory) {
+        if ( store.state.textInput.length && needsStory) {
 
+            const text = store.state.textInput[Math.floor(Math.random() * store.state.textInput.length)];
+            //console.log('find text', text, store.state.textInput)
             getText(store, text, true)
-            setFindForText(text)
+            setFindForText('"' + text + '..."')
             setNeedsStory(false)
         }
 
@@ -48,7 +49,7 @@ export const Text = () => {
         if ( store.state.text.length !== needsMore.textLength && needsMore.isFetching) {
             setNeedsMore({
                 isFetching: false,
-                textLength: store.state.textInput.length
+                textLength: store.state.text.length
             })
         }
 
@@ -65,6 +66,7 @@ export const Text = () => {
         const textLength = store.state.text.length
         const text = store.state.text[textLength - 1];
         getText(store, text);
+        setFindForText('"' + text.slice(0, 5) + '..."')
         setNeedsMore({
             isFetching: true,
             textLength: textLength
@@ -137,7 +139,7 @@ export const Text = () => {
             ) : (
                 <div id="centered">
                     <div id="centered-items">
-                        <p>{UIText.appTextText}"{findForText}..."</p>
+                        <p>{UIText.appTextText}{findForText}</p>
                         <div id="spinner">
                             <div className="spinner-2">&nbsp;</div>
                         </div>
