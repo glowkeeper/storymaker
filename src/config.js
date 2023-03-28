@@ -35,7 +35,7 @@ export class FlickrAPI {
 
 export class OpenAI {
     static temperature = 0.9
-    static maxTokens = 4096
+    static maxTokens = 2048
     static model = "text-davinci-003"
 }
 

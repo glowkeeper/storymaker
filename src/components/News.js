@@ -27,6 +27,15 @@ export const News = () => {
     }, [store, hasNoTitle])
 
     const handleClick = async (topic) => {
+
+        store.dispatch({
+            type: StoreActions.textInputInit
+        })
+
+        store.dispatch({
+            type: StoreActions.textInit
+        })
+
         getNews(store, topic)
         navigate(LocalRoutes.newsHeadlines)  
     }

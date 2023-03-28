@@ -17,6 +17,8 @@ export const ImageObjects = () => {
 
     const navigate = useNavigate()
 
+    const needsAn = chr => (/[aeiou]/i).test(chr);
+
     useEffect(() => {
 
         if( hasNoTitle ) {
@@ -75,17 +77,20 @@ export const ImageObjects = () => {
 
         if ( numPredictions === System.numSelectedImages && hasNotDispatched) {
             
+            console.log('got keywords', keyWords)
             setHasNotDispatched(false)
+            
+            const keyWord = keyWords[Math.floor(Math.random() * keyWords.length)];
+            console.log('got keyword', keyWord)
+            
+            const text = needsAn(keyWord.charAt(0)) ? "An " + keyWord : "A " + keyWord
+            console.log('got text input', text)
 
             store.dispatch({
-                type: StoreActions.imagesInit
+                type: StoreActions.textInputSet,
+                payload: text
             })
             
-            store.dispatch({
-                type: StoreActions.keyWordsCreate,
-                payload: keyWords
-            })
-
             navigate(LocalRoutes.text)
         }
 

@@ -3,16 +3,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { getPredictions } from '../store/api/getPredictions'
-
-import { System, LocalRoutes, UIText } from '../config'
+import { LocalRoutes, UIText } from '../config'
 
 export const NewsHeadlines = () => {
     const store = useContext(StoreContext)
-    const [needsPredictions, setNeedsPredictions] = useState(true)
-    const [hasNotDispatched, setHasNotDispatched] = useState(true)
-    const [numPredictions, setNumPredictions] = useState(0)
-    const [keyWords, setKeyWords] = useState([])
     const [hasNoTitle, setHasNoTitle] = useState(true)
 
     const navigate = useNavigate()
@@ -30,8 +24,15 @@ export const NewsHeadlines = () => {
 
     }, [store, hasNoTitle])
 
-    const handleClick = async (title) => {
-        //console.log('topic title', title)
+    const handleClick = async (headline) => {
+        //console.log('topic title', title)        
+
+        store.dispatch({
+            type: StoreActions.textInputSet,
+            payload: headline
+        })
+
+        navigate(LocalRoutes.text)
     }
 
     return (
@@ -42,15 +43,19 @@ export const NewsHeadlines = () => {
                     <div id="centered-items">
                         <p>{UIText.appTextFoundHeadlines}</p>
                         {store.state.news.map((item, index) => {
-                            return (
-                                <button
-                                    key={index}
-                                    id={"app-button"}
-                                    onClick={() => handleClick(item.title)}
-                                >
-                                    {item.title}
-                                </button>
-                            )
+                            if ( item.title ) {                                
+                                return (
+                                    <button
+                                        key={index}
+                                        id={"app-button"}
+                                        onClick={() => handleClick(item.title)}
+                                    >
+                                        {item.title}
+                                    </button>
+                                ) 
+                            } else {
+                                return null
+                            }
                         })}           
                     </div>         
                 </div>

@@ -18,8 +18,6 @@ export const Text = () => {
         lengthText: 0 
     })
 
-    const needsAn = chr => (/[aeiou]/i).test(chr);
-
     useEffect(() => {
 
         if( hasNoTitle ) {
@@ -35,9 +33,9 @@ export const Text = () => {
 
     useEffect(() => {
 
-        if ( store.state.keyWords.length && needsStory) {
-            const keyWord = store.state.keyWords[Math.floor(Math.random() * store.state.keyWords.length)];
-            const text = needsAn(keyWord.charAt(0)) ? "An " + keyWord : "A " + keyWord
+        const text = store.state.textInput
+        if ( text && needsStory) {
+
             getText(store, text, true)
             setFindForText(text)
             setNeedsStory(false)
@@ -50,7 +48,7 @@ export const Text = () => {
         if ( store.state.text.length !== needsMore.textLength && needsMore.isFetching) {
             setNeedsMore({
                 isFetching: false,
-                textLength: store.state.keyWords.length
+                textLength: store.state.textInput.length
             })
         }
 

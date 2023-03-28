@@ -14,15 +14,13 @@ export class StoreActions {
   static imageObjectsReset = 'ImageObjects/Reset'
   static imageObjectsCreate = 'ImageObjects/Create'
   static imageObjectsUpdate = 'ImageObjects/Update'
-  static keyWordsInit = 'KeyWords/Initialise'
-  static keyWordsReset = 'KeyWords/Reset'
-  static keyWordsCreate = 'KeyWords/Create'
-  static keyWordsUpdate = 'KeyWords/Update'
-  static newsTopicSet = 'newsTopic/Set'
   static newsInit = 'news/Initialise'
   static newsReset = 'news/Reset'
   static newsCreate = 'news/Create'
   static newsUpdate = 'news/Update'
+  static textInputInit = 'textInput/Initialise'
+  static textInputReset = 'textInput/Reset'
+  static textInputSet = 'textInput/Set'
   static textInit = 'Text/Initialise'
   static textReset = 'Text/Reset'
   static textCreate = 'Text/Create'
@@ -39,9 +37,9 @@ export const initialState = {
   aPIKeys: initAPIKeys,
   pageTitle: "",
   images: [],
-  imageObjects: {}, 
-  keyWords: [],
-  news:[],
+  imageObjects: {},
+  news: [],
+  textInput: "",
   text: []
 }
 
@@ -103,20 +101,6 @@ export const imageObjectsReducer = (state, action) => {
   }
 }
 
-export const keyWordsReducer = (state, action) => {
-  switch (action.type) {
-    case StoreActions.keyWordsInit: 
-    case StoreActions.keyWordsReset:
-      return [...initialState.keyWords]
-    case StoreActions.keyWordsCreate:
-      return [...action.payload]
-    case StoreActions.keyWordsUpdate:
-      return [...state, ...action.payload]
-    default:
-      return state
-  }
-}
-
 export const newsReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.newsInit: 
@@ -130,6 +114,19 @@ export const newsReducer = (state, action) => {
       return state
   }
 }
+
+export const textInputReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.textInputInit: 
+    case StoreActions.textInputReset:
+      return ""
+    case StoreActions.textInputSet: 
+      return action.payload
+    default:
+      return state
+  }
+}
+
 
 export const textReducer = (state, action) => {
   switch (action.type) {
@@ -176,7 +173,7 @@ export const rootReducer = combineReducers({
   pageTitle: pageTitleReducer,
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
-  keyWords: keyWordsReducer,
   news: newsReducer,
+  textInput: textInputReducer,
   text: textReducer
 })

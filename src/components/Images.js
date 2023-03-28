@@ -31,6 +31,19 @@ export const Images = () => {
     useEffect(() => {        
 
         if ( needsImages ) {
+
+            store.dispatch({
+                type: StoreActions.textInputInit
+            })
+
+            store.dispatch({
+                type: StoreActions.textInit
+            })
+
+            store.dispatch({
+                type: StoreActions.imagesInit
+            })
+
             getImages(store, FlickrAPI.tags);
             setNeedsImages(false)
         }
@@ -57,16 +70,13 @@ export const Images = () => {
         event.preventDefault();
         const images = setImages(imageURLs)
         const length = Object.keys(images).length;
-        if (length === System.numSelectedImages) {
-
-            store.dispatch({
-                type: StoreActions.textInit
-            })
+        if (length === System.numSelectedImages) {            
 
             store.dispatch({
                 type: StoreActions.imageObjectsCreate,
                 payload: images
             })
+
             navigate(LocalRoutes.imageObjects)            
         }
         setClickedImages(images)
