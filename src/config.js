@@ -61,9 +61,9 @@ export class UIText {
     static appTextHeadlines = 'please wait - getting headlines'
     static appTextFoundObjects = 'found objects'
     static appTextFoundHeadlines = 'found headlines'
-    static appTextText = 'please wait - generating text for '
+    static appTextText = 'please wait - generating text'
 
-    static appLandingButtonText = 'go...'
+    static appLandingButtonText = 'create a story...'
     static appImagesButtonText = "choose 10 images"
     static appNewsButtonText = "pick a news story"
     static appNewButtonText = "get new..."

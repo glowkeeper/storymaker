@@ -25,10 +25,10 @@ export const NewsHeadlines = () => {
     }, [store, hasNoTitle])
 
     const handleClick = async (headline) => {
-        //console.log('topic title', title)        
+        console.log('topic title', headline)        
 
         store.dispatch({
-            type: StoreActions.textInputSet,
+            type: StoreActions.textInputCreate,
             payload: [headline]
         })
 

@@ -16,7 +16,7 @@ export const Landing = (props) => {
                     <p><b>{UIText.poweredBy}</b></p>
                 </div>
                 <div id="powered-fadeIn">
-                    <p><a href="https://www.flickr.com/">flickr</a>, <a href="https://www.tensorflow.org/">TensorFlow</a> and <a href="https://openai.com/">OpenAI</a></p>
+                    <p><a href="https://www.flickr.com/">flickr</a>, <a href="https://developer.nytimes.com/apis">New York Times</a>, <a href="https://www.tensorflow.org/">TensorFlow</a> and <a href="https://openai.com/">OpenAI</a></p>
                 </div>
                 <div id="landing-button-fadeIn">
                     <p>
