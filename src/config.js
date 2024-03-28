@@ -1,7 +1,7 @@
 export class LocalRoutes {
     static home = '/storymaker'
     static login = `${LocalRoutes.home}/login`
-    static app = `${LocalRoutes.home}/app`
+    static app = `${LocalRoutes.home}/maker`
     static images = `${LocalRoutes.app}/images`
     static imageObjects = `${LocalRoutes.app}/image-objects`
     static news = `${LocalRoutes.app}/news`
@@ -12,6 +12,7 @@ export class LocalRoutes {
 export class Remote {
     static login = '/auth/login'
     static logout = '/auth/logout'
+    static flickr = '/storymaker/flickr'
 }
 
 export class RemoteAPI {
@@ -87,7 +88,7 @@ export class UIText {
     static loginFeedbackError = `Unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
 
     static linkHome = "home"
-    static linkStoryMaker = "app"
+    static linkStoryMaker = "maker"
     static linkAbout = "about"
     static linkSettings = "settings"
     static linkLogin = "login"

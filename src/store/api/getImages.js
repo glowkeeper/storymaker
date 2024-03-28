@@ -3,17 +3,18 @@ import { compose, prop } from 'ramda'
 import { StoreActions } from '../store'
 
 import { IO, flickrCroppedSquarePhotos, flickrLargePhotos, flickrQuery } from '../../utils/iO'
+
 import { map } from '../../utils/utils'
 
-import { FlickrAPI } from '../../config'
-
-export const getImages = (store, tags) => {
+export const getImages = (store) => {
 
     store.dispatch({ 
         type: StoreActions.imagesInit
     });
 
-    const get = compose(IO.getData(flickrData => {
+    IO.getData(flickrData => {
+
+        //console.log('flickr data', flickrData)
 
         //const uRLs = []            
         const imageURLs = compose(map(imageData => {
@@ -33,18 +34,10 @@ export const getImages = (store, tags) => {
                 payload: [imageURLs]
             });
         }), prop('photo'), prop('photos'));
-        
-        imageURLs(flickrData)
-        /*dispatch({ 
-            type: StoreActions.imagesCreate,
-            payload: uRLs
-        });*/
-    
-    }, null), flickrQuery);
 
-    const flickrAPIKey = store.state.aPIKeys.flickr
-    if ( flickrAPIKey ) {
-        const page = [Math.floor(Math.random() * FlickrAPI.numPages)]
-        get(flickrAPIKey, tags, page)
-    }
+        if (flickrData.status === 'OK') {
+            imageURLs(flickrData.data)
+        }                
+    
+    }, null, flickrQuery)
 }

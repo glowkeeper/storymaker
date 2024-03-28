@@ -83,7 +83,7 @@ export const Login = () => {
       body: JSON.stringify(loginData)
     }
 
-    IO.getData( giveFeedback, fetchOptions, process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.login)
+    IO.getData(giveFeedback, fetchOptions, process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.login)
   } 
 
   const onSubmit = async (data) => {
