@@ -17,7 +17,7 @@ export const ImageObjects = () => {
 
     const navigate = useNavigate()
 
-    const needsAn = chr => (/[aeiou]/i).test(chr);
+    const needsAn = chr => (/[aeiou]/i).test(chr)
 
     useEffect(() => {
 

@@ -1,12 +1,17 @@
 export class LocalRoutes {
-    static home = "/storymaker"
-    static about = `${LocalRoutes.home}/about`
-    static settings = `${LocalRoutes.home}/settings`
-    static images = `${LocalRoutes.home}/images`
-    static imageObjects = `${LocalRoutes.home}/image-objects`
-    static news = `${LocalRoutes.home}/news`
-    static newsHeadlines = `${LocalRoutes.home}/news-headlines`
-    static text = `${LocalRoutes.home}/text`
+    static home = '/storymaker'
+    static login = `${LocalRoutes.home}/login`
+    static app = `${LocalRoutes.home}/app`
+    static images = `${LocalRoutes.app}/images`
+    static imageObjects = `${LocalRoutes.app}/image-objects`
+    static news = `${LocalRoutes.app}/news`
+    static newsHeadlines = `${LocalRoutes.app}/news-headlines`
+    static text = `${LocalRoutes.app}/text`
+}
+
+export class Remote {
+    static login = '/auth/login'
+    static logout = '/auth/logout'
 }
 
 export class RemoteAPI {
@@ -20,8 +25,6 @@ export class RemoteAPI {
 
     //static openAIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
     static openAIGeneration = 'https://api.openai.com/v1/completions'
-
-
 }
 
 export class System {
@@ -46,8 +49,7 @@ export class UIText {
     static appCatchphrase = 'ai-based text generation'
     static poweredBy = 'powered by'
     static appTitleHome = "home"
-    static appTitleAbout = "about"
-    static appTitleSettings = "settings"
+    static appTitleLogin = "login"
     static appTitleImages = "images"
     static appTitleImageObjects = "classification"
     static appTitleNews = "news topics"
@@ -63,7 +65,7 @@ export class UIText {
     static appTextFoundHeadlines = 'found headlines'
     static appTextText = 'please wait - generating text'
 
-    static appLandingButtonText = 'create a story...'
+    static appLandingButtonText = 'make...'
     static appImagesButtonText = "choose 10 images"
     static appNewsButtonText = "pick a news story"
     static appNewButtonText = "get new..."
@@ -72,9 +74,24 @@ export class UIText {
     static appRemoveLastButtonText = "remove last"
     static appSaveButtonText = "save text"
 
+    static login = "Login"
+    static logOut = "Logout"
+    static loginForm = {
+        email: 'Email',
+        password: 'Password',
+        requiredError: 'a value is required',
+        emailError: 'a valid email is required',
+        passwordError: 'password is required',
+    }
+    static loginFeedbackOk = "Welcome!"
+    static loginFeedbackError = `Unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
+
     static linkHome = "home"
+    static linkStoryMaker = "app"
     static linkAbout = "about"
     static linkSettings = "settings"
+    static linkLogin = "login"
+    static linkLogout = "logout"
     static linkImages = "get images"
     static linkImageObjects = "images objects"
     static linkText = "text"

@@ -5,6 +5,8 @@ export const StoreContext = React.createContext()
 export class StoreActions { 
   static aPIKeysInit = 'APIKeys/Initialiase'
   static aPIKeysUpdate = 'APIKeys/Update'
+  static login = 'user/login'
+  static logout = 'user/logout'
   static pageTitleSet = 'PageTitle/Set'
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
@@ -36,6 +38,7 @@ export const initAPIKeys = {
 
 export const initialState = {
   aPIKeys: initAPIKeys,
+  user: {},
   pageTitle: "",
   images: [],
   imageObjects: {},
@@ -52,6 +55,19 @@ export const aPIKeysReducer = (state, action) => {
       const key = action.payload.key
       const value = action.payload.value
       return {...state, [`${key}`]: value}
+    default:
+      return state
+  }
+}
+
+export const userReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.login:      
+      const user = action.payload  
+      //console.log('got login', user)
+      return user
+    case StoreActions.logout:
+      return {}
     default:
       return state
   }
@@ -172,6 +188,7 @@ const combineReducers = reducers => {
 
 export const rootReducer = combineReducers({
   aPIKeys: aPIKeysReducer,
+  user: userReducer,
   pageTitle: pageTitleReducer,
   images: imagesReducer,
   imageObjects: imageObjectsReducer,

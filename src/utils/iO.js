@@ -8,7 +8,12 @@ const fetchData = async (props) => {
   try {
 
       const response = options ? await fetch(url, options) : await fetch(url)
-      const data = await response.json()
+      //console.log('got response', response)   
+
+      // Copes with empty response...
+      const textData = await response.text() 
+      const data = textData ? JSON.parse(textData) : {}
+      
       if ( cb ) cb(data)
 
   } catch (error) {

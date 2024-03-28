@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import { Landing } from './Landing'
-import { Main } from './Main'
+import { Landing } from './components/Landing'
+import { Main } from './components/Main'
 
-import { UIText } from '../config'
+import { UIText } from './config'
 
 export const App = () => {
     const [hasLanded, setHasLanded] = useState(false)

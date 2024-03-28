@@ -68,7 +68,7 @@ footer {
 
 #navBar > nav {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: var(--grid-gap);
   place-items: end end;
 }
@@ -130,6 +130,27 @@ a:hover {
 #seperator {
   margin-top: 1rem;
   border-top: solid 1px var(--ruler-colour);
+}
+
+#login-form {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  padding: 1rem 0 0 0;
+  margin-top: 1rem;
+}
+
+#login-form label {  
+  display: grid;
+  place-items: center start;
+}
+
+#login-form input {  
+  display: grid;
+  place-items: start start;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  resize: none;
 }
 
 #settings-grid {
