@@ -15,8 +15,7 @@ export const getImages = (store) => {
     IO.getData(flickrData => {
 
         //console.log('flickr data', flickrData)
-
-        //const uRLs = []            
+         
         const imageURLs = compose(map(imageData => {
 
             // console.log('imagedata', imageData)

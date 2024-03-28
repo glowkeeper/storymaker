@@ -32,12 +32,9 @@ export const Text = () => {
 
     useEffect(() => {
 
-        console.log('text input', store.state.textInput)
-
         if ( store.state.textInput.length && needsStory) {
 
-            const text = store.state.textInput[Math.floor(Math.random() * store.state.textInput.length)];
-            console.log('find text', text, store.state.textInput)
+            const text = store.state.textInput.join('. ');
             getText(store, text, true)
             setNeedsStory(false)
         }

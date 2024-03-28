@@ -13,6 +13,7 @@ export class Remote {
     static login = '/auth/login'
     static logout = '/auth/logout'
     static flickr = '/storymaker/flickr'
+    static openai = '/storymaker/openai'
 }
 
 export class RemoteAPI {
@@ -38,9 +39,7 @@ export class FlickrAPI {
 }
 
 export class OpenAI {
-    static temperature = 0.9
-    static maxTokens = 2048
-    static model = "text-davinci-003"
+    static textSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
 }
 
 export class UIText {
