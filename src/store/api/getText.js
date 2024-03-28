@@ -4,14 +4,14 @@ import { Remote, OpenAI } from '../../config'
 
 export const getText = async (store, text, isInit = false) => {
 
-    console.log('got text', text)
+    //console.log('got text', text)
     
     const content = {
         "systemPrompt": OpenAI.textSystemPrompt,
         "userPrompt": text
     }
 
-    console.log('content', content)
+    //console.log('content', content)
 
     const fetchOptions = {
         method: 'POST',
@@ -23,7 +23,7 @@ export const getText = async (store, text, isInit = false) => {
 
     IO.getData( async (response) => {
 
-        console.log('I found', response)
+        //console.log('I found', response)
 
         const payload = [];
         let type = StoreActions.textUpdate
