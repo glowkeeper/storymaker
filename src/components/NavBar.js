@@ -47,20 +47,30 @@ export const NavBar = () => {
         <div id="navBar">
             <h3 id="title">{pageTitle}</h3>                
             <nav id="links">
-                <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
                 <>
                     { store.state.user.access_token ? (
 
-                        <Link
-                            to={LocalRoutes.home}
-                            onClick={() => logout()}
-                        >
-                            {UIText.linkLogout}
-                        </Link>        
+                        <>
+                            <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+                            <Link
+                                to={LocalRoutes.app}
+                            >
+                                {UIText.linkStoryMaker}
+                            </Link> 
+                            <Link
+                                to={LocalRoutes.home}
+                                onClick={() => logout()}
+                            >
+                                {UIText.linkLogout}
+                            </Link>
+                        </>        
 
                     ) : (
-
-                        <Link to={LocalRoutes.login}>{UIText.linkLogin}</Link>
+                        <>
+                            <>&nbsp;</>
+                            <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+                            <Link to={LocalRoutes.login}>{UIText.linkLogin}</Link>
+                        </>
                     )}
                 </>
             </nav>

@@ -1,7 +1,9 @@
+import { UIText } from '../config'
+
 export const Footer = () => {
     return (
         <footer>
-            <p>&copy; 2022, <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a>, all rights reserved</p>
+            <p dangerouslySetInnerHTML={{__html: UIText.appCopyright}}></p>
         </footer>
         
     )

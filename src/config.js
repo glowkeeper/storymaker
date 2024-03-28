@@ -45,16 +45,16 @@ export class OpenAI {
 export class UIText {
     static appTabTitle = "storymaker"
     static appTitle = 'storymaker'
-    static appCopyright = "2021, Dr Steve Huckle"
+    static appCopyright = '&copy; 2022, <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a>, all rights reserved'
     static appCatchphrase = 'ai-based text generation'
     static poweredBy = 'powered by'
     static appTitleHome = "home"
     static appTitleLogin = "login"
-    static appTitleImages = "images"
-    static appTitleImageObjects = "classification"
-    static appTitleNews = "news topics"
-    static appTitleNewsHeadlines = "news headlines"
-    static appTitleText = "text"
+    static appTitleImages = `${UIText.appTitle} | images`
+    static appTitleImageObjects = `${UIText.appTitle} | classification`
+    static appTitleNews = `${UIText.appTitle} | news topics`
+    static appTitleNewsHeadlines = `${UIText.appTitle} | news headlines`
+    static appTitleText = `${UIText.appTitle} | text`
 
     static appTextHome = ''
     static appTextAbout = 'is an ai-based app that uses news stories and ai image classification to find image objects, then uses ai text generation to generate text from those stories or one of those image objects.'
