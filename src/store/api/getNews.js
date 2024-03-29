@@ -15,22 +15,29 @@ export const getNews = (store, topic) => {
     const fetchOptions = {
         method: 'POST',
         headers: {
-            "Content-Type": 'application/json'
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${store.state.user.access_token}`
         },
         body: JSON.stringify(content)
     }
 
     IO.getData(stories => {
 
-        console.log('stories', stories)
-        if (stories.data?.results?.length > 0) {
+        if (stories.ok && 
+            stories.data?.results?.length > 0) {
 
             store.dispatch({ 
                 type: StoreActions.newsUpdate,
                 payload: stories.data.results
-            });
+            })
+            
+        } else {
+    
+            store.dispatch({ 
+                type: StoreActions.errorSet,
+                payload: 'NYT error'
+            })
         }
-        return stories
     
     }, fetchOptions, nytQuery)
 }

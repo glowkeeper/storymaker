@@ -11,7 +11,8 @@ export const Images = () => {
     const store = useContext(StoreContext)
     const [needsImages, setNeedsImages] = useState(true)
     const [clickedImages, setClickedImages] = useState({})
-    const [hasNoTitle, setHasNoTitle] = useState(true)
+    const [hasNoTitle, setHasNoTitle] = useState(true)    
+    const [error, setError] = useState(true)
 
     const navigate = useNavigate()
 
@@ -49,6 +50,12 @@ export const Images = () => {
         }
 
     }, [needsImages, store])
+
+    useEffect(() => {       
+        
+        setError(store.state.error)
+
+    }, [store.state.error])
 
     const doesExist = (imageURLs) => {
         return clickedImages.hasOwnProperty(imageURLs.cropped);
@@ -107,14 +114,26 @@ export const Images = () => {
                 </>
 
             ) : (
-                <div id="centered">
-                    <div id="centered-items">
-                        <p>{UIText.appTextImages}</p>
-                        <div id="spinner">
-                            <div className="spinner-2">&nbsp;</div>
+
+                <>
+
+                    { store.state.error ? (
+
+                        <p>{error}</p>
+
+                    ) : (
+
+                    <div id="centered">
+                        <div id="centered-items">
+                            <p>{UIText.appTextImages}</p>
+                            <div id="spinner">
+                                <div className="spinner-2">&nbsp;</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    )}
+                </>
                 
             )}
         </>

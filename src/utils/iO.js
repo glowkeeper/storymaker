@@ -17,7 +17,8 @@ const fetchData = async (props) => {
       if ( cb ) cb(data)
 
   } catch (error) {
-    console.error('fetchData', error)
+    console.error('fetchData error', error)
+    
   }
 }
   
@@ -31,7 +32,7 @@ const fetchJSON = async (props) => {
       if ( cb ) cb(response)
 
   } catch (error) {
-    console.error('fetchData', error)
+    console.error('fetchJSON', error)
   }
 }
 

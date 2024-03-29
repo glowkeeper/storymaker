@@ -9,13 +9,12 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
         "systemPrompt": systemPrompt,
         "userPrompt": userPrompt
     }
-
-    //console.log('content', content)
-
+    
     const fetchOptions = {
         method: 'POST',
         headers: {
-            "Content-Type": 'application/json'
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${store.state.user.access_token}`
         },
         body: JSON.stringify(content)
     }
@@ -30,12 +29,10 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
 
         if ( response.hasOwnProperty('error')) {
             
-            foundText = response.error.message
-            payload.push(foundText);
             store.dispatch({ 
-                type: type,
-                payload: payload
-            });
+                type: StoreActions.errorSet,
+                payload: 'OpenAI error - please try again later'
+            })
 
         } else {
 
@@ -46,7 +43,6 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
             }
 
             if (isInit) {
-                foundText = userPrompt + " " + foundText
                 type = StoreActions.textCreate            
             } 
 

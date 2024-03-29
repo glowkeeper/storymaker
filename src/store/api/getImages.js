@@ -12,10 +12,16 @@ export const getImages = (store) => {
         type: StoreActions.imagesInit
     });
 
-    IO.getData(flickrData => {
+    const fetchOptions = {
+        method: 'GET',
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${store.state.user.access_token}`
+        }
+    }   
 
-        //console.log('flickr data', flickrData)
-         
+    IO.getData( async flickrData => {
+
         const imageURLs = compose(map(imageData => {
 
             // console.log('imagedata', imageData)
@@ -34,9 +40,16 @@ export const getImages = (store) => {
             });
         }), prop('photo'), prop('photos'));
 
-        if (flickrData.status === 'OK') {
+        if (flickrData.ok) {
             imageURLs(flickrData.data)
+
+        } else {
+
+            store.dispatch({ 
+                type: StoreActions.errorSet,
+                payload: 'flickr error - please try again later'
+            })
         }                
     
-    }, null, flickrQuery)
+    }, fetchOptions, flickrQuery)
 }

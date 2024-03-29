@@ -5,6 +5,7 @@ export const StoreContext = React.createContext()
 export class StoreActions { 
   static login = 'user/login'
   static logout = 'user/logout'
+  static errorSet = 'Error/Set'
   static pageTitleSet = 'PageTitle/Set'
   static imagesInit = 'Images/Initialise'
   static imagesReset = 'Images/Reset'
@@ -31,6 +32,7 @@ export class StoreActions {
 
 export const initialState = {
   user: {},
+  error: "",
   pageTitle: "",
   images: [],
   imageObjects: {},
@@ -48,6 +50,15 @@ export const userReducer = (state, action) => {
       return user
     case StoreActions.logout:
       return {}
+    default:
+      return state
+  }
+}
+
+export const errorReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.errorSet: 
+      return action.payload
     default:
       return state
   }
@@ -177,6 +188,7 @@ const combineReducers = reducers => {
 
 export const rootReducer = combineReducers({
   user: userReducer,
+  error: errorReducer,
   pageTitle: pageTitleReducer,
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
