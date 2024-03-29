@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getImages } from '../store/api/getImages'
 
-import { System, LocalRoutes, FlickrAPI, UIText } from '../config'
+import { System, LocalRoutes, UIText } from '../config'
 
 export const Images = () => {
     const store = useContext(StoreContext)
@@ -44,7 +44,7 @@ export const Images = () => {
                 type: StoreActions.imagesInit
             })
 
-            getImages(store, FlickrAPI.tags);
+            getImages(store);
             setNeedsImages(false)
         }
 

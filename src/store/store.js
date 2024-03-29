@@ -3,8 +3,6 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
-  static aPIKeysInit = 'APIKeys/Initialiase'
-  static aPIKeysUpdate = 'APIKeys/Update'
   static login = 'user/login'
   static logout = 'user/logout'
   static pageTitleSet = 'PageTitle/Set'
@@ -20,6 +18,7 @@ export class StoreActions {
   static newsReset = 'news/Reset'
   static newsCreate = 'news/Create'
   static newsUpdate = 'news/Update'
+  static textPromptSet = 'textPrompt/Set'
   static textInputInit = 'textInput/Initialise'
   static textInputReset = 'textInput/Reset'
   static textInputCreate = 'textInput/Create'
@@ -30,34 +29,15 @@ export class StoreActions {
   static textUpdate = 'Text/Update'
 }
 
-export const initAPIKeys = {
-  flickr: "",
-  nYT: "",
-  openAI: ""
-}
-
 export const initialState = {
-  aPIKeys: initAPIKeys,
   user: {},
   pageTitle: "",
   images: [],
   imageObjects: {},
   news: [],
+  textPrompt: "",
   textInput: [],
   text: []
-}
-
-export const aPIKeysReducer = (state, action) => {
-  switch (action.type) {
-    case StoreActions.aPIKeysInit:       
-      return {...initialState.aPIKeys}
-    case StoreActions.aPIKeysUpdate:
-      const key = action.payload.key
-      const value = action.payload.value
-      return {...state, [`${key}`]: value}
-    default:
-      return state
-  }
 }
 
 export const userReducer = (state, action) => {
@@ -132,6 +112,15 @@ export const newsReducer = (state, action) => {
   }
 }
 
+export const textPromptReducer = (state, action) => {
+  switch (action.type) {
+    case StoreActions.textPromptSet: 
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export const textInputReducer = (state, action) => {
   switch (action.type) {
     case StoreActions.textInputInit: 
@@ -187,12 +176,12 @@ const combineReducers = reducers => {
 }
 
 export const rootReducer = combineReducers({
-  aPIKeys: aPIKeysReducer,
   user: userReducer,
   pageTitle: pageTitleReducer,
   images: imagesReducer,
   imageObjects: imageObjectsReducer,
   news: newsReducer,
+  textPrompt: textPromptReducer,
   textInput: textInputReducer,
   text: textReducer
 })

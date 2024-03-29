@@ -34,8 +34,9 @@ export const Text = () => {
 
         if ( store.state.textInput.length && needsStory) {
 
-            const text = store.state.textInput.join('. ');
-            getText(store, text, true)
+            const systemPrompt = store.state.textPrompt
+            const userPrompt = store.state.textInput.join('. ')
+            getText(store, systemPrompt, userPrompt, true)
             setNeedsStory(false)
         }
 

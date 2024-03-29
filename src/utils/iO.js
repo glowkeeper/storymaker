@@ -1,6 +1,6 @@
 import { curry } from 'ramda'
 
-import { RemoteAPI, Remote } from '../config'
+import { Remote } from '../config'
 
 const fetchData = async (props) => {
   const { url, cb, options } = props
@@ -49,9 +49,9 @@ export const IO = {
     trace: curry(async (tag, x) => { console.log(tag, x); return x; }),
 };
 
-// export const flickrQuery = curry((k, t, p) => `${RemoteAPI.flickrSearchAPI}&api_key=${k}&tags="${t}"&page=${p}&format=json&nojsoncallback=1&safe_search=1&content_type=1`)
-export const flickrQuery = process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.flickr
-export const flickrCroppedSquarePhotos = curry((serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`)
-export const flickrLargePhotos = curry((serverId, id, secret) => `${RemoteAPI.flickrPhotoServer}/${serverId}/${id}_${secret}_b.jpg`)
+export const openaiQuery = process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.openai
+export const nytQuery = process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.nyt
 
-export const nYTQuery = curry((k, t) => `${RemoteAPI.nYTTopStoriesAPI}/${t}.json?api-key=${k}`)
+export const flickrQuery = process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.flickr
+export const flickrCroppedSquarePhotos = curry((serverId, id, secret) => `${Remote.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`)
+export const flickrLargePhotos = curry((serverId, id, secret) => `${Remote.flickrPhotoServer}/${serverId}/${id}_${secret}_b.jpg`)

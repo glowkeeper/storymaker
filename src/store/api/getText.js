@@ -1,14 +1,13 @@
 import { StoreActions } from '../store'
-import { IO } from '../../utils/iO'
-import { Remote, OpenAI } from '../../config'
+import { IO, openaiQuery } from '../../utils/iO'
 
-export const getText = async (store, text, isInit = false) => {
+export const getText = async (store, systemPrompt, userPrompt, isInit = false) => {
 
-    //console.log('got text', text)
+    //console.log('got text', systemPrompt, userPrompt)
     
     const content = {
-        "systemPrompt": OpenAI.textSystemPrompt,
-        "userPrompt": text
+        "systemPrompt": systemPrompt,
+        "userPrompt": userPrompt
     }
 
     //console.log('content', content)
@@ -47,7 +46,7 @@ export const getText = async (store, text, isInit = false) => {
             }
 
             if (isInit) {
-                foundText = text + " " + foundText
+                foundText = userPrompt + " " + foundText
                 type = StoreActions.textCreate            
             } 
 
@@ -57,5 +56,5 @@ export const getText = async (store, text, isInit = false) => {
                 payload: payload
             });
         }
-    }, fetchOptions, process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.openai)
+    }, fetchOptions, openaiQuery)
 }

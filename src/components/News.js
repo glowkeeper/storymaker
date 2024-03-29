@@ -5,9 +5,10 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getNews } from '../store/api/getNews'
 
-import { LocalRoutes, UIText } from '../config'
+import { LocalRoutes, UIText, NYT } from '../config'
 
 export const News = () => {
+
     const store = useContext(StoreContext)
     const [hasNoTitle, setHasNoTitle] = useState(true)
 
@@ -43,7 +44,7 @@ export const News = () => {
     return (
         <>
             <p>Select a topic:</p>
-            {UIText.newsTopics.map((topic, index) =>              
+            {NYT.newsTopics.map((topic, index) =>              
                 <button
                     key={index}
                     id={"app-button"}

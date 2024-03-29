@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getPredictions } from '../store/api/getPredictions'
 
-import { System, LocalRoutes, UIText } from '../config'
+import { System, LocalRoutes, UIText, OpenAI } from '../config'
 
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
@@ -88,6 +88,11 @@ export const ImageObjects = () => {
             }) 
             
             //console.log('got text input', keyWordsWithPrep)
+
+            store.dispatch({
+                type: StoreActions.textPromptSet,
+                payload: OpenAI.imageSystemPrompt
+            })
 
             store.dispatch({
                 type: StoreActions.textInputCreate,

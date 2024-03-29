@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { LocalRoutes, UIText } from '../config'
+import { LocalRoutes, UIText, OpenAI } from '../config'
 
 export const NewsHeadlines = () => {
     const store = useContext(StoreContext)
@@ -25,7 +25,12 @@ export const NewsHeadlines = () => {
     }, [store, hasNoTitle])
 
     const handleClick = async (headline) => {
-        console.log('topic title', headline)        
+        //console.log('topic title', headline)    
+
+        store.dispatch({
+            type: StoreActions.textPromptSet,
+            payload: OpenAI.newsSystemPrompt
+        })
 
         store.dispatch({
             type: StoreActions.textInputCreate,

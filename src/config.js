@@ -14,32 +14,22 @@ export class Remote {
     static logout = '/auth/logout'
     static flickr = '/storymaker/flickr'
     static openai = '/storymaker/openai'
-}
+    static nyt = '/storymaker/nyt'
 
-export class RemoteAPI {
-    // static flickrGetRecentAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent'
-    static flickrSearchAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     static flickrPhotoServer = 'https://live.staticflickr.com/'
-
-    static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
-    
-    static nlpGeneration = 'https://api.nlpcloud.io/v1/gpt-j/generation'
-
-    //static openAIGeneration = 'https://api.openai.com/v1/engines/davinci/completions'
-    static openAIGeneration = 'https://api.openai.com/v1/completions'
 }
 
 export class System {
     static numSelectedImages = 10
 }
 
-export class FlickrAPI {
-    static numPages = 100
-    static tags = "flowers,trees,river,dog,food,landscape,garden,people,street,park,city,bird,nature,sea,family,house,car,cat,beach,lake"
+export class NYT {
+    static newsTopics = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "magazine", "movies", "politics", "science", "sports", "technology", "theater", "travel", "world"]
 }
 
 export class OpenAI {
-    static textSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
+    static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
+    static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline below."
 }
 
 export class UIText {
