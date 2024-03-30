@@ -16,6 +16,13 @@ export const Images = () => {
 
     const navigate = useNavigate()
 
+
+    useEffect(() => {       
+        
+        setError(store.state.error)
+
+    }, [store.state.error])
+
     useEffect(() => {
 
         if( hasNoTitle ) {
@@ -34,6 +41,10 @@ export const Images = () => {
         if ( needsImages ) {
 
             store.dispatch({
+                type: StoreActions.errorInit
+            })
+
+            store.dispatch({
                 type: StoreActions.textInputInit
             })
 
@@ -50,12 +61,6 @@ export const Images = () => {
         }
 
     }, [needsImages, store])
-
-    useEffect(() => {       
-        
-        setError(store.state.error)
-
-    }, [store.state.error])
 
     const doesExist = (imageURLs) => {
         return clickedImages.hasOwnProperty(imageURLs.cropped);
@@ -123,14 +128,14 @@ export const Images = () => {
 
                     ) : (
 
-                    <div id="centered">
-                        <div id="centered-items">
-                            <p>{UIText.appTextImages}</p>
-                            <div id="spinner">
-                                <div className="spinner-2">&nbsp;</div>
+                        <div id="centered">
+                            <div id="centered-items">
+                                <p>{UIText.appTextImages}</p>
+                                <div id="spinner">
+                                    <div className="spinner-2">&nbsp;</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     )}
                 </>

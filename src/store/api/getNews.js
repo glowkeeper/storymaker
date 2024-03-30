@@ -23,6 +23,8 @@ export const getNews = (store, topic) => {
 
     IO.getData(stories => {
 
+        //console.log('stories', stories)
+
         if (stories.ok && 
             stories.data?.results?.length > 0) {
 

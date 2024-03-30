@@ -8,8 +8,15 @@ import { LocalRoutes, UIText, OpenAI } from '../config'
 export const NewsHeadlines = () => {
     const store = useContext(StoreContext)
     const [hasNoTitle, setHasNoTitle] = useState(true)
+    const [error, setError] = useState(true)
 
     const navigate = useNavigate()
+
+    useEffect(() => {       
+        
+        setError(store.state.error)
+
+    }, [store.state.error])
 
     useEffect(() => {
 
@@ -26,6 +33,10 @@ export const NewsHeadlines = () => {
 
     const handleClick = async (headline) => {
         //console.log('topic title', headline)    
+
+        store.dispatch({
+            type: StoreActions.errorInit
+        })
 
         store.dispatch({
             type: StoreActions.textPromptSet,
@@ -66,14 +77,25 @@ export const NewsHeadlines = () => {
                 </div>
 
             ) : (
-                <div id="centered">
-                    <div id="centered-items">
-                        <p>{UIText.appTextHeadlines}</p>
-                        <div id="spinner">
-                            <div className="spinner-2">&nbsp;</div>
+                <>
+
+                    { store.state.error ? (
+
+                        <p>{error}</p>
+
+                    ) : (
+
+                        <div id="centered">
+                            <div id="centered-items">
+                                <p>{UIText.appTextHeadlines}</p>
+                                <div id="spinner">
+                                    <div className="spinner-2">&nbsp;</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>                
+
+                    )}
+                </>                  
             )}    
         </>
     )

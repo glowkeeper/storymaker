@@ -29,6 +29,7 @@ export class NYT {
 
 export class OpenAI {
     static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
+    static moreSystemPrompt = "Acting as a short story writer, create a story from the text below."
     static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline below."
 }
 
@@ -87,11 +88,6 @@ export class UIText {
     static linkText = "text"
 
     static newsTopics = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "magazine", "movies", "politics", "science", "sports", "technology", "theater", "travel", "world"]
-
-    static inputFlickrKey = "Flickr API Key"
-    static inputOpenAIKey = "OpenAI API Key"
-    static inputNYTKey = "NYT API Key"
-    static inputNLPToken = "NLP Cloud Token"
 
     static buttonSubmit = "submit"
     static buttonClear = "clear"

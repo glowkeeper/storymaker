@@ -47,7 +47,7 @@ export const getImages = (store) => {
 
             store.dispatch({ 
                 type: StoreActions.errorSet,
-                payload: 'flickr error - please try again later'
+                payload: 'flickr error'
             })
         }                
     

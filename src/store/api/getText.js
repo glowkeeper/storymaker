@@ -27,22 +27,16 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
         let type = StoreActions.textUpdate
         let foundText = ""
 
-        if ( response.hasOwnProperty('error')) {
-            
-            store.dispatch({ 
-                type: StoreActions.errorSet,
-                payload: 'OpenAI error - please try again later'
-            })
-
-        } else {
+        if ( response.ok ) {
 
             foundText = response.data.choices[0]?.message?.content 
-            const stopIndex = foundText.lastIndexOf('.');
+            const stopIndex = foundText.lastIndexOf('.')
             if (stopIndex !== -1 ) {
                 foundText = foundText.slice(0, stopIndex + 1)
             }
 
             if (isInit) {
+                foundText = userPrompt + " - " + foundText
                 type = StoreActions.textCreate            
             } 
 
@@ -50,7 +44,15 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
             store.dispatch({ 
                 type: type,
                 payload: payload
-            });
+            })            
+
+        } else {
+
+            store.dispatch({ 
+                type: StoreActions.errorSet,
+                payload: 'OpenAI error'
+            })
+            
         }
     }, fetchOptions, openaiQuery)
 }

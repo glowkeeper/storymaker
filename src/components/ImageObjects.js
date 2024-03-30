@@ -13,7 +13,7 @@ export const ImageObjects = () => {
     const [hasNotDispatched, setHasNotDispatched] = useState(true)
     const [numPredictions, setNumPredictions] = useState(0)
     const [keyWords, setKeyWords] = useState([])
-    const [hasNoTitle, setHasNoTitle] = useState(true)
+    const [hasNoTitle, setHasNoTitle] = useState(true) 
 
     const navigate = useNavigate()
 
@@ -44,7 +44,7 @@ export const ImageObjects = () => {
 
     useEffect(() => {
 
-        let timeOut;
+        let timeOut
         const myKeys = Object.keys(store.state.imageObjects)
         if ( myKeys.length ){
         
@@ -122,6 +122,7 @@ export const ImageObjects = () => {
                 </div>
 
             ) : (
+
                 <div id="centered">
                     <div id="centered-items">
                         <p>{UIText.appTextImageObjects}</p>
@@ -129,8 +130,8 @@ export const ImageObjects = () => {
                             <div className="spinner-2">&nbsp;</div>
                         </div>
                     </div>
-                </div>                
-            )}    
+                </div>
+            )}
         </>
     )
 }

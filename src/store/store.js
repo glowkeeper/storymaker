@@ -5,6 +5,7 @@ export const StoreContext = React.createContext()
 export class StoreActions { 
   static login = 'user/login'
   static logout = 'user/logout'
+  static errorInit = 'Error/Initialise'
   static errorSet = 'Error/Set'
   static pageTitleSet = 'PageTitle/Set'
   static imagesInit = 'Images/Initialise'
@@ -57,6 +58,9 @@ export const userReducer = (state, action) => {
 
 export const errorReducer = (state, action) => {
   switch (action.type) {
+    case StoreActions.errorInit: 
+    case StoreActions.imagesReset:
+      return ""
     case StoreActions.errorSet: 
       return action.payload
     default:

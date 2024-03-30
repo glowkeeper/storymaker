@@ -6,7 +6,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getText } from '../store/api/getText'
 
-import { UIText } from '../config'
+import { UIText, OpenAI } from '../config'
 
 export const Text = () => {
     const store = useContext(StoreContext)
@@ -16,6 +16,13 @@ export const Text = () => {
         isFetching: false,
         lengthText: 0 
     })
+    const [error, setError] = useState(true)
+
+    useEffect(() => {       
+        
+        setError(store.state.error)
+
+    }, [store.state.error])
 
     useEffect(() => {
 
@@ -30,10 +37,13 @@ export const Text = () => {
 
     }, [store, hasNoTitle])
 
-    useEffect(() => {
+    useEffect(() => {        
 
         if ( store.state.textInput.length && needsStory) {
 
+            store.dispatch({
+                type: StoreActions.errorInit
+            })
             const systemPrompt = store.state.textPrompt
             const userPrompt = store.state.textInput.join('. ')
             getText(store, systemPrompt, userPrompt, true)
@@ -61,9 +71,21 @@ export const Text = () => {
     }
     
     const handleClickGetMore = () => {
+
+        //try and find the last sentence and generate new text from that
         const textLength = store.state.text.length
-        const text = store.state.text[textLength - 1];
-        getText(store, text);
+        let userPrompt = store.state.text[textLength - 1]
+        //console.log('userprompt', userPrompt)        
+        const stopIndex = userPrompt.lastIndexOf('.')
+        const tempText = userPrompt.slice(0, stopIndex -2)
+        const startIndex = tempText.lastIndexOf('.')
+        if (stopIndex !== -1 && startIndex !== -1 ) {
+            userPrompt = userPrompt.slice(startIndex +1, stopIndex + 1)
+            //console.log('found next text', userPrompt)
+        }
+
+        const systemPrompt = OpenAI.moreSystemPrompt
+        getText(store, systemPrompt, userPrompt)
         setNeedsMore({
             isFetching: true,
             textLength: textLength
@@ -134,14 +156,25 @@ export const Text = () => {
                 </>
 
             ) : (
-                <div id="centered">
-                    <div id="centered-items">
-                        <p>{UIText.appTextText}</p>
-                        <div id="spinner">
-                            <div className="spinner-2">&nbsp;</div>
+                <>
+
+                    { store.state.error ? (
+
+                        <p>{error}</p>
+
+                    ) : (
+
+                    <div id="centered">
+                        <div id="centered-items">
+                            <p>{UIText.appTextText}</p>
+                            <div id="spinner">
+                                <div className="spinner-2">&nbsp;</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    )}
+                </>    
             )}  
         </>
     )
