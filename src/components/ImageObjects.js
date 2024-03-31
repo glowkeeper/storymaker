@@ -44,6 +44,15 @@ export const ImageObjects = () => {
 
     useEffect(() => {
 
+        if( !store.state.user.access_token )
+        {
+            navigate(LocalRoutes.home)      
+        }
+
+    }, [store, navigate])
+
+    useEffect(() => {
+
         let timeOut
         const myKeys = Object.keys(store.state.imageObjects)
         if ( myKeys.length ){

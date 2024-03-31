@@ -41,9 +41,18 @@ export const News = () => {
         navigate(LocalRoutes.newsHeadlines)  
     }
 
+    useEffect(() => {
+
+        if( !store.state.user.access_token )
+        {
+            navigate(LocalRoutes.home)      
+        }
+
+    }, [store, navigate])
+
     return (
         <>
-            <p>Select a topic:</p>
+            <p>{UIText.appTopicText}:</p>
             {NYT.newsTopics.map((topic, index) =>              
                 <button
                     key={index}

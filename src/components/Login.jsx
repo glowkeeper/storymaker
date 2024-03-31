@@ -71,8 +71,8 @@ export const Login = () => {
   const sendLogin = (data) => {
 
     const loginData = {
-      email: data.Email,
-      password: data.Password
+      email: data.email,
+      password: data.password
     }
 
     const fetchOptions = {
@@ -92,78 +92,74 @@ export const Login = () => {
 
   return (
 
-    <div id="Content">
-      <div className="plain">
-        { feedback ? (
+    <>
+      { feedback ? (
 
-          <p dangerouslySetInnerHTML={{__html: feedback}}></p>
+        <p dangerouslySetInnerHTML={{__html: feedback}}></p>
 
-        ) : (
+      ) : (
 
-          <>
-            <form onSubmit={handleSubmit(onSubmit)}>  
+        <>
+          <form onSubmit={handleSubmit(onSubmit)}>  
 
-              <div id="login-form">
-                <label 
-                  htmlFor={UIText.loginForm.email}
-                >
-                  {`${UIText.loginForm.email}:`}
-                </label>
-                <input 
-                  type="text" 
-                  name={UIText.loginForm.email} 
-                  {
-                    ...register(UIText.loginForm.email, 
-                    { 
-                      required: { 
-                        value: true,
-                        message: UIText.loginForm.requiredError
-                      },
-                      validate: (val) => {
-                        if (!val.includes('@')) {
-                          return UIText.loginForm.emailError;
-                        }
-                      }, 
-                    })
-                  }
-                />
-                {errors[UIText.loginForm.email] && <p>{UIText.loginForm.emailError}</p>}
-              </div>
-
-              <div id="login-form">
-
-                <label 
-                  htmlFor={UIText.loginForm.password}
-                >
-                  {`${UIText.loginForm.password}:`}
-                </label>
-                <input 
-                  type="password" 
-                  name={UIText.loginForm.password} 
-                  {...register(UIText.loginForm.password, { 
+            <div id="login-form">
+              <label 
+                htmlFor={UIText.loginForm.email}
+              >
+                {`${UIText.loginForm.email}:`}
+              </label>
+              <input 
+                type="text" 
+                name={UIText.loginForm.email} 
+                {
+                  ...register(UIText.loginForm.email, 
+                  { 
                     required: { 
                       value: true,
-                      message: UIText.loginForm.passwordError
+                      message: UIText.loginForm.requiredError
                     },
-                  })}
-                />
-                {errors[UIText.loginForm.password] && 
-                  <p>{UIText.loginForm.passwordError}</p>
+                    validate: (val) => {
+                      if (!val.includes('@')) {
+                        return UIText.loginForm.emailError;
+                      }
+                    }, 
+                  })
                 }
-              </div>
-                              
-              <div className="submit">
-                <input
-                  style={{
-                    margin: '1rem 0 0 0'
-                  }} 
-                  type="submit" 
-                />
-              </div>
-            </form>
-          </>
-        )}        
-      </div>
-    </div>
+              />
+              {errors[UIText.loginForm.email] && <p>{UIText.loginForm.emailError}</p>}
+            </div>
+
+            <div id="login-form">
+
+              <label 
+                htmlFor={UIText.loginForm.password}
+              >
+                {`${UIText.loginForm.password}:`}
+              </label>
+              <input 
+                type="password" 
+                name={UIText.loginForm.password} 
+                {...register(UIText.loginForm.password, { 
+                  required: { 
+                    value: true,
+                    message: UIText.loginForm.passwordError
+                  },
+                })}
+              />
+              {errors[UIText.loginForm.password] && 
+                <p>{UIText.loginForm.passwordError}</p>
+              }
+            </div>
+
+            <button
+              id="login-button"
+              type="submit" 
+            >
+              {UIText.login}
+            </button>
+          </form>
+        </>
+      )}        
+    </>
   );
 }

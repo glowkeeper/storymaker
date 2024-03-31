@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { fileSave } from 'browser-fs-access'
 
@@ -6,7 +7,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getText } from '../store/api/getText'
 
-import { UIText, OpenAI } from '../config'
+import { LocalRoutes, UIText, OpenAI } from '../config'
 
 export const Text = () => {
     const store = useContext(StoreContext)
@@ -17,6 +18,8 @@ export const Text = () => {
         lengthText: 0 
     })
     const [error, setError] = useState(true)
+
+    const navigate = useNavigate()
 
     useEffect(() => {       
         
@@ -62,6 +65,16 @@ export const Text = () => {
         }
 
     }, [store, needsMore])
+
+    useEffect(() => {
+
+        if( !store.state.user.access_token )
+        {
+            navigate(LocalRoutes.home)      
+        }
+
+    }, [store, navigate])
+
 
     const handleClickNew = async () => {
         store.dispatch({
@@ -125,28 +138,24 @@ export const Text = () => {
                     >
                         {UIText.appNewButtonText}
                     </button>
-                    &nbsp;
                     <button
                         id="text-button"
                         onClick={handleClickGetMore}
                     >
                         {UIText.appMoreButtonText}
                     </button>
-                    &nbsp;
                     <button
                         id="text-button"
                         onClick={handleClickLast}
                     >
                         {UIText.appRemoveLastButtonText}
                     </button>
-                    &nbsp;
                     <button
                         id="text-button"
                         onClick={handleClickReset}
                     >
                         {UIText.appResetButtonText}
                     </button>
-                    &nbsp;
                     <button
                         id="text-button"
                         onClick={handleClickSave}

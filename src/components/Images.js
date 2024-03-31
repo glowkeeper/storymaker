@@ -88,6 +88,15 @@ export const Images = () => {
 
     }, [needsImages, store])
 
+    useEffect(() => {
+
+        if( !store.state.user.access_token )
+        {
+            navigate(LocalRoutes.home)      
+        }
+
+    }, [store, navigate])
+
     const doesExist = (imageURLs) => {
         return clickedImages.hasOwnProperty(imageURLs.cropped);
     }

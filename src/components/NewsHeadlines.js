@@ -51,30 +51,37 @@ export const NewsHeadlines = () => {
         navigate(LocalRoutes.text)
     }
 
+    useEffect(() => {
+
+        if( !store.state.user.access_token )
+        {
+            navigate(LocalRoutes.home)      
+        }
+
+    }, [store, navigate])
+
     return (
         <> 
             { store.state.news.length > 0 ? (
 
-                <div id="centered">
-                    <div id="centered-items">
-                        <p>{UIText.appTextFoundHeadlines}</p>
-                        {store.state.news.map((item, index) => {
-                            if ( item.title ) {                                
-                                return (
-                                    <button
-                                        key={index}
-                                        id={"app-button"}
-                                        onClick={() => handleClick(item.title)}
-                                    >
-                                        {item.title}
-                                    </button>
-                                ) 
-                            } else {
-                                return null
-                            }
-                        })}           
-                    </div>         
-                </div>
+                <>
+                    <p>{UIText.appTextFoundHeadlines}:</p>
+                    {store.state.news.map((item, index) => {
+                        if ( item.title ) {                                
+                            return (
+                                <button
+                                    key={index}
+                                    id={"app-button"}
+                                    onClick={() => handleClick(item.title)}
+                                >
+                                    {item.title}
+                                </button>
+                            ) 
+                        } else {
+                            return null
+                        }
+                    })} 
+                </>
 
             ) : (
                 <>

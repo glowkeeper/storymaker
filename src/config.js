@@ -42,10 +42,10 @@ export class OpenAI {
 export class UIText {
     static appTabTitle = "storymaker"
     static appTitle = 'storymaker'
-    static appCopyright = '&copy; 2022, <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a>, all rights reserved'
+    static appCopyright = '&copy; 2022<br/><a href="https://glowkeeper.github.io/">Dr Steve Huckle</a>All rights reserved'
     static appCatchphrase = 'ai-based text generation'
     static poweredBy = 'powered by'
-    static appTitleHome = "home"
+    static appTitleHome = "storymaker"
     static appTitleLogin = "login"
     static appTitleImages = `${UIText.appTitle} | images`
     static appTitleImageObjects = `${UIText.appTitle} | classification`
@@ -62,26 +62,29 @@ export class UIText {
     static appTextFoundHeadlines = 'found headlines'
     static appTextText = 'please wait - generating text'
 
-    static appLandingButtonText = 'make...'
+    static appLandingButtonText = 'make'
     static appImagesButtonText = "choose 10 images"
     static appNewsButtonText = "pick a news story"
-    static appNewButtonText = "get new..."
-    static appMoreButtonText = "get more..."
+    static appNewButtonText = "get new"
+    static appMoreButtonText = "get more"
     static appResetButtonText = "reset"
     static appRemoveLastButtonText = "remove last"
     static appSaveButtonText = "save text"
+    static appTopicText = 'select a topic'
+    static appGenerateText = 'pick a way of generating text'
 
-    static login = "Login"
-    static logOut = "Logout"
+    static login = "login"
+    static logOut = "logout"
     static loginForm = {
-        email: 'Email',
-        password: 'Password',
+        email: 'email',
+        password: 'password',
+        passwordText: 'password',
         requiredError: 'a value is required',
         emailError: 'a valid email is required',
         passwordError: 'password is required',
     }
-    static loginFeedbackOk = "Welcome!"
-    static loginFeedbackError = `Unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
+    static loginFeedbackOk = "welcome!"
+    static loginFeedbackError = `unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
     static tokenError = 'User session expired - please login again'
 
     static linkHome = "home"
