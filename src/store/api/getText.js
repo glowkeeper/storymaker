@@ -27,32 +27,23 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
         let type = StoreActions.textUpdate
         let foundText = ""
 
-        if ( response.ok ) {
-
-            foundText = response.data.choices[0]?.message?.content 
-            const stopIndex = foundText.lastIndexOf('.')
-            if (stopIndex !== -1 ) {
-                foundText = foundText.slice(0, stopIndex + 1)
-            }
-
-            if (isInit) {
-                foundText = userPrompt + " - " + foundText
-                type = StoreActions.textCreate            
-            } 
-
-            payload.push(foundText);
-            store.dispatch({ 
-                type: type,
-                payload: payload
-            })            
-
-        } else {
-
-            store.dispatch({ 
-                type: StoreActions.errorSet,
-                payload: 'OpenAI error'
-            })
-            
+        
+        foundText = response.data.choices[0]?.message?.content 
+        const stopIndex = foundText.lastIndexOf('.')
+        if (stopIndex !== -1 ) {
+            foundText = foundText.slice(0, stopIndex + 1)
         }
-    }, fetchOptions, openaiQuery)
+
+        if (isInit) {
+            foundText = userPrompt + " - " + foundText
+            type = StoreActions.textCreate            
+        } 
+
+        payload.push(foundText);
+        store.dispatch({ 
+            type: type,
+            payload: payload
+        })  
+        
+    }, fetchOptions, openaiQuery, store)
 }

@@ -12,16 +12,42 @@ export const Images = () => {
     const [needsImages, setNeedsImages] = useState(true)
     const [clickedImages, setClickedImages] = useState({})
     const [hasNoTitle, setHasNoTitle] = useState(true)    
-    const [error, setError] = useState(true)
+    const [error, setError] = useState("")
 
     const navigate = useNavigate()
 
 
-    useEffect(() => {       
+    useEffect(() => { 
         
-        setError(store.state.error)
+        if ( store.state.error && error === "") {
 
-    }, [store.state.error])
+            //console.log('setting error', store.state.error, error)              
+        
+            setError(store.state.error)
+            
+            if ( store.state.error === UIText.tokenError) {    
+                
+                //console.log('logging out')
+                    
+                store.dispatch({
+                    type: StoreActions.logout,
+                    payload: {}
+                })
+
+                setTimeout(() => {  
+             
+                    navigate(LocalRoutes.home)
+                    
+                }, 5000)   
+            }
+
+            store.dispatch({
+                type: StoreActions.errorInit,
+                payload: {}
+            })  
+        }
+        
+    }, [store, error, navigate])
 
     useEffect(() => {
 
@@ -122,7 +148,7 @@ export const Images = () => {
 
                 <>
 
-                    { store.state.error ? (
+                    { error !== "" ? (
 
                         <p>{error}</p>
 

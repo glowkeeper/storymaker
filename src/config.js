@@ -19,6 +19,12 @@ export class Remote {
     static flickrPhotoServer = 'https://live.staticflickr.com/'
 }
 
+export class RemoteErrors {
+    static userError = {
+        tokenExpired: 'Token expired.'
+    }
+}
+
 export class System {
     static numSelectedImages = 10
 }
@@ -76,6 +82,7 @@ export class UIText {
     }
     static loginFeedbackOk = "Welcome!"
     static loginFeedbackError = `Unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
+    static tokenError = 'User session expired - please login again'
 
     static linkHome = "home"
     static linkStoryMaker = "maker"

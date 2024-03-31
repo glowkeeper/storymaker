@@ -23,23 +23,10 @@ export const getNews = (store, topic) => {
 
     IO.getData(stories => {
 
-        //console.log('stories', stories)
-
-        if (stories.ok && 
-            stories.data?.results?.length > 0) {
-
-            store.dispatch({ 
-                type: StoreActions.newsUpdate,
-                payload: stories.data.results
-            })
-            
-        } else {
+        store.dispatch({ 
+            type: StoreActions.newsUpdate,
+            payload: stories.data.results
+        })
     
-            store.dispatch({ 
-                type: StoreActions.errorSet,
-                payload: 'NYT error'
-            })
-        }
-    
-    }, fetchOptions, nytQuery)
+    }, fetchOptions, nytQuery, store)
 }

@@ -36,7 +36,7 @@ export const ImageObjects = () => {
 
         if ( Object.keys(store.state.imageObjects).length && needsPredictions) {
 
-            getPredictions(store.dispatch, store.state.imageObjects)
+            getPredictions(store, store.state.imageObjects)
             setNeedsPredictions(false)
         }
 

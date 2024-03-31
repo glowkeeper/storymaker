@@ -40,16 +40,8 @@ export const getImages = (store) => {
             });
         }), prop('photo'), prop('photos'));
 
-        if (flickrData.ok) {
-            imageURLs(flickrData.data)
-
-        } else {
-
-            store.dispatch({ 
-                type: StoreActions.errorSet,
-                payload: 'flickr error'
-            })
-        }                
+        
+        imageURLs(flickrData.data)
     
-    }, fetchOptions, flickrQuery)
+    }, fetchOptions, flickrQuery, store)
 }

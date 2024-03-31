@@ -39,7 +39,7 @@ export const NavBar = () => {
             body: JSON.stringify(logoutData)
         }
       
-        IO.getData( doLogout, fetchOptions, process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.logout)
+        IO.getData( doLogout, fetchOptions, process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.logout, store)
     }     
 
     return (

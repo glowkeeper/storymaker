@@ -7,7 +7,7 @@ import { StoreActions } from '../store'
 
 import { IO } from '../../utils/iO'
 
-export const getPredictions = async (dispatch, imageURLs) => {
+export const getPredictions = async (store, imageURLs) => {
 
     const model = await cocoSsd.load()
 
@@ -48,13 +48,13 @@ export const getPredictions = async (dispatch, imageURLs) => {
                             large: dataURL,
                             predictions: [...new Set(thisPredictions)]
                         }
-                        dispatch({ 
+                        store.dispatch({ 
                             type: StoreActions.imageObjectsUpdate,
                             payload: myClassData
                         });
                     }
                 }
-            }, null, dataURL)
+            }, null, dataURL, store)
 
         }
     }
