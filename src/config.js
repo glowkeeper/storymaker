@@ -54,7 +54,9 @@ export class UIText {
     static appTitleText = `${UIText.appTitle} | text`
 
     static appTextHome = ''
-    static appTextAbout = 'is an ai-based app that uses news stories and ai image classification to find image objects, then uses ai text generation to generate text from those stories or one of those image objects.'
+    static appTextAbout = 'is a tool that uses news stories and AI image classification to create prompts from which AI generates stories or blogs.'
+    static appTextAccount = `To use <span id="title">${UIText.appTitle}</span>, you will need an account, which are available (for a small donation) by emailing <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
+    static appTextNoAccount = `Before you can use <span id="title">${UIText.appTitle}</span>, you will need an account. If you have an account, please login. Otherwise, accounts are available (for a small donation) by emailing <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
     static appTextHeadlines = 'please wait - getting headlines'

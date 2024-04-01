@@ -92,7 +92,12 @@ export const Images = () => {
 
         if( !store.state.user.access_token )
         {
-            navigate(LocalRoutes.home)      
+            setError(store.state.error)
+            setTimeout(() => {        
+                          
+                navigate(LocalRoutes.home) 
+            
+            }, 2000)     
         }
 
     }, [store, navigate])
@@ -130,7 +135,7 @@ export const Images = () => {
     }
 
     return (
-        <>
+        <div class="inner-content">
             { store.state.images.length > 0 ? (
 
                 <>
@@ -156,8 +161,7 @@ export const Images = () => {
             ) : (
 
                 <>
-
-                    { error !== "" ? (
+                    { error ? (
 
                         <p>{error}</p>
 
@@ -176,6 +180,6 @@ export const Images = () => {
                 </>
                 
             )}
-        </>
+        </div>
     )
 }

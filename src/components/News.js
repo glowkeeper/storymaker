@@ -51,7 +51,7 @@ export const News = () => {
     }, [store, navigate])
 
     return (
-        <>
+        <div class="inner-content">
             <p>{UIText.appTopicText}:</p>
             {NYT.newsTopics.map((topic, index) =>              
                 <button
@@ -62,6 +62,6 @@ export const News = () => {
                     {topic}
                 </button>
             )}
-        </>
+        </div>
     )
 }

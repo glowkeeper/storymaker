@@ -14,6 +14,7 @@ export const ImageObjects = () => {
     const [numPredictions, setNumPredictions] = useState(0)
     const [keyWords, setKeyWords] = useState([])
     const [hasNoTitle, setHasNoTitle] = useState(true) 
+    const [error, setError] = useState("")
 
     const navigate = useNavigate()
 
@@ -46,7 +47,12 @@ export const ImageObjects = () => {
 
         if( !store.state.user.access_token )
         {
-            navigate(LocalRoutes.home)      
+            setError(UIText.appTextNoAccount)
+            setTimeout(() => {        
+                          
+                navigate(LocalRoutes.home) 
+            
+            }, 2000)     
         }
 
     }, [store, navigate])
@@ -114,7 +120,7 @@ export const ImageObjects = () => {
     }, [store, keyWords, numPredictions, navigate, hasNotDispatched])
 
     return (
-        <> 
+        <div class="inner-content"> 
             { keyWords.length > 0 ? (
 
                 <div id="centered">
@@ -132,15 +138,25 @@ export const ImageObjects = () => {
 
             ) : (
 
-                <div id="centered">
-                    <div id="centered-items">
-                        <p>{UIText.appTextImageObjects}</p>
-                        <div id="spinner">
-                            <div className="spinner-2">&nbsp;</div>
+                <>
+                    { error ? (
+
+                        <p>{error}</p>
+
+                    ) : (
+
+                        <div id="centered">
+                            <div id="centered-items">
+                                <p>{UIText.appTextImages}</p>
+                                <div id="spinner">
+                                    <div className="spinner-2">&nbsp;</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+
+                    )}
+                </>
             )}
-        </>
+        </div>
     )
 }

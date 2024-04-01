@@ -8,7 +8,7 @@ import { LocalRoutes, UIText, OpenAI } from '../config'
 export const NewsHeadlines = () => {
     const store = useContext(StoreContext)
     const [hasNoTitle, setHasNoTitle] = useState(true)
-    const [error, setError] = useState(true)
+    const [error, setError] = useState("")
 
     const navigate = useNavigate()
 
@@ -55,13 +55,18 @@ export const NewsHeadlines = () => {
 
         if( !store.state.user.access_token )
         {
-            navigate(LocalRoutes.home)      
+            setError(UIText.appTextNoAccount)
+            setTimeout(() => {        
+                          
+                navigate(LocalRoutes.home) 
+            
+            }, 2000)     
         }
 
     }, [store, navigate])
 
     return (
-        <> 
+        <div class="inner-content">
             { store.state.news.length > 0 ? (
 
                 <>
@@ -86,7 +91,7 @@ export const NewsHeadlines = () => {
             ) : (
                 <>
 
-                    { store.state.error ? (
+                    { error ? (
 
                         <p>{error}</p>
 
@@ -104,6 +109,6 @@ export const NewsHeadlines = () => {
                     )}
                 </>                  
             )}    
-        </>
+        </div>
     )
 }

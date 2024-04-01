@@ -15,6 +15,18 @@ export const Login = () => {
   const [feedback, setFeedback] = useState("")
   const [hasNoTitle, setHasNoTitle] = useState(true)
 
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      [UIText.loginForm.email]: '',
+      [UIText.loginForm.password]: ''
+    }
+  })
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -28,17 +40,36 @@ export const Login = () => {
         setHasNoTitle(false)
     }
 
-}, [store, hasNoTitle])
+  }, [store, hasNoTitle])
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({});
+  useEffect(() => {      
+    
+      if (store.state.error) {
+      
+        setFeedback(UIText.loginFeedbackError)
+
+        store.dispatch({
+          type: StoreActions.errorInit,
+          payload: {}
+        }) 
+
+        setTimeout(() => {    
+          
+          setFeedback("")
+              
+          reset({
+            [UIText.loginForm.email]: '',
+            [UIText.loginForm.password]: ''
+          })
+          
+        }, 5000)
+
+      }
+
+  }, [store, navigate, reset])  
 
   const giveFeedback = (message) => {
     
-    //console.log('got message from server', message)
     if (message?.data?.access_token) {
 
       setFeedback(UIText.loginFeedbackOk)
@@ -48,22 +79,11 @@ export const Login = () => {
         payload: message.data
       })  
 
-      setTimeout(() => {           
+      setTimeout(() => {            
              
         navigate(LocalRoutes.app)
         
       }, 2000)
-
-    } else {
-
-      // oh dear
-      setFeedback(UIText.loginFeedbackError)
-
-      setTimeout(() => {           
-             
-        navigate(LocalRoutes.home)
-        
-      }, 10000)
 
     } 
   }
@@ -92,7 +112,7 @@ export const Login = () => {
 
   return (
 
-    <>
+    <div class="inner-content">
       { feedback ? (
 
         <p dangerouslySetInnerHTML={{__html: feedback}}></p>
@@ -160,6 +180,6 @@ export const Login = () => {
           </form>
         </>
       )}        
-    </>
-  );
+    </div>
+  )
 }

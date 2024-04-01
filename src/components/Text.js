@@ -70,7 +70,12 @@ export const Text = () => {
 
         if( !store.state.user.access_token )
         {
-            navigate(LocalRoutes.home)      
+            setError(UIText.appTextNoAccount)
+            setTimeout(() => {        
+                          
+                navigate(LocalRoutes.home) 
+            
+            }, 2000)     
         }
 
     }, [store, navigate])
@@ -127,7 +132,7 @@ export const Text = () => {
     }
 
     return (
-        <> 
+        <div class="inner-content">
             { (store.state.text.length > 0 && !needsMore.isFetching) ? (
 
                 <>
@@ -185,6 +190,6 @@ export const Text = () => {
                     )}
                 </>    
             )}  
-        </>
+        </div>
     )
 }
