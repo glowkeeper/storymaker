@@ -2,6 +2,7 @@ export class LocalRoutes {
     static home = '/storymaker'
     static login = `${LocalRoutes.home}/login`
     static app = `${LocalRoutes.home}/maker`
+    static freestyle = `${LocalRoutes.app}/freestyle`
     static images = `${LocalRoutes.app}/images`
     static imageObjects = `${LocalRoutes.app}/image-objects`
     static news = `${LocalRoutes.app}/news`
@@ -47,6 +48,7 @@ export class UIText {
     static poweredBy = 'powered by'
     static appTitleHome = "storymaker"
     static appTitleLogin = "login"
+    static appTitleFreestyle = "freestyle"
     static appTitleImages = `${UIText.appTitle} | images`
     static appTitleImageObjects = `${UIText.appTitle} | classification`
     static appTitleNews = `${UIText.appTitle} | news topics`
@@ -65,6 +67,7 @@ export class UIText {
     static appTextText = 'please wait - generating text'
 
     static appLandingButtonText = 'make'
+    static appFreestyleButtonText = 'freestyle'
     static appImagesButtonText = "choose 10 images"
     static appNewsButtonText = "pick a news story"
     static appNewButtonText = "get new"
@@ -87,7 +90,13 @@ export class UIText {
     }
     static loginFeedbackOk = "welcome!"
     static loginFeedbackError = `unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
-    static tokenError = 'User session expired - please login again'
+
+    static systemPrompt = 'system prompt'
+    static userPrompt = 'user prompt'
+    static systemPromptError = 'system prompt is required'
+    static userPromptError = 'user prompt is required'
+
+    static tokenError = 'user session expired - please login again'
 
     static linkHome = "home"
     static linkStoryMaker = "maker"

@@ -60,6 +60,13 @@ export const StoryMaker = () => {
                     >
                         {UIText.appNewsButtonText}
                     </button>  
+                    <button
+                        id={disabled ? "disabled-app-button" : "app-button"}
+                        disabled={disabled}
+                        onClick={() => navigate(LocalRoutes.freestyle)}
+                    >
+                        {UIText.appFreestyleButtonText}
+                    </button>  
                 </>
 
             )}  

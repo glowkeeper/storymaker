@@ -5,6 +5,7 @@ import { NavBar } from './NavBar'
 import { Home } from './Home'
 import { StoryMaker } from './StoryMaker'
 import { Login } from './Login'
+import { Freestyle } from './Freestyle'
 import { Images } from './Images'
 import { ImageObjects } from './ImageObjects'
 import { News } from './News'
@@ -45,6 +46,10 @@ export const Main = () => {
                         <Route
                             path={LocalRoutes.app}
                             element={<StoryMaker />}
+                        />
+                        <Route
+                            path={LocalRoutes.freestyle}
+                            element={<Freestyle />}
                         />
                         <Route
                             path={LocalRoutes.images}

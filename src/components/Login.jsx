@@ -112,7 +112,7 @@ export const Login = () => {
 
   return (
 
-    <div class="inner-content">
+    <div className="inner-content">
       { feedback ? (
 
         <p dangerouslySetInnerHTML={{__html: feedback}}></p>
