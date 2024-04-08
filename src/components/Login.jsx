@@ -46,15 +46,14 @@ export const Login = () => {
     
       if (store.state.error) {
       
-        setFeedback(UIText.loginFeedbackError)
-
-        store.dispatch({
-          type: StoreActions.errorInit,
-          payload: {}
-        }) 
+        setFeedback(UIText.loginFeedbackError)        
 
         setTimeout(() => {    
           
+          store.dispatch({
+            type: StoreActions.errorInit,
+            payload: {}
+          }) 
           setFeedback("")
               
           reset({
@@ -81,6 +80,7 @@ export const Login = () => {
 
       setTimeout(() => {            
              
+        setFeedback("")
         navigate(LocalRoutes.app)
         
       }, 2000)
