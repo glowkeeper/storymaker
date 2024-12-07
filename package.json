@@ -2,7 +2,7 @@
   "name": "storymaker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://glowkeeper.github.io/storymaker",
+  "homepage": "http://huckle.studio/storymaker",
   "dependencies": {
     "@tensorflow-models/coco-ssd": "^2.2.2",
     "@tensorflow/tfjs": "^3.12.0",
