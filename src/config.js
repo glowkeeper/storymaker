@@ -38,13 +38,14 @@ export class OpenAI {
     static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
     static moreSystemPrompt = "Acting as a short story writer, create a story from the text below."
     static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline below."
+    static freestyleSystemPrompt = "Acting as a short story writer, create a story from the text below."
 }
 
 export class UIText {
     static appTabTitle = "storymaker"
     static appTitle = 'storymaker'
     static appCopyright = '&copy; 2022<br/><a href="https://glowkeeper.github.io/">Dr Steve Huckle</a>All rights reserved'
-    static appCatchphrase = 'ai-based text generation'
+    static appCatchphrase = 'ai-based story generation'
     static poweredBy = 'powered by'
     static appTitleHome = "storymaker"
     static appTitleLogin = "login"
@@ -57,16 +58,16 @@ export class UIText {
 
     static appTextHome = ''
     static appTextAbout = 'is a tool that uses news stories and AI image classification to create prompts from which AI generates stories or blogs.'
-    static appTextAccount = `To use <span id="title">${UIText.appTitle}</span>, you will need an account, which are available (for a small donation) by emailing <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
-    static appTextNoAccount = `Before you can use <span id="title">${UIText.appTitle}</span>, you will need an account. If you have an account, please login. Otherwise, accounts are available (for a small donation) by emailing <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
+    static appTextAccount = `To use <span id="title">${UIText.appTitle}</span>, you will need an account. If you do not have an account, but would like one, please email <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
+    static appTextNoAccount = `If you have an account, please login. If you do not have an account, but would like one, please email <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
     static appTextHeadlines = 'please wait - getting headlines'
-    static appTextFoundObjects = 'found objects'
+    static appTextFoundObjects = 'classifying'
     static appTextFoundHeadlines = 'found headlines'
-    static appTextText = 'please wait - generating text'
+    static appTextText = 'please wait - generating story'
 
-    static appLandingButtonText = 'make'
+    static appLandingButtonText = 'create stories'
     static appFreestyleButtonText = 'freestyle'
     static appImagesButtonText = "choose 10 images"
     static appNewsButtonText = "pick a news story"
@@ -76,7 +77,7 @@ export class UIText {
     static appRemoveLastButtonText = "remove last"
     static appSaveButtonText = "save text"
     static appTopicText = 'select a topic'
-    static appGenerateText = 'pick a way of generating text'
+    static appGenerateText = 'pick a way of generating a story'
 
     static login = "login"
     static logOut = "logout"
@@ -91,9 +92,7 @@ export class UIText {
     static loginFeedbackOk = "welcome!"
     static loginFeedbackError = `unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
 
-    static systemPrompt = 'system prompt'
-    static userPrompt = 'user prompt'
-    static systemPromptError = 'system prompt is required'
+    static userPrompt = 'story synopsis'
     static userPromptError = 'user prompt is required'
 
     static tokenError = 'user session expired - please login again'

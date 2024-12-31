@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
@@ -27,6 +27,8 @@ export const Login = () => {
     }
   })
 
+
+  const passwordRef = useRef(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -129,8 +131,8 @@ export const Login = () => {
                 {`${UIText.loginForm.email}:`}
               </label>
               <input 
-                type="text" 
-                name={UIText.loginForm.email} 
+                type="text"                 
+                autoFocus
                 {
                   ...register(UIText.loginForm.email, 
                   { 
@@ -157,6 +159,7 @@ export const Login = () => {
                 {`${UIText.loginForm.password}:`}
               </label>
               <input 
+                ref={passwordRef}
                 type="password" 
                 name={UIText.loginForm.password} 
                 {...register(UIText.loginForm.password, { 

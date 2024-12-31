@@ -142,6 +142,7 @@ export const textInputReducer = (state, action) => {
     case StoreActions.textInputReset:
       return [...initialState.textInput]
     case StoreActions.textInputCreate:
+      console.log('action', action.payload)
       return [...action.payload]
     case StoreActions.textInputUpdate:
       return [...state, ...action.payload]

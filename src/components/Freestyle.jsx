@@ -4,9 +4,8 @@ import { useForm } from 'react-hook-form';
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { UIText, LocalRoutes } from '../config'
+import { UIText, LocalRoutes, OpenAI } from '../config'
 
-const systemPromptId = 'system-prompt'
 const userPromptId = 'user-prompt'
 
 export const Freestyle = () => {
@@ -23,7 +22,6 @@ export const Freestyle = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      [systemPromptId]: '',
       [userPromptId]: ''
     }
   })
@@ -58,7 +56,7 @@ export const Freestyle = () => {
   }, [store, navigate])
 
   const onSubmit = async (data) => {
-    //console.log('topic title', headline)    
+    //console.log('blah', data)    
 
     store.dispatch({
         type: StoreActions.errorInit
@@ -66,7 +64,7 @@ export const Freestyle = () => {
 
     store.dispatch({
         type: StoreActions.textPromptSet,
-        payload: data[systemPromptId]
+        payload: OpenAI.freestyleSystemPrompt
     })
 
     store.dispatch({
@@ -74,7 +72,7 @@ export const Freestyle = () => {
         payload: data[userPromptId]
     })
 
-    reset({[systemPromptId]: '', [userPromptId]: ''})
+    reset({[userPromptId]: ''})
 
     navigate(LocalRoutes.text)
   }
@@ -91,20 +89,7 @@ export const Freestyle = () => {
 
         <div className="inner-content">
             <form onSubmit={handleSubmit(onSubmit)}>  
-
-              <div id="login-form">
-                <label 
-                  htmlFor={systemPromptId}
-                >
-                  {`${UIText.systemPrompt}:`}
-                </label>
-                <textarea
-                  id={systemPromptId}
-                  {...register(systemPromptId, { required: true })}
-                />
-                {errors[systemPromptId] && <p>{UIText.systemPromptError}</p>}
-              </div>
-
+              
               <div id="login-form">
 
                 <label 
@@ -113,10 +98,11 @@ export const Freestyle = () => {
                   {`${UIText.userPrompt}:`}
                 </label>
                 <textarea
-                  id={userPromptId}
+                  id={userPromptId}               
+                  autoFocus
                   {...register(userPromptId, { required: true })}
                 />
-                {errors[systemPromptId] && <p>{UIText.userPromptError}</p>
+                {errors[userPromptId] && <p>{UIText.userPromptError}</p>
                 }
               </div>
 
