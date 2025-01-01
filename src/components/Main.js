@@ -10,6 +10,7 @@ import { Images } from './Images'
 import { ImageObjects } from './ImageObjects'
 import { News } from './News'
 import { NewsHeadlines } from './NewsHeadlines'
+import { Genre } from './Genre'
 import { Text } from './Text'
 import { Footer } from './Footer'
 
@@ -66,6 +67,10 @@ export const Main = () => {
                         <Route
                             path={LocalRoutes.newsHeadlines}
                             element={<NewsHeadlines />}
+                        />
+                        <Route
+                            path={LocalRoutes.genre}
+                            element={<Genre />}
                         />
                         <Route
                             path={LocalRoutes.text}

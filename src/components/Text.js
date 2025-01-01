@@ -50,7 +50,7 @@ export const Text = () => {
             const systemPrompt = store.state.textPrompt
             const userPrompt = store.state.textInput.join(' ')
             //const userPrompt = store.state.textInput
-            //console.log('userprompt', userPrompt, store.state.textInput)
+            console.log('prompts', systemPrompt, userPrompt)
             getText(store, systemPrompt, userPrompt, true)
             setNeedsStory(false)
         }

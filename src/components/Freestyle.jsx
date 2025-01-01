@@ -74,7 +74,7 @@ export const Freestyle = () => {
     })
 
     reset({[userPromptId]: ''})
-    navigate(LocalRoutes.text)
+    navigate(LocalRoutes.genre)
   }
 
   return (

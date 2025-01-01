@@ -114,7 +114,7 @@ export const ImageObjects = () => {
                 payload: keyWordsWithPrep
             })
             
-            navigate(LocalRoutes.text)
+            navigate(LocalRoutes.genre)
         }
 
     }, [store, keyWords, numPredictions, navigate, hasNotDispatched])

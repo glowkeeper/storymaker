@@ -7,6 +7,7 @@ export class LocalRoutes {
     static imageObjects = `${LocalRoutes.app}/image-objects`
     static news = `${LocalRoutes.app}/news`
     static newsHeadlines = `${LocalRoutes.app}/news-headlines`
+    static genre = `${LocalRoutes.app}/genre`
     static text = `${LocalRoutes.app}/text`
 }
 
@@ -34,6 +35,11 @@ export class NYT {
     static newsTopics = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "magazine", "movies", "politics", "science", "sports", "technology", "theater", "travel", "world"]
 }
 
+export class Genres {
+   
+    static genres = ["Historical fiction", "Western", "Tragedy", "Thriller", "Romantic fiction", "Magical realism", "Fantasy", "Science fiction", "Mystery", "Horror"]
+}
+
 export class OpenAI {
     static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
     static moreSystemPrompt = "Acting as a short story writer, create a story from the text below."
@@ -54,6 +60,7 @@ export class UIText {
     static appTitleImageObjects = `${UIText.appTitle} | classification`
     static appTitleNews = `${UIText.appTitle} | news topics`
     static appTitleNewsHeadlines = `${UIText.appTitle} | news headlines`
+    static appTitleGenre = `${UIText.appTitle} | genre`
     static appTitleText = `${UIText.appTitle} | text`
 
     static appTextHome = ''
