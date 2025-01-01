@@ -77,7 +77,8 @@ export class UIText {
     static appRemoveLastButtonText = "remove last"
     static appSaveButtonText = "save text"
     static appTopicText = 'select a topic'
-    static appGenerateText = 'pick a way of generating a story'
+    static appGenerateStory = 'pick a way of generating a story'
+    static appGenerateBlog = 'pick a way of generating a blog'
 
     static login = "login"
     static logOut = "logout"

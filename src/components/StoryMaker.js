@@ -45,7 +45,7 @@ export const StoryMaker = () => {
             ) : (
                 
                 <>
-                    <p>{`${UIText.appGenerateText}:`}</p>            
+                    <p>{`${UIText.appGenerateStory}:`}</p>            
                     <button
                         id={disabled ? "disabled-app-button" : "app-button"}
                         disabled={disabled}
@@ -56,16 +56,19 @@ export const StoryMaker = () => {
                     <button
                         id={disabled ? "disabled-app-button" : "app-button"}
                         disabled={disabled}
-                        onClick={() => navigate(LocalRoutes.news)}
-                    >
-                        {UIText.appNewsButtonText}
-                    </button>  
-                    <button
-                        id={disabled ? "disabled-app-button" : "app-button"}
-                        disabled={disabled}
                         onClick={() => navigate(LocalRoutes.freestyle)}
                     >
                         {UIText.appFreestyleButtonText}
+                    </button>  
+                    
+                    <br /><br />
+                    <p>{`${UIText.appGenerateBlog}:`}</p>
+                    <button
+                        id={disabled ? "disabled-app-button" : "app-button"}
+                        disabled={disabled}
+                        onClick={() => navigate(LocalRoutes.news)}
+                    >
+                        {UIText.appNewsButtonText}
                     </button>  
                 </>
 
