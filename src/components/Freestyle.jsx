@@ -56,7 +56,8 @@ export const Freestyle = () => {
   }, [store, navigate])
 
   const onSubmit = async (data) => {
-    //console.log('blah', data)    
+    //console.log('submit', data) 
+    //console.log('sentence', sentence)
 
     store.dispatch({
         type: StoreActions.errorInit
@@ -69,11 +70,10 @@ export const Freestyle = () => {
 
     store.dispatch({
         type: StoreActions.textInputCreate,
-        payload: data[userPromptId]
+        payload: [data[userPromptId]]
     })
 
     reset({[userPromptId]: ''})
-
     navigate(LocalRoutes.text)
   }
 

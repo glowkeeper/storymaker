@@ -48,9 +48,9 @@ export const Text = () => {
                 type: StoreActions.errorInit
             })
             const systemPrompt = store.state.textPrompt
-            const userPrompt = store.state.textInput.join('. ')
+            const userPrompt = store.state.textInput.join(' ')
             //const userPrompt = store.state.textInput
-            console.log('userprompt', userPrompt)
+            console.log('userprompt', userPrompt, store.state.textInput)
             getText(store, systemPrompt, userPrompt, true)
             setNeedsStory(false)
         }
