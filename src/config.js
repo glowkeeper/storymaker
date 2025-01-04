@@ -37,7 +37,7 @@ export class NYT {
 
 export class Genres {
    
-    static genres = ["Historical fiction", "Western", "Tragedy", "Thriller", "Romantic fiction", "Magical realism", "Fantasy", "Science fiction", "Mystery", "Horror"]
+    static genres = ["Action", "Adventure", "Autobiography", "Biography", "Comedy", "Drama", "Essay", "Fable", "Fantasy", "Fiction in Verse", "Folklore", "Historical fiction", "Horror", "Legend", "Magical realism", "Memoir", "Mystery", "Narrative nonfiction", "Poetry", "Religion", "Romantic fiction", "Science fiction", "Self-help", "Short story", "Speech", "Tall Tale", "Thriller", "Tragedy", "Travel", "True crime", "Western", "Young adult fiction"]
 }
 
 export class OpenAI {
@@ -65,8 +65,8 @@ export class UIText {
 
     static appTextHome = ''
     static appTextAbout = 'is a tool that uses news stories and AI image classification to create prompts from which AI generates stories or blogs.'
-    static appTextAccount = `To use <span id="title">${UIText.appTitle}</span>, you will need an account. If you do not have an account, but would like one, please email <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
-    static appTextNoAccount = `If you have an account, please login. If you do not have an account, but would like one, please email <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com.`
+    static appTextAccount = `To use <span id="title">${UIText.appTitle}</span>, you will need an account. If you do not have an account, but would like one, please email <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve@huckle.studio.`
+    static appTextNoAccount = `If you have an account, please login. If you do not have an account, but would like one, please email <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve@huckle.studio.`
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
     static appTextHeadlines = 'please wait - getting headlines'
@@ -98,7 +98,7 @@ export class UIText {
         passwordError: 'password is required',
     }
     static loginFeedbackOk = "welcome!"
-    static loginFeedbackError = `unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve.huckle@gmail.com</p>`
+    static loginFeedbackError = `unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://glowkeeper.github.io/">Dr Steve Huckle</a> at steve@huckle.studio.</p>`
 
     static userPrompt = 'story synopsis'
     static userPromptError = 'user prompt is required'
