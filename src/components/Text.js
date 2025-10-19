@@ -68,21 +68,6 @@ export const Text = () => {
 
     }, [store, needsMore])
 
-    useEffect(() => {
-
-        if( !store.state.user.access_token )
-        {
-            setError(UIText.appTextNoAccount)
-            setTimeout(() => {        
-                          
-                navigate(LocalRoutes.home) 
-            
-            }, 2000)     
-        }
-
-    }, [store, navigate])
-
-
     const handleClickNew = async () => {
         store.dispatch({
             type: StoreActions.textInit
@@ -134,7 +119,7 @@ export const Text = () => {
     }
 
     return (
-        <div class="inner-content">
+        <div className="inner-content">
             { (store.state.text.length > 0 && !needsMore.isFetching) ? (
 
                 <>

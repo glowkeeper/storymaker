@@ -14,15 +14,6 @@ export const Genre = () => {
 
     useEffect(() => {
 
-        if( !store.state.user.access_token )
-        {
-            navigate(LocalRoutes.home)      
-        }
-
-    }, [store, navigate])
-
-    useEffect(() => {
-
         if (hasNoTitle) {
     
             store.dispatch({
@@ -47,7 +38,7 @@ export const Genre = () => {
     }
 
     return (
-        <div class="inner-content">
+        <div className="inner-content">
             <p>{UIText.appTopicText}:</p>
             {Genres.genres.map((genre, index) =>              
                 <button

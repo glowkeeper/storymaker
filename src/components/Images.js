@@ -88,20 +88,6 @@ export const Images = () => {
 
     }, [needsImages, store])
 
-    useEffect(() => {
-
-        if( !store.state.user.access_token )
-        {
-            setError(store.state.error)
-            setTimeout(() => {        
-                          
-                navigate(LocalRoutes.home) 
-            
-            }, 2000)     
-        }
-
-    }, [store, navigate])
-
     const doesExist = (imageURLs) => {
         return clickedImages.hasOwnProperty(imageURLs.cropped);
     }
@@ -135,7 +121,7 @@ export const Images = () => {
     }
 
     return (
-        <div class="inner-content">
+        <div className="inner-content">
             { store.state.images.length > 0 ? (
 
                 <>

@@ -49,24 +49,10 @@ export const NewsHeadlines = () => {
         })
 
         navigate(LocalRoutes.text)
-    }
-
-    useEffect(() => {
-
-        if( !store.state.user.access_token )
-        {
-            setError(UIText.appTextNoAccount)
-            setTimeout(() => {        
-                          
-                navigate(LocalRoutes.home) 
-            
-            }, 2000)     
-        }
-
-    }, [store, navigate])
+    }    
 
     return (
-        <div class="inner-content">
+        <div className="inner-content">
             { store.state.news.length > 0 ? (
 
                 <>

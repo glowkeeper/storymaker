@@ -25,21 +25,8 @@ export const StoryMaker = () => {
 
     }, [store, hasNoTitle])
 
-    useEffect(() => {
-
-        //console.log('token', store.state, store.state.user.user_token)
-
-        let disabled = true;
-        if( store.state.user.access_token )
-        {
-            disabled = false            
-        }
-        setDisabled(disabled)
-
-    }, [store])
-
     return (
-        <div class="inner-content">
+        <div className="inner-content">
             {disabled ? (
                 <p dangerouslySetInnerHTML={{__html: UIText.appTextNoAccount}}></p>
             ) : (
@@ -60,9 +47,6 @@ export const StoryMaker = () => {
                     >
                         {UIText.appFreestyleButtonText}
                     </button>  
-                    
-                    <br /><br />
-                    <p>{`${UIText.appGenerateBlog}:`}</p>
                     <button
                         id={disabled ? "disabled-app-button" : "app-button"}
                         disabled={disabled}

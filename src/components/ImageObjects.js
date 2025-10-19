@@ -42,21 +42,7 @@ export const ImageObjects = () => {
         }
 
     }, [store, needsPredictions])
-
-    useEffect(() => {
-
-        if( !store.state.user.access_token )
-        {
-            setError(UIText.appTextNoAccount)
-            setTimeout(() => {        
-                          
-                navigate(LocalRoutes.home) 
-            
-            }, 2000)     
-        }
-
-    }, [store, navigate])
-
+    
     useEffect(() => {
 
         let timeOut
@@ -120,7 +106,7 @@ export const ImageObjects = () => {
     }, [store, keyWords, numPredictions, navigate, hasNotDispatched])
 
     return (
-        <div class="inner-content"> 
+        <div className="inner-content"> 
             { keyWords.length > 0 ? (
 
                 <div id="centered">

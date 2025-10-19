@@ -5,7 +5,7 @@
 
   --grid-gap: 5px;
 
-  --ruler-color: rgba(53, 49, 49, 1);
+  --ruler-color: #c67100;
 
   --header-height: 3rem;
   --footer-height: 3rem;
@@ -101,26 +101,25 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   height: var(--header-height);
 
-  padding: 0 0 0.5rem 0;
-
   border-bottom: solid 1px var(--ruler-color);
 }
 
 header > #title {
   display: grid;
-  place-items: start center;
+  place-items: end end; 
 }
 
 header > #page-title {
   display: grid;
-  place-items: start start;
+  place-items: center start; 
+  height: var(--header-height);
 }
 
 header > nav {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: var(--grid-gap);
-  place-items: start end;
+  grid-template-columns: 1fr 1fr;
+  place-items: center end;  
+  height: var(--header-height);
 }
 
 #centered {
@@ -280,9 +279,9 @@ a:hover {
     place-items: end end;
   }
 
-  Link {
+  /* Link {
     grid-template-columns: 1fr;
-  }
+  } */
 }
 
 /* Effects Section */

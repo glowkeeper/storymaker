@@ -1,5 +1,6 @@
 export class LocalRoutes {
     static home = '/storymaker'
+    static about = `${LocalRoutes.home}/about`
     static login = `${LocalRoutes.home}/login`
     static app = `${LocalRoutes.home}/maker`
     static freestyle = `${LocalRoutes.app}/freestyle`
@@ -11,15 +12,24 @@ export class LocalRoutes {
     static text = `${LocalRoutes.app}/text`
 }
 
-export class Remote {
-    static login = '/auth/login'
-    static logout = '/auth/logout'
-    static flickr = '/storymaker/flickr'
-    static openai = '/storymaker/openai'
-    static nyt = '/storymaker/nyt'
+//const response = await fetch(`${Flickr.flickrSearchAPI}&api_key=${flickrKey}&tags="${Flickr.tags}"&page=${page}&format=json&nojsoncallback=1&safe_search=1&content_type=1`)
+                
 
+export class Remote {
+    static openai = '/storymaker/openai'
+
+    static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
+
+    static flickrSearchAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     static flickrPhotoServer = 'https://live.staticflickr.com/'
 }
+
+export class Flickr {
+    static numPages = 100
+    static tags = "flowers,trees,river,dog,food,landscape,garden,people,street,park,city,bird,nature,sea,family,house,car,cat,beach,lake"
+}
+
+export const storymakerRole = '16953d36-f667-4572-bfdf-210e5e72685c'
 
 export class RemoteErrors {
     static userError = {
@@ -32,6 +42,7 @@ export class System {
 }
 
 export class NYT {
+    static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
     static newsTopics = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "magazine", "movies", "politics", "science", "sports", "technology", "theater", "travel", "world"]
 }
 
@@ -41,6 +52,7 @@ export class Genres {
 }
 
 export class OpenAI {
+    static engine = 'gpt-3.5-turbo'
     static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
     static moreSystemPrompt = "Acting as a short story writer, create a story from the text below."
     static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline below."
@@ -55,6 +67,7 @@ export class UIText {
     static poweredBy = 'powered by'
     static appTitleHome = "home"
     static appTitleLogin = "login"
+    static appTitleAbout = "about"
     static appTitleFreestyle = "freestyle"
     static appTitleImages = `${UIText.appTitle} | images`
     static appTitleImageObjects = `${UIText.appTitle} | classification`
@@ -84,8 +97,7 @@ export class UIText {
     static appRemoveLastButtonText = "remove last"
     static appSaveButtonText = "save text"
     static appTopicText = 'select a topic'
-    static appGenerateStory = 'pick a way of generating a story'
-    static appGenerateBlog = 'pick a way of generating a blog'
+    static appGenerateStory = 'pick a way of generating a story or a blog'
 
     static login = "login"
     static logOut = "logout"

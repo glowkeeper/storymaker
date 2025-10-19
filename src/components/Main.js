@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router"
 
 import { Header } from './Header'
 import { Home } from './Home'
+import { About } from './About'
 import { StoryMaker } from './StoryMaker'
-import { Login } from './Login'
 import { Freestyle } from './Freestyle'
 import { Images } from './Images'
 import { ImageObjects } from './ImageObjects'
@@ -41,8 +41,8 @@ export const Main = () => {
                             element={<Home />}
                         />
                         <Route
-                            path={LocalRoutes.login}
-                            element={<Login />}
+                            path={LocalRoutes.about}
+                            element={<About />}
                         />
                         <Route
                             path={LocalRoutes.app}

@@ -1,11 +1,10 @@
 import { useEffect, useContext, useState } from 'react'
-import { Link } from "react-router-dom"
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { UIText, LocalRoutes } from '../config'
+import { UIText } from '../config'
 
-export const Home = () => {
+export const About = () => {
     const store = useContext(StoreContext)
     const [hasNoTitle, setHasNoTitle] = useState(true)
 
@@ -15,7 +14,7 @@ export const Home = () => {
 
             store.dispatch({
                 type: StoreActions.pageTitleSet,
-                payload: UIText.appTitleHome
+                payload: UIText.appTitleAbout
             })
             setHasNoTitle(false)
         }
@@ -25,9 +24,7 @@ export const Home = () => {
     return (
 
         <div className="inner-content">
-            <p dangerouslySetInnerHTML={{__html: '<span id="title">' + UIText.appTitle + ' </span>' + UIText.appTextAbout + ' ' + UIText.appTextAccount}}></p>
-            <p>Use <Link to={LocalRoutes.app}><span id="title">{UIText.appTitle}</span></Link>.</p>
-            {/* <p dangerouslySetInnerHTML={{__html: UIText.appTextAccount}}></p> */}
+            <p dangerouslySetInnerHTML={{__html: UIText.appTextAbout }}></p>
         </div>
     )
 }

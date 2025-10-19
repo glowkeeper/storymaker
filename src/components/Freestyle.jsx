@@ -41,20 +41,6 @@ export const Freestyle = () => {
 
   }, [store, hasNoTitle])
 
-  useEffect(() => {
-
-    if( !store.state.user.access_token )
-    {
-        setError(UIText.appTextNoAccount)
-        setTimeout(() => {        
-                      
-            navigate(LocalRoutes.home) 
-        
-        }, 2000)     
-    }
-
-  }, [store, navigate])
-
   const onSubmit = async (data) => {
     //console.log('submit', data) 
     //console.log('sentence', sentence)

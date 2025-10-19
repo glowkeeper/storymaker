@@ -12,19 +12,23 @@ export const getImages = (store) => {
         type: StoreActions.imagesInit
     });
 
-    const fetchOptions = {
-        method: 'GET',
-        headers: {
-            "Content-Type": 'application/json',
-            "Authorization": `Bearer ${store.state.user.access_token}`
-        }
-    }   
+    // const fetchOptions = {
+    //     method: 'GET',
+    //     headers: {
+    //         "Content-Type": 'application/json',
+    //         "Authorization": `Bearer ${store.state.user.access_token}`
+    //     }
+    // }   
+
+    const fetchOptions = {}
 
     IO.getData( async flickrData => {
 
+        //console.log('flickrdata', flickrData)
+
         const imageURLs = compose(map(imageData => {
 
-            // console.log('imagedata', imageData)
+            console.log('imagedata', imageData)
             const { server, id, secret } = imageData
 
             const imageCroppedURL = flickrCroppedSquarePhotos(server, id, secret)
@@ -41,7 +45,7 @@ export const getImages = (store) => {
         }), prop('photo'), prop('photos'));
 
         
-        imageURLs(flickrData.data)
+        imageURLs(flickrData)
     
     }, fetchOptions, flickrQuery, store)
 }
