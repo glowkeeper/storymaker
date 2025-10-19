@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Route, Routes } from "react-router"
 
-import { NavBar } from './NavBar'
+import { Header } from './Header'
 import { Home } from './Home'
 import { StoryMaker } from './StoryMaker'
 import { Login } from './Login'
@@ -33,7 +33,7 @@ export const Main = () => {
     return (  
         <>
             <StoreContext.Provider value={store}>
-                <NavBar />
+                <Header />
                 <main>
                     <Routes>
                         <Route

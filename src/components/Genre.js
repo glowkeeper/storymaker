@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { getNews } from '../store/api/getNews'
-
 import { LocalRoutes, UIText, Genres } from '../config'
 
 export const Genre = () => {

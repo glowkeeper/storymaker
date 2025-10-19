@@ -7,7 +7,7 @@ import { IO } from '../utils/iO'
 
 import { UIText, LocalRoutes, Remote } from '../config'
 
-export const NavBar = () => {
+export const Header = () => {
     const store = useContext(StoreContext)
 
     const [pageTitle, setPageTitle] = useState("")
@@ -44,19 +44,29 @@ export const NavBar = () => {
 
     return (
         
-        <div id="navBar">
-            <h3 id="title">{pageTitle}</h3>                
+        <header> 
+            <h3 id="page-title">{pageTitle}</h3>   
+            <h1 id="title">{UIText.appTitle}</h1>               
             <nav id="links">
                 <>
                     { store.state.user.access_token ? (
 
                         <>
-                            <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+                            { pageTitle === UIText.linkHome ? (
+
+                                <>&nbsp;</>
+
+                            ): (
+
+                                <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+
+                            )}                            
+                            
                             <Link
                                 to={LocalRoutes.app}
                             >
                                 {UIText.linkStoryMaker}
-                            </Link> 
+                            </Link>                             
                             <Link
                                 to={LocalRoutes.home}
                                 onClick={() => logout()}
@@ -67,14 +77,14 @@ export const NavBar = () => {
 
                     ) : (
                         <>
-                            <>&nbsp;</>
-                            <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
                             <Link to={LocalRoutes.login}>{UIText.linkLogin}</Link>
                         </>
                     )}
                 </>
             </nav>
-        </div>
+        </header>
         
     )
 }
