@@ -50,7 +50,7 @@ export const Text = () => {
             let prompt = store.state.textPrompt
             prompt += store.state.textInput.join(' ')
             //const userPrompt = store.state.textInput
-            console.log('prompt', prompt)
+            //console.log('prompt', prompt)
             getText(store, prompt, true)
             setNeedsStory(false)
         }

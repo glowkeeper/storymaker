@@ -34,20 +34,18 @@ export const getText = async (store, prompt, isInit = false) => {
     
     IO.getData( async (response) => {
 
-        console.log('I found', response)
+        //console.log('I found', response)
 
         const payload = [];
         let type = StoreActions.textUpdate
-        let foundText = ""
-        
-        foundText = response.choices[0]?.message?.content 
+        let foundText = response.choices[0]?.message?.content 
         const stopIndex = foundText.lastIndexOf('.')
         if (stopIndex !== -1 ) {
             foundText = foundText.slice(0, stopIndex + 1)
         }
 
         if (isInit) {
-            foundText = prompt + " - " + foundText
+            // foundText = prompt + " - " + foundText
             type = StoreActions.textCreate            
         } 
 

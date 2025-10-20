@@ -50,6 +50,14 @@ export const Freestyle = () => {
     })
 
     store.dispatch({
+        type: StoreActions.textInputInit
+    })
+
+    store.dispatch({
+        type: StoreActions.textInit
+    })
+
+    store.dispatch({
         type: StoreActions.textPromptSet,
         payload: OpenAI.freestyleSystemPrompt
     })

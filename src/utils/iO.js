@@ -10,14 +10,14 @@ const fetchData = async (props) => {
 
     const response = options ? await fetch(url, options) : await fetch(url)
 
-    console.log('got response', response)  
+    //console.log('got response', response)  
 
     // Copes with empty response...
     const textData = await response.text() 
     const data = textData ? JSON.parse(textData) : {}  
     
-    console.log('got text', textData)  
-    console.log('got data', data) 
+    // console.log('got text', textData)  
+    // console.log('got data', data) 
 
     if ( !response.ok ) {
       if (data.hasOwnProperty('errors')) {
