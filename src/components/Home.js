@@ -25,9 +25,7 @@ export const Home = () => {
     return (
 
         <div className="inner-content">
-            <p dangerouslySetInnerHTML={{__html: '<span id="title">' + UIText.appTitle + ' </span>' + UIText.appTextAbout + ' ' + UIText.appTextAccount}}></p>
-            <p>Use <Link to={LocalRoutes.app}><span id="title">{UIText.appTitle}</span></Link>.</p>
-            {/* <p dangerouslySetInnerHTML={{__html: UIText.appTextAccount}}></p> */}
+            <p><span id="title">{UIText.appTitle}</span> {UIText.appTextAbout} <Link to={LocalRoutes.app}>Create</Link>,  using <span id="title">{UIText.appTitle}</span>.</p>
         </div>
     )
 }

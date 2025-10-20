@@ -1,41 +1,53 @@
 import { StoreActions } from '../store'
-import { IO, openaiQuery } from '../../utils/iO'
+import { IO } from '../../utils/iO'
 
-export const getText = async (store, systemPrompt, userPrompt, isInit = false) => {
+import { Remote, OpenRouter } from '../../config'
 
-    //console.log('got text', systemPrompt, userPrompt)
-    
-    const content = {
-        "systemPrompt": systemPrompt,
-        "userPrompt": userPrompt
-    }
+export const getText = async (store, prompt, isInit = false) => {
+
+    //console.log('got text', prompt, process.env.REACT_APP_OPENROUTER, OpenRouter.model)
     
     const fetchOptions = {
-        method: 'POST',
-        headers: {
-            "Content-Type": 'application/json',
-            "Authorization": `Bearer ${store.state.user.access_token}`
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_OPENROUTER}`,
+        'HTTP-Referer': 'https://huckle.studio/storymaker',
+        'X-Title': 'Storymaker',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: OpenRouter.model,
+        messages: [
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+        reasoning: {
+          effort: 'high',
+          exclude: true, // Use reasoning but don't include it in the response
         },
-        body: JSON.stringify(content)
+      }),
     }
 
+    const openRouterAPI = Remote.openRouterAPI
+    
     IO.getData( async (response) => {
 
-        //console.log('I found', response)
+        console.log('I found', response)
 
         const payload = [];
         let type = StoreActions.textUpdate
         let foundText = ""
-
         
-        foundText = response.data.choices[0]?.message?.content 
+        foundText = response.choices[0]?.message?.content 
         const stopIndex = foundText.lastIndexOf('.')
         if (stopIndex !== -1 ) {
             foundText = foundText.slice(0, stopIndex + 1)
         }
 
         if (isInit) {
-            foundText = userPrompt + " - " + foundText
+            foundText = prompt + " - " + foundText
             type = StoreActions.textCreate            
         } 
 
@@ -45,5 +57,5 @@ export const getText = async (store, systemPrompt, userPrompt, isInit = false) =
             payload: payload
         })  
         
-    }, fetchOptions, openaiQuery, store)
+    }, fetchOptions, openRouterAPI, store)
 }

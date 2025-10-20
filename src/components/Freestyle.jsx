@@ -76,7 +76,7 @@ export const Freestyle = () => {
         <div className="inner-content">
             <form onSubmit={handleSubmit(onSubmit)}>  
               
-              <div id="login-form">
+              <div id="freestyle-form">
 
                 <label 
                   htmlFor={userPromptId}
@@ -93,7 +93,7 @@ export const Freestyle = () => {
               </div>
 
               <button
-                id="login-button"
+                id="freestyle-button"
                 type="submit" 
               >
                 {UIText.buttonSubmit}

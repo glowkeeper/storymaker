@@ -3,8 +3,6 @@ import React, { useReducer } from 'react'
 export const StoreContext = React.createContext()
 
 export class StoreActions { 
-  static login = 'user/login'
-  static logout = 'user/logout'
   static errorInit = 'Error/Initialise'
   static errorSet = 'Error/Set'
   static pageTitleSet = 'PageTitle/Set'
@@ -32,7 +30,6 @@ export class StoreActions {
 }
 
 export const initialState = {
-  user: {},
   error: "",
   pageTitle: "",
   images: [],
@@ -41,19 +38,6 @@ export const initialState = {
   textPrompt: "",
   textInput: [],
   text: []
-}
-
-export const userReducer = (state, action) => {
-  switch (action.type) {
-    case StoreActions.login:      
-      const user = action.payload  
-      //console.log('got login', user)
-      return user
-    case StoreActions.logout:
-      return {}
-    default:
-      return state
-  }
 }
 
 export const errorReducer = (state, action) => {
@@ -192,7 +176,6 @@ const combineReducers = reducers => {
 }
 
 export const rootReducer = combineReducers({
-  user: userReducer,
   error: errorReducer,
   pageTitle: pageTitleReducer,
   images: imagesReducer,

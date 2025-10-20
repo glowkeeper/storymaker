@@ -1,7 +1,6 @@
 export class LocalRoutes {
     static home = '/storymaker'
     static about = `${LocalRoutes.home}/about`
-    static login = `${LocalRoutes.home}/login`
     static app = `${LocalRoutes.home}/maker`
     static freestyle = `${LocalRoutes.app}/freestyle`
     static images = `${LocalRoutes.app}/images`
@@ -20,10 +19,18 @@ export class Remote {
 
     static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
 
+    static openRouterAPI = 'https://openrouter.ai/api/v1/chat/completions'
+
     static flickrSearchAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     static flickrPhotoServer = 'https://live.staticflickr.com/'
 }
 
+export class OpenRouter {
+
+    //static model = 'deepseek/deepseek-chat-v3-0324:free'
+    //static model = 'deepseek/deepseek-chat-v3.1:free'
+    static model = 'openrouter/auto'
+}
 export class Flickr {
     static numPages = 100
     static tags = "flowers,trees,river,dog,food,landscape,garden,people,street,park,city,bird,nature,sea,family,house,car,cat,beach,lake"
@@ -53,10 +60,10 @@ export class Genres {
 
 export class OpenAI {
     static engine = 'gpt-3.5-turbo'
-    static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed below."
-    static moreSystemPrompt = "Acting as a short story writer, create a story from the text below."
-    static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline below."
-    static freestyleSystemPrompt = "Acting as a short story writer, create a story from the text below."
+    static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed at the end of this message."
+    static moreSystemPrompt = "Acting as a short story writer, create a story from the text following this. "
+    static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline that follows: "
+    static freestyleSystemPrompt = " Acting as a short story writer, create a story from the text following the genre of the story to write."
 }
 
 export class UIText {
@@ -66,7 +73,6 @@ export class UIText {
     static appCatchphrase = 'ai-based story generation'
     static poweredBy = 'powered by'
     static appTitleHome = "home"
-    static appTitleLogin = "login"
     static appTitleAbout = "about"
     static appTitleFreestyle = "freestyle"
     static appTitleImages = `${UIText.appTitle} | images`
@@ -78,8 +84,6 @@ export class UIText {
 
     static appTextHome = ''
     static appTextAbout = 'uses AI, news headlines and image classification to generate text.'
-    static appTextAccount = `You will need an account to use <span id="title">${UIText.appTitle}</span>; if you would like one, please contact <a href="https://huckle.studio/">Dr Steve Huckle</a>.`
-    static appTextNoAccount = `If you have an account, please login. If you do not have an account, but would like one, please contact <a href="https://huckle.studio/">Dr Steve Huckle</a>.`
     static appTextImages = 'please wait - finding images'
     static appTextImageObjects = 'please wait - classifying images'
     static appTextHeadlines = 'please wait - getting headlines'
@@ -99,29 +103,14 @@ export class UIText {
     static appTopicText = 'select a topic'
     static appGenerateStory = 'pick a way of generating a story or a blog'
 
-    static login = "login"
-    static logOut = "logout"
-    static loginForm = {
-        email: 'email',
-        password: 'password',
-        passwordText: 'password',
-        requiredError: 'a value is required',
-        emailError: 'a valid email is required',
-        passwordError: 'password is required',
-    }
-    static loginFeedbackOk = "welcome!"
-    static loginFeedbackError = `unfortunately, your login was unsuccessful this time. If you have an account, please try again. Otherwise, if you'd like an account, please contact <a href="https://huckle.studio/">Dr Steve Huckle</a>.</p>`
-
-    static userPrompt = 'story synopsis'
+    
+    static userPrompt = 'ai prompt'
     static userPromptError = 'user prompt is required'
-
-    static tokenError = 'user session expired - please login again'
 
     static linkHome = "home"
     static linkStoryMaker = "maker"
     static linkAbout = "about"
     static linkSettings = "settings"
-    static linkLogin = "login"
     static linkLogout = "logout"
     static linkImages = "get images"
     static linkImageObjects = "images objects"

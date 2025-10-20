@@ -64,19 +64,21 @@ h3#title {
 
 main {
   display: grid;
+  padding: calc(var(--header-height) + 1rem) 0  calc(var(--footer-height) + 1rem) 0;
   z-index: 2;
-  padding: 1rem 0 1rem 0;
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  /* min-height: calc(100vh - var(--header-height) - var(--footer-height)); */
   /* padding-bottom: calc(var(--footer-height) + var(--header-height) + 6rem) */
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: calc(100vw - 4rem);
+  width: 100%;
   height: var(--footer-height);
+  background-color: var(--main-colour);
+  z-index: 1;
   padding-top: 1rem;
   border-top: solid 1px var(--ruler-color);
 }
@@ -95,18 +97,21 @@ footer #copyright {
 }
 
 header {
-  position: relative;
+  position: fixed;
   top: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: var(--header-height);
-
+  width: 100%;
+  padding: 0 10rem 0 1rem;
+  background-color: var(--main-colour);
+  z-index: 1;
   border-bottom: solid 1px var(--ruler-color);
 }
 
 header > #title {
   display: grid;
-  place-items: end end; 
+  place-items: end center; 
 }
 
 header > #page-title {
@@ -117,8 +122,8 @@ header > #page-title {
 
 header > nav {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center end;  
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center center;  
   height: var(--header-height);
 }
 
@@ -137,7 +142,7 @@ header > nav {
 #app-button,
 #disabled-app-button,
 #text-button,
-#login-button {
+#freestyle-button {
   border: none;
   border-radius: 2px;
   outline: none;
@@ -156,20 +161,20 @@ header > nav {
   padding: 5px 10px 5px 10px;
 }
 
-#login-button {
+#freestyle-button {
   margin-top: 1rem;
   padding: 5px 10px 5px 10px;
 }
 
 #app-button:hover,
 #text-button:hover,
-#login-button:hover {
+#freestyle-button:hover {
   background-color: var(--main-colour);
 }
 
 #app-button:active,
 #text-button:active,
-#login-button:active {
+#freestyle-button:active {
   box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .6),
                 inset -1px -1px 2px rgba(0, 0, 0, .6);
 }
@@ -188,25 +193,25 @@ a:hover {
   border-top: solid 1px var(--ruler-colour);
 }
 
-#login-form {
+#freestyle-form {
   display: grid;
   grid-template-columns: 1fr 10fr;
   padding: 1rem 0 0 0;
 }
 
-#login-form label {  
+#freestyle-form label {  
   display: grid;
   place-items: center start;
 }
 
-#login-form input {  
+#freestyle-form input {  
   padding: 10px;
   white-space: nowrap;
   overflow: hidden;
   resize: none;
 }
 
-#login-form textarea {  
+#freestyle-form textarea {  
   padding: 10px;
   white-space: nowrap;
   overflow: hidden;

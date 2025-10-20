@@ -26,6 +26,12 @@ export const Header = () => {
 
                         <>
                             <>&nbsp;</>
+
+                            <Link
+                                to={LocalRoutes.app}
+                            >
+                                Create
+                            </Link>
                             <Link
                                 to={LocalRoutes.about}
                             >
@@ -38,6 +44,11 @@ export const Header = () => {
                         <>
 
                             <Link to={LocalRoutes.home}>{UIText.linkHome}</Link>
+                            <Link
+                                to={LocalRoutes.app}
+                            >
+                                Create
+                            </Link>
                             <Link
                                 to={LocalRoutes.about}
                             >

@@ -28,7 +28,7 @@ export const getImages = (store) => {
 
         const imageURLs = compose(map(imageData => {
 
-            console.log('imagedata', imageData)
+            //console.log('imagedata', imageData)
             const { server, id, secret } = imageData
 
             const imageCroppedURL = flickrCroppedSquarePhotos(server, id, secret)

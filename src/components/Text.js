@@ -7,7 +7,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getText } from '../store/api/getText'
 
-import { LocalRoutes, UIText, OpenAI } from '../config'
+import { UIText, OpenAI } from '../config'
 
 export const Text = () => {
     const store = useContext(StoreContext)
@@ -47,11 +47,11 @@ export const Text = () => {
             store.dispatch({
                 type: StoreActions.errorInit
             })
-            const systemPrompt = store.state.textPrompt
-            const userPrompt = store.state.textInput.join(' ')
+            let prompt = store.state.textPrompt
+            prompt += store.state.textInput.join(' ')
             //const userPrompt = store.state.textInput
-            console.log('prompts', systemPrompt, userPrompt)
-            getText(store, systemPrompt, userPrompt, true)
+            console.log('prompt', prompt)
+            getText(store, prompt, true)
             setNeedsStory(false)
         }
 
