@@ -18,11 +18,9 @@
 
 body {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-
-  margin: 1rem 2rem 1rem 2rem;
-
-  background-image: linear-gradient(to left, var(--main-colour-light), var(--main-colour));
+  background-color: var(--main-colour);
 }
+  
 
 h1, h2, h3, p {
   line-height: 1.5
@@ -64,18 +62,18 @@ h3#title {
 
 main {
   display: grid;
+  background-image: linear-gradient(to left, var(--main-colour-light), var(--main-colour));
   padding: calc(var(--header-height) + 1rem) 0  calc(var(--footer-height) + 1rem) 0;
   z-index: 2;
-  /* min-height: calc(100vh - var(--header-height) - var(--footer-height)); */
-  /* padding-bottom: calc(var(--footer-height) + var(--header-height) + 6rem) */
+  min-height: calc(100vh - (var(--header-height) + var(--footer-height) + 4rem));
 }
 
 footer {
   position: fixed;
   bottom: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;  
+  width: calc(100% - 1rem);
   height: var(--footer-height);
   background-color: var(--main-colour);
   z-index: 1;
@@ -85,15 +83,21 @@ footer {
 
 footer #powered {
   display: grid;
-  place-items: start end;
-  margin-right: 1rem;
+  place-items: start start;
 }
 
 footer #copyright {
   display: grid;
-  grid-template-columns: 1fr;
-  place-items: start start;
-  margin-left: 1rem;
+  place-items: start center;
+}
+
+footer #github {
+  display: grid;
+  place-items: start end;
+}
+
+.footer-icon {
+  height: 2rem;
 }
 
 header {
@@ -102,8 +106,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: var(--header-height);
-  width: 100%;
-  padding: 0;
+  width: calc(100% - 1rem);
   background-color: var(--main-colour);
   z-index: 1;
   border-bottom: solid 1px var(--ruler-color);
@@ -123,7 +126,7 @@ header > #page-title {
 header > nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  place-items: center center;  
+  place-items: center end;  
   height: var(--header-height);
 }
 
@@ -134,7 +137,7 @@ header > nav {
 
 #landing {
   display: grid;
-  height: 100vh;
+  height: 90vh;
   justify-items: center;
   align-items: center;
 }
