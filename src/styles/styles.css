@@ -84,6 +84,7 @@ footer {
 footer #powered {
   display: grid;
   place-items: start start;
+  padding-left: 1rem;
 }
 
 footer #copyright {
@@ -94,6 +95,7 @@ footer #copyright {
 footer #github {
   display: grid;
   place-items: start end;
+  padding-right: 1rem;
 }
 
 .footer-icon {
@@ -121,12 +123,14 @@ header > #page-title {
   display: grid;
   place-items: center start; 
   height: var(--header-height);
+  padding-left: 1rem;
 }
 
 header > nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center end;  
+  padding-right: 1rem;
   height: var(--header-height);
 }
 
