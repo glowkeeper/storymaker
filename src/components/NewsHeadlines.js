@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { LocalRoutes, UIText, OpenAI } from '../config'
+import { LocalRoutes, UIText, Prompts } from '../config'
 
 export const NewsHeadlines = () => {
     const store = useContext(StoreContext)
@@ -40,7 +40,7 @@ export const NewsHeadlines = () => {
 
         store.dispatch({
             type: StoreActions.textPromptSet,
-            payload: OpenAI.newsSystemPrompt
+            payload: Prompts.newsSystemPrompt
         })
 
         store.dispatch({
@@ -84,11 +84,9 @@ export const NewsHeadlines = () => {
                     ) : (
 
                         <div id="centered">
-                            <div id="centered-items">
-                                <p>{UIText.appTextHeadlines}</p>
-                                <div id="spinner">
-                                    <div className="spinner-2">&nbsp;</div>
-                                </div>
+                            <p>{UIText.appTextHeadlines}</p>
+                            <div id="spinner">
+                                <div className="spinner-2">&nbsp;</div>
                             </div>
                         </div>
 

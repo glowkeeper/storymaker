@@ -154,11 +154,9 @@ export const Images = () => {
                     ) : (
 
                         <div id="centered">
-                            <div id="centered-items">
-                                <p>{UIText.appTextImages}</p>
-                                <div id="spinner">
-                                    <div className="spinner-2">&nbsp;</div>
-                                </div>
+                            <p>{UIText.appTextImages}</p>
+                            <div id="spinner">
+                                <div className="spinner-2">&nbsp;</div>
                             </div>
                         </div>
 

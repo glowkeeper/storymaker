@@ -7,7 +7,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getText } from '../store/api/getText'
 
-import { UIText, OpenAI } from '../config'
+import { UIText, Prompts } from '../config'
 
 export const Text = () => {
     const store = useContext(StoreContext)
@@ -80,17 +80,19 @@ export const Text = () => {
         //try and find the last sentence and generate new text from that
         const textLength = store.state.text.length
         let userPrompt = store.state.text[textLength - 1]
-        //console.log('userprompt', userPrompt)        
-        const stopIndex = userPrompt.lastIndexOf('.')
-        const tempText = userPrompt.slice(0, stopIndex -2)
-        const startIndex = tempText.lastIndexOf('.')
-        if (stopIndex !== -1 && startIndex !== -1 ) {
-            userPrompt = userPrompt.slice(startIndex +1, stopIndex + 1)
-            //console.log('found next text', userPrompt)
-        }
 
-        const systemPrompt = OpenAI.moreSystemPrompt
-        getText(store, systemPrompt, userPrompt)
+        //console.log('userprompt', userPrompt) 
+        // const stopIndex = userPrompt.lastIndexOf('.')
+        // const tempText = userPrompt.slice(0, stopIndex -2)
+        // const startIndex = tempText.lastIndexOf('.')
+        // if (stopIndex !== -1 && startIndex !== -1 ) {
+        //     userPrompt = userPrompt.slice(startIndex +1, stopIndex + 1)
+        //     //console.log('found next text', userPrompt)
+        // }
+
+        const prompt = Prompts.moreSystemPrompt + userPrompt
+        //console.log('more prompt', prompt)
+        getText(store, prompt)
         setNeedsMore({
             isFetching: true,
             textLength: textLength
@@ -166,11 +168,9 @@ export const Text = () => {
                     ) : (
 
                     <div id="centered">
-                        <div id="centered-items">
-                            <p>{UIText.appTextText}</p>
-                            <div id="spinner">
-                                <div className="spinner-2">&nbsp;</div>
-                            </div>
+                        <p>{UIText.appTextText}</p>
+                        <div id="spinner">
+                            <div className="spinner-2">&nbsp;</div>
                         </div>
                     </div>
 

@@ -5,7 +5,7 @@ import { StoreContext, StoreActions } from '../store/store'
 
 import { getPredictions } from '../store/api/getPredictions'
 
-import { System, LocalRoutes, UIText, OpenAI } from '../config'
+import { System, LocalRoutes, UIText, Prompts } from '../config'
 
 export const ImageObjects = () => {
     const store = useContext(StoreContext)
@@ -92,7 +92,7 @@ export const ImageObjects = () => {
 
             store.dispatch({
                 type: StoreActions.textPromptSet,
-                payload: OpenAI.imageSystemPrompt
+                payload: Prompts.imageSystemPrompt
             })
 
             store.dispatch({
@@ -110,16 +110,14 @@ export const ImageObjects = () => {
             { keyWords.length > 0 ? (
 
                 <div id="centered">
-                    <div id="centered-items">
-                        <p>{UIText.appTextFoundObjects}</p>
-                        {keyWords.map((keyWord, index) => {
-                            return (
-                                <div key={index} className="fadeIn">
-                                    <p>{keyWord}</p>
-                                </div>
-                            )
-                        })}           
-                    </div>         
+                    <p>{UIText.appTextFoundObjects}</p>
+                    {keyWords.map((keyWord, index) => {
+                        return (
+                            <div key={index} className="fadeIn">
+                                <p>{keyWord}</p>
+                            </div>
+                        )
+                    })}        
                 </div>
 
             ) : (
@@ -132,11 +130,9 @@ export const ImageObjects = () => {
                     ) : (
 
                         <div id="centered">
-                            <div id="centered-items">
-                                <p>{UIText.appTextImages}</p>
-                                <div id="spinner">
-                                    <div className="spinner-2">&nbsp;</div>
-                                </div>
+                            <p>{UIText.appTextImages}</p>
+                            <div id="spinner">
+                                <div className="spinner-2">&nbsp;</div>
                             </div>
                         </div>
 

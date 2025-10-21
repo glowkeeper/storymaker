@@ -89,7 +89,6 @@ export const IO = {
     trace: curry(async (tag, x) => { console.log(tag, x); return x; }),
 };
 
-export const openaiQuery = process.env.REACT_APP_HOSTNAME + process.env.REACT_APP_DBASE + Remote.openai  
 export const flickrQuery = `${Remote.flickrSearchAPI}&api_key=${process.env.REACT_APP_FLICKR}&tags="${Flickr.tags}"&page=${Math.floor(Math.random() * Flickr.numPages)}&format=json&nojsoncallback=1&safe_search=1&content_type=1`
 export const flickrCroppedSquarePhotos = curry((serverId, id, secret) => `${Remote.flickrPhotoServer}/${serverId}/${id}_${secret}_q.jpg`)
 export const flickrLargePhotos = curry((serverId, id, secret) => `${Remote.flickrPhotoServer}/${serverId}/${id}_${secret}_b.jpg`)

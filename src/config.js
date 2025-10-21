@@ -15,8 +15,6 @@ export class LocalRoutes {
                 
 
 export class Remote {
-    static openai = '/storymaker/openai'
-
     static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
 
     static openRouterAPI = 'https://openrouter.ai/api/v1/chat/completions'
@@ -58,10 +56,9 @@ export class Genres {
     static genres = ["Action", "Adventure", "Autobiography", "Biography", "Comedy", "Drama", "Essay", "Fable", "Fantasy", "Fiction in Verse", "Folklore", "Historical fiction", "Horror", "Legend", "Magical realism", "Memoir", "Mystery", "Narrative nonfiction", "Poetry", "Religion", "Romantic fiction", "Science fiction", "Self-help", "Short story", "Speech", "Tall Tale", "Thriller", "Tragedy", "Travel", "True crime", "Western", "Young adult fiction"]
 }
 
-export class OpenAI {
-    static engine = 'gpt-3.5-turbo'
+export class Prompts {
     static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed at the end of this message."
-    static moreSystemPrompt = "Acting as a short story writer, create a story from the text following this. "
+    static moreSystemPrompt = "Acting as a short story writer, create the follow on from the text following this: "
     static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline that follows: "
     static freestyleSystemPrompt = " Acting as a short story writer, create a story from the text following the genre of the story to write."
 }
@@ -104,7 +101,7 @@ export class UIText {
     static appGenerateStory = 'pick a way of generating a story or a blog'
 
     
-    static userPrompt = 'ai prompt'
+    static userPrompt = 'story synopsis'
     static userPromptError = 'user prompt is required'
 
     static linkHome = "home"

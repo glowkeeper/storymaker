@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { UIText, LocalRoutes, OpenAI } from '../config'
+import { UIText, LocalRoutes, Prompts } from '../config'
 
 const userPromptId = 'user-prompt'
 
@@ -59,7 +59,7 @@ export const Freestyle = () => {
 
     store.dispatch({
         type: StoreActions.textPromptSet,
-        payload: OpenAI.freestyleSystemPrompt
+        payload: Prompts.freestyleSystemPrompt
     })
 
     store.dispatch({
@@ -83,6 +83,8 @@ export const Freestyle = () => {
 
         <div className="inner-content">
             <form onSubmit={handleSubmit(onSubmit)}>  
+
+              <p>What would you like your story to be about?</p>
               
               <div id="freestyle-form">
 
