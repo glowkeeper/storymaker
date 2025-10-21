@@ -24,7 +24,7 @@ export const About = () => {
     return (
 
         <div className="inner-content">
-            <p>Created by <a href="https://huckle.studio/">Dr Steve Huckle</a>, <span id="title">{UIText.appTitle}</span> {UIText.appTextAbout}</p>
+            <p>Created by <a href="https://huckle.studio/" target="_blank" rel="noreferrer">Dr Steve Huckle</a>, <span id="title">{UIText.appTitle}</span> {UIText.appTextAbout}</p>
         </div>
     )
 }

@@ -13,6 +13,7 @@ export const Freestyle = () => {
   const store = useContext(StoreContext)
 
   const [hasNoTitle, setHasNoTitle] = useState(true)     
+  // eslint-disable-next-line
   const [error, setError] = useState("")
 
   const {

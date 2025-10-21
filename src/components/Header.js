@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from 'react'
 import { Link } from "react-router-dom"
 
-import { StoreContext, StoreActions } from '../store/store'
+import { StoreContext } from '../store/store'
 
 import { UIText, LocalRoutes } from '../config'
 

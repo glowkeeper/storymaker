@@ -14,6 +14,7 @@ export const ImageObjects = () => {
     const [numPredictions, setNumPredictions] = useState(0)
     const [keyWords, setKeyWords] = useState([])
     const [hasNoTitle, setHasNoTitle] = useState(true) 
+    // eslint-disable-next-line
     const [error, setError] = useState("")
 
     const navigate = useNavigate()

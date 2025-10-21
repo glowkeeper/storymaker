@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { fileSave } from 'browser-fs-access'
 
 import { StoreContext, StoreActions } from '../store/store'
@@ -18,8 +16,6 @@ export const Text = () => {
         lengthText: 0 
     })
     const [error, setError] = useState(true)
-
-    const navigate = useNavigate()
 
     useEffect(() => {       
         

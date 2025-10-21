@@ -10,10 +10,6 @@ export const getNews = (store, topic) => {
         type: StoreActions.newsInit
     });
 
-    const content = {
-        "topic": topic
-    }
-
     const nytQuery = `${Remote.nYTTopStoriesAPI}/${topic}.json?api-key=${process.env.REACT_APP_NYT}`
 
     const fetchOptions = {}
