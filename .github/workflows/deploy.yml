@@ -54,8 +54,16 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      - name: Add Environment Variables
+        env:
+          REACT_APP_NYT: ${{ secrets.REACT_APP_NYT }}          
+          REACT_APP_FLICKR: ${{ secrets.REACT_APP_FLICKR }}        
+          REACT_APP_FLICKRSECRET: ${{ secrets.REACT_APP_FLICKRSECRET }}      
+          REACT_APP_OPENROUTER: ${{ secrets.REACT_APP_OPENROUTER }}
+        run: echo "Environment variables configured."
+
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v4      
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
