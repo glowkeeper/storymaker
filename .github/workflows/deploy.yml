@@ -52,7 +52,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          cache: "npm"      
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4      
+
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Add Environment Variables
         env:
@@ -61,12 +67,6 @@ jobs:
           REACT_APP_FLICKRSECRET: ${{ secrets.REACT_APP_FLICKRSECRET }}      
           REACT_APP_OPENROUTER: ${{ secrets.REACT_APP_OPENROUTER }}
         run: echo "Environment variables configured."
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4      
-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build
         run: npm run build
