@@ -15,7 +15,7 @@ export class LocalRoutes {
                 
 
 export class Remote {
-    static nYTTopStoriesAPI = 'http://api.nytimes.com/svc/topstories/v2'
+    static nYTTopStoriesAPI = 'https://api.nytimes.com/svc/topstories/v2'
 
     static openRouterAPI = 'https://openrouter.ai/api/v1/chat/completions'
 
