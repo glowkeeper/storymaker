@@ -66,7 +66,7 @@ export class Prompts {
 export class UIText {
     static appTabTitle = "storymaker"
     static appTitle = 'storymaker'
-    static appCopyright = '&copy; 2022 <a href="https://huckle.studio/">Dr Steve Huckle</a>, all rights reserved'
+    static appCopyright = '&copy; 2022 <a href="https://huckle.studio/">Dr Steve Huckle</a>'
     static appCatchphrase = 'ai-based story generation'
     static poweredBy = 'powered by'
     static appTitleHome = "home"
