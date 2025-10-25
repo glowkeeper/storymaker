@@ -25,7 +25,7 @@ export const Footer = () => {
 
                 <>       
                     <div id="powered">
-                        <p><b>{UIText.poweredBy} </b><a href="https://www.flickr.com/" target="_blank" rel="noreferrer">flickr</a>, <a href="https://developer.nytimes.com/apis" target="_blank" rel="noreferrer">New York Times</a>, <a href="https://www.tensorflow.org/" target="_blank" rel="noreferrer">TensorFlow</a> and <a href="https://openrouter.ai/" target="_blank" rel="noreferrer">OpenRouter.</a></p>
+                        <p><b>{UIText.poweredBy} </b><a href="https://www.flickr.com/" target="_blank" rel="noreferrer">flickr</a>, <a href="https://developer.nytimes.com/apis" target="_blank" rel="noreferrer">New York Times</a>, <a href="https://www.tensorflow.org/" target="_blank" rel="noreferrer">TensorFlow</a> and <a href="https://openrouter.ai/" target="_blank" rel="noreferrer">OpenRouter</a>.</p>
                     </div>
                     <div
                         id="copyright"
