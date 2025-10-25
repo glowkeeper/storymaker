@@ -70,6 +70,7 @@ export class UIText {
     static appCatchphrase = 'ai-based story generation'
     static poweredBy = 'powered by'
     static appTitleHome = "home"
+    static appTitleCreate = "create"
     static appTitleAbout = "about"
     static appTitleFreestyle = "freestyle"
     static appTitleImages = `${UIText.appTitle} | images`
@@ -106,6 +107,7 @@ export class UIText {
 
     static linkHome = "home"
     static linkStoryMaker = "maker"
+    static linkCreate = "create"
     static linkAbout = "about"
     static linkSettings = "settings"
     static linkLogout = "logout"

@@ -11,6 +11,13 @@
   --footer-height: 3rem;
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+
+    --grid-gap: 10px;
+  }
+}
+
 @font-face {
   font-family: 'Lucida Handwriting';
   src: url('../fonts/lHandW.woff') format('woff');
@@ -63,7 +70,7 @@ h3#title {
 main {
   display: grid;
   background-image: linear-gradient(to left, var(--main-colour-light), var(--main-colour));
-  padding: calc(var(--header-height) + 1rem) 0  calc(var(--footer-height) + 1rem) 0;
+  padding: calc(var(--header-height) + 1rem) 1rem calc(var(--footer-height) + 1rem) 1rem;
   z-index: 2;
   min-height: calc(100vh - (var(--header-height) + var(--footer-height) + 4rem));
 }
@@ -144,11 +151,19 @@ header > nav {
   height: 90vh;
   justify-items: center;
   align-items: center;
+  text-align: center;
 }
 
 h1.landing {
   display: grid;
   justify-items: center;
+  text-align: center;
+}
+
+h2.landing {
+  display: grid;
+  justify-items: center;
+  text-align: center;
 }
 
 #app-button,
@@ -266,22 +281,35 @@ a:hover {
                 inset -1px -1px 2px rgba(0, 0, 0, .6);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 
   body {
     margin: 1rem;
   }
 
   footer {
-    left: 1rem;
+    grid-template-columns: 2fr 1fr;
+    width: calc(100% - 2rem);
+    grid-gap: var(--grid-gap);
+    padding-top: 0.5rem;
+  }
+
+  footer #copyright {
+    display: grid;
+    place-items: start start;
+    padding-left: 2rem;
+  }
+
+  footer #github {
+    display: grid;
+    place-items: start end;
+    padding-right: 1rem;
   }
 
   header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: var(--grid-gap);
-
-    border-bottom: solid 1px var(--ruler-colour);
+    grid-template-columns: 2fr 1fr;
+    width: calc(100% - 2rem);
   }
 
   header > #title {
@@ -291,9 +319,14 @@ a:hover {
 
   header > nav {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: var(--grid-gap);
     place-items: end end;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 0
   }
 
   /* Link {

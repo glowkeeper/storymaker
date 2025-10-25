@@ -25,7 +25,7 @@ export const Home = () => {
     return (
 
         <div className="inner-content">
-            <p><span id="title">{UIText.appTitle}</span> {UIText.appTextAbout} <Link to={LocalRoutes.app}>Create</Link>,  using <span id="title">{UIText.appTitle}</span>.</p>
+            <p><span id="title">{UIText.appTitle}</span> {UIText.appTextAbout} <Link to={LocalRoutes.app}>{UIText.linkCreate}</Link>,  using <span id="title">{UIText.appTitle}</span>.</p>
         </div>
     )
 }
