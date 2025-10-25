@@ -37,7 +37,7 @@ You will need to create a `.env` file in the root directory, with the following 
 3. REACT_APP_FLICKRSECRET
 4. REACT_APP_OPENROUTER
 
-Where `REACT_APP_NYT` is the API key for the New York Times, REACT_APP_FLICKR and REACT_APP_FLICKRSECRET are the Flickr API key and secret, and REACT_APP_OPENROUTER is the OpenRouter API key.
+Where REACT_APP_NYT is the API key for the New York Times, REACT_APP_FLICKR and REACT_APP_FLICKRSECRET are the Flickr API key and secret, and REACT_APP_OPENROUTER is the OpenRouter API key.
 
 From the repo's root directory, type `npm run start`.
 
