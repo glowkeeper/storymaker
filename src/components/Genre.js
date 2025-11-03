@@ -39,7 +39,7 @@ export const Genre = () => {
 
     return (
         <div className="inner-content">
-            <p>{UIText.appTopicText}:</p>
+            <p>select a genre:</p>
             {Genres.genres.map((genre, index) =>              
                 <button
                     key={index}

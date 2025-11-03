@@ -60,7 +60,6 @@ export class Prompts {
     static imageSystemPrompt = "Acting as a short story writer, create a story from the objects listed at the end of this message."
     static moreSystemPrompt = "Acting as a short story writer, create the follow on from the text following this: "
     static newsSystemPrompt = "Acting as a blogger, create a blog based on the headline that follows: "
-    static freestyleSystemPrompt = " Acting as a short story writer, create a story from the text following the genre of the story to write."
 }
 
 export class UIText {

@@ -4,9 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { StoreContext, StoreActions } from '../store/store'
 
-import { UIText, LocalRoutes, Prompts } from '../config'
-
-const userPromptId = 'user-prompt'
+import { UIText, LocalRoutes } from '../config'
 
 export const Freestyle = () => {
 
@@ -16,6 +14,12 @@ export const Freestyle = () => {
   // eslint-disable-next-line
   const [error, setError] = useState("")
 
+  const persona = 'persona'
+  const context = 'context'
+  const synopsis = 'synopsis'
+  const style = 'style'
+  const constraints = 'constraints'
+
   const {
     reset,
     register,
@@ -23,7 +27,11 @@ export const Freestyle = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      [userPromptId]: ''
+      [persona]: 'You are a short story writer. ', 
+      [context]: 'Create an engaging story suitable for a general audience of short story readers. ', 
+      [synopsis]: '', 
+      [style]: 'The story should enthral and excite. ', 
+      [constraints]: 'Avoid any concepts that may offend. '
     }
   })
 
@@ -43,8 +51,7 @@ export const Freestyle = () => {
   }, [store, hasNoTitle])
 
   const onSubmit = async (data) => {
-    //console.log('submit', data) 
-    //console.log('sentence', sentence)
+    console.log('submit', data) 
 
     store.dispatch({
         type: StoreActions.errorInit
@@ -55,22 +62,30 @@ export const Freestyle = () => {
     })
 
     store.dispatch({
-        type: StoreActions.textInit
+        type: StoreActions.textIniconstraintst
     })
 
     store.dispatch({
         type: StoreActions.textPromptSet,
-        payload: Prompts.freestyleSystemPrompt
+        payload: data[persona] + data[context] + data[style] + data[constraints]
     })
 
     store.dispatch({
         type: StoreActions.textInputCreate,
-        payload: [data[userPromptId]]
+        payload: [data[synopsis]]
     })
 
-    reset({[userPromptId]: ''})
+    reset({
+      [persona]: 'You are a short story writer. ', 
+      [context]: 'Create an engaging story suitable for a general audience of short story readers. ', 
+      [synopsis]: '', 
+      [style]: 'The story should enthral and excite. ', 
+      [constraints]: 'Avoid any concepts that may offend. '
+    })
     navigate(LocalRoutes.genre)
   }
+
+  //" Acting as a short story writer, create a story from the text following the genre of the story to write."
 
   return (
 
@@ -85,30 +100,77 @@ export const Freestyle = () => {
         <div className="inner-content">
             <form onSubmit={handleSubmit(onSubmit)}>  
 
-              <p>What would you like your story to be about?</p>
+              <p>create your AI prompt:</p>
               
               <div id="freestyle-form">
 
                 <label 
-                  htmlFor={userPromptId}
+                  htmlFor={persona}
                 >
-                  {`${UIText.userPrompt}:`}
+                  persona
                 </label>
                 <textarea
-                  id={userPromptId}               
+                  id={persona}               
                   autoFocus
-                  {...register(userPromptId, { required: true })}
+                  {...register(persona, { required: true })}
                 />
-                {errors[userPromptId] && <p>{UIText.userPromptError}</p>
-                }
-              </div>
+                {errors[persona] && <p>{UIText.userPromptError}</p>}
 
-              <button
-                id="freestyle-button"
-                type="submit" 
-              >
-                {UIText.buttonSubmit}
-              </button>
+                <label 
+                  htmlFor={context}
+                >
+                  context
+                </label>
+                <textarea
+                  id={context}               
+                  autoFocus
+                  {...register(context, { required: true })}
+                />
+                {errors[context] && <p>{UIText.userPromptError}</p>}
+
+                <label 
+                  htmlFor={synopsis}
+                >
+                  synopsis
+                </label>
+                <textarea
+                  id={synopsis}               
+                  autoFocus
+                  {...register(synopsis, { required: true })}
+                />
+                {errors[synopsis] && <p>{UIText.userPromptError}</p>}
+
+                <label 
+                  htmlFor={style}
+                >
+                  style
+                </label>
+                <textarea
+                  id={style}               
+                  autoFocus
+                  {...register(style, { required: false })}
+                />
+                {errors[style] && <p>{UIText.userPromptError}</p>}
+
+                <label 
+                  htmlFor={constraints}
+                >
+                  constraints
+                </label>
+                <textarea
+                  id={constraints}               
+                  autoFocus
+                  {...register(constraints, { required: false })}
+                />
+                {errors[constraints] && <p>{UIText.userPromptError}</p>}
+
+                <button
+                  id="freestyle-button"
+                  type="submit" 
+                >
+                  {UIText.buttonSubmit}
+                </button>
+              </div>
             </form>    
         </div>
       )}

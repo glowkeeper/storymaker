@@ -223,7 +223,8 @@ a:hover {
 #freestyle-form {
   display: grid;
   grid-template-columns: 1fr 10fr;
-  padding: 1rem 0 0 0;
+  padding: 0;
+  margin: 0;
 }
 
 #freestyle-form label {  
@@ -239,7 +240,9 @@ a:hover {
 }
 
 #freestyle-form textarea {  
-  padding: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+  line-height: 0.5;
   white-space: nowrap;
   overflow: hidden;
 }

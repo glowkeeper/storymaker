@@ -35,15 +35,15 @@ export const StoryMaker = () => {
             </button> 
             <button
                 id="app-button"
-                onClick={() => navigate(LocalRoutes.freestyle)}
-            >
-                {UIText.appFreestyleButtonText}
-            </button>  
-            <button
-                id="app-button"
                 onClick={() => navigate(LocalRoutes.news)}
             >
                 {UIText.appNewsButtonText}
+            </button>  
+            <button
+                id="app-button"
+                onClick={() => navigate(LocalRoutes.freestyle)}
+            >
+                {UIText.appFreestyleButtonText}
             </button>  
         </div>
     )
